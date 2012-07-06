@@ -62,7 +62,7 @@
     static MASShortcutView *currentRecorder = nil;
     if (flag && (currentRecorder != self)) {
         currentRecorder.recording = NO;
-        currentRecorder = self;
+        currentRecorder = flag ? self : nil;
     }
     
     // Only enabled view supports recording
@@ -117,10 +117,10 @@
         [self getShortcutRect:&shortcutRect hintRect:NULL];
         NSString *title = (self.recording
                            ? (_hinting
-                              ? NSLocalizedString(@"Use old shortuct", @"Cancel action button for non-empty shortcut in recording state")
+                              ? NSLocalizedString(@"Use Old Shortuct", @"Cancel action button for non-empty shortcut in recording state")
                               : (self.shortcutPlaceholder.length > 0
                                  ? self.shortcutPlaceholder
-                                 : NSLocalizedString(@"Type new shortcut", @"Non-empty shortcut button in recording state")))
+                                 : NSLocalizedString(@"Type New Shortcut", @"Non-empty shortcut button in recording state")))
                            : _shortcutValue ? _shortcutValue.description : @"");
         [self drawInRect:shortcutRect withTitle:title alignment:NSCenterTextAlignment state:self.isRecording ? NSOnState : NSOffState];
     }
@@ -132,15 +132,15 @@
             CGRect shortcutRect;
             [self getShortcutRect:&shortcutRect hintRect:NULL];
             NSString *title = (_hinting
-                               ? NSLocalizedString(@"Click to cancel", @"Cancel action button in recording state")
+                               ? NSLocalizedString(@"Cancel", @"Cancel action button in recording state")
                                : (self.shortcutPlaceholder.length > 0
                                   ? self.shortcutPlaceholder
-                                  : NSLocalizedString(@"Type shortcut", @"Empty shortcut button in recording state")));
+                                  : NSLocalizedString(@"Type Shortcut", @"Empty shortcut button in recording state")));
             [self drawInRect:shortcutRect withTitle:title alignment:NSCenterTextAlignment state:NSOnState];
         }
         else
         {
-            [self drawInRect:self.bounds withTitle:NSLocalizedString(@"Click to record", @"Empty shortcut button in normal state")
+            [self drawInRect:self.bounds withTitle:NSLocalizedString(@"Record Shortcut", @"Empty shortcut button in normal state")
                    alignment:NSCenterTextAlignment state:NSOffState];
         }
     }
@@ -216,7 +216,7 @@
     }
     
     // Forbid hinting if view is disabled
-    if (self.enabled) return;
+    if (!self.enabled) return;
     
     CGRect hintRect;
     [self getShortcutRect:NULL hintRect:&hintRect];
@@ -256,7 +256,7 @@ void *kUserDataHint = &kUserDataHint;
     }
     
     if ((self.shortcutValue == nil) || self.recording || !self.enabled) return;
-    
+
     CGRect shortcutRect, hintRect;
     [self getShortcutRect:&shortcutRect hintRect:&hintRect];
     _shortcutToolTipTag = [self addToolTipRect:shortcutRect owner:self userData:kUserDataShortcut];
@@ -284,23 +284,24 @@ void *kUserDataHint = &kUserDataHint;
     
     static id eventMonitor = nil;
     if (shouldActivate) {
+        __weak MASShortcutView *weakSelf = self;
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^(NSEvent *event) {
 
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
             if ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete)) {
                 // Delete shortcut
-                self.shortcutValue = nil;
-                self.recording = NO;
+                weakSelf.shortcutValue = nil;
+                weakSelf.recording = NO;
                 event = nil;
             }
             else if (shortcut.keyCode == kVK_Escape) {
                 // Cancel recording
-                self.recording = NO;
+                weakSelf.recording = NO;
                 event = nil;
             }
             else if (shortcut.shouldBypass) {
                 // Command + W, Command + Q, ESC should deactivate recorder
-                self.recording = NO;
+                weakSelf.recording = NO;
             }
             else {
                 // Verify possible shortcut
@@ -310,20 +311,20 @@ void *kUserDataHint = &kUserDataHint;
                         NSError *error = nil;
                         if ([shortcut isTakenError:&error]) {
                             // Prevent cancel of recording when Alert window is key
-                            [self activateResignObserver:NO];
-                            [self activateEventMonitoring:NO];
+                            [weakSelf activateResignObserver:NO];
+                            [weakSelf activateEventMonitoring:NO];
                             NSString *format = NSLocalizedString(@"The key combination %@ cannot be used",
                                                                  @"Title for alert when shortcut is already used");
                             NSRunCriticalAlertPanel([NSString stringWithFormat:format, shortcut], error.localizedDescription,
                                                     NSLocalizedString(@"OK", @"Alert button when shortcut is already used"),
                                                     nil, nil);
-                            self.shortcutPlaceholder = nil;
-                            [self activateResignObserver:YES];
-                            [self activateEventMonitoring:YES];
+                            weakSelf.shortcutPlaceholder = nil;
+                            [weakSelf activateResignObserver:YES];
+                            [weakSelf activateEventMonitoring:YES];
                         }
                         else {
-                            self.shortcutValue = shortcut;
-                            self.recording = NO;
+                            weakSelf.shortcutValue = shortcut;
+                            weakSelf.recording = NO;
                         }
                     }
                     else {
@@ -333,7 +334,7 @@ void *kUserDataHint = &kUserDataHint;
                 }
                 else {
                     // User is playing with modifier keys
-                    self.shortcutPlaceholder = shortcut.modifierFlagsString;
+                    weakSelf.shortcutPlaceholder = shortcut.modifierFlagsString;
                 }
                 event = nil;
             }
