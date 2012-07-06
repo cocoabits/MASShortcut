@@ -34,7 +34,8 @@ enum {
 
 @property (nonatomic) NSUInteger keyCode;
 @property (nonatomic) NSUInteger modifierFlags;
-@property (nonatomic, readonly) NSUInteger carbonFlags;
+@property (nonatomic, readonly) UInt32 carbonKeyCode;
+@property (nonatomic, readonly) UInt32 carbonFlags;
 @property (nonatomic, readonly) NSString *keyCodeString;
 @property (nonatomic, readonly) NSString *modifierFlagsString;
 @property (nonatomic, readonly) NSData *data;

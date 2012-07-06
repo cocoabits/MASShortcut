@@ -83,6 +83,10 @@
     _shortcutValue = shortcutValue;
     [self resetToolTips];
     [self setNeedsDisplay:YES];
+
+    if (self.shortcutValueChange) {
+        self.shortcutValueChange(self);
+    }
 }
 
 - (void)setShortcutPlaceholder:(NSString *)shortcutPlaceholder

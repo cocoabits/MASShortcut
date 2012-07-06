@@ -62,7 +62,12 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
     _modifierFlags = MASShortcutClear(value);
 }
 
-- (NSUInteger)carbonFlags
+- (UInt32)carbonKeyCode
+{
+    return (self.keyCode == NSNotFound ? 0 : (UInt32)self.keyCode);
+}
+
+- (UInt32)carbonFlags
 {
     return MASShortcutCarbonFlags(self.modifierFlags);
 }
