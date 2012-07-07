@@ -203,7 +203,7 @@
         }
         else {
             if (self.recording) {
-                if ([self locationInHintRect:[event locationInWindow]]) {
+                if ([self locationInHintRect:event.locationInWindow]) {
                     self.recording = NO;
                 }
             }
