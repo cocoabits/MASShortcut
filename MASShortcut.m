@@ -8,6 +8,11 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
     NSUInteger _modifierFlags; // 0 if empty
 }
 
+@synthesize modifierFlags = _modifierFlags;
+@synthesize keyCode = _keyCode;
+
+#pragma mark -
+
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     [coder encodeInteger:(self.keyCode != NSNotFound ? (NSInteger)self.keyCode : - 1) forKey:kMASShortcutKeyCode];
@@ -223,7 +228,8 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
             if (outError) {
                 NSString *format = NSLocalizedString(@"This shortcut cannot be used used because it is already used by the menu item ‘%@’.",
                                                      @"Message for alert when shortcut is already used");
-                NSDictionary *info = @{ NSLocalizedDescriptionKey : [NSString stringWithFormat:format, menuItem.title] };
+                NSDictionary *info = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:format, menuItem.title]
+                                                                 forKey:NSLocalizedDescriptionKey];
                 *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:info];
             }
             return YES;
@@ -251,7 +257,8 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
                                                               @"keyboard shortcut.\nIf you really want to use this key combination, most shortcuts "
                                                               @"can be changed in the Keyboard & Mouse panel in System Preferences.",
                                                               @"Message for alert when shortcut is already used by the system");
-                    *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{ NSLocalizedDescriptionKey : description }];
+                    NSDictionary *info = [NSDictionary dictionaryWithObject:description forKey:NSLocalizedDescriptionKey];
+                    *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:info];
                 }
                 return YES;
             }

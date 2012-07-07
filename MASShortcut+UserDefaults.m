@@ -3,7 +3,7 @@
 @interface MASShortcutHotKey : NSObject
 
 @property (nonatomic, readonly) NSString *userDefaultsKey;
-@property (nonatomic, readonly) void (^handler)();
+@property (nonatomic, readonly, copy) void (^handler)();
 @property (nonatomic, readonly) EventHotKeyRef carbonHotKey;
 @property (nonatomic, readonly) UInt32 carbonHotKeyID;
 
@@ -47,6 +47,13 @@
 #pragma mark -
 
 @implementation MASShortcutHotKey
+
+@synthesize carbonHotKeyID = _carbonHotKeyID;
+@synthesize handler = _handler;
+@synthesize userDefaultsKey = _userDefaultsKey;
+@synthesize carbonHotKey = _carbonHotKey;
+
+#pragma mark -
 
 - (id)initWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler
 {

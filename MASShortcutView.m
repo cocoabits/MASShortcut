@@ -27,6 +27,15 @@
     NSTrackingArea *_hintArea;
 }
 
+@synthesize enabled = _enabled;
+@synthesize hinting = _hinting;
+@synthesize shortcutValue = _shortcutValue;
+@synthesize shortcutPlaceholder = _shortcutPlaceholder;
+@synthesize shortcutValueChange = _shortcutValueChange;
+@synthesize recording = _recording;
+
+#pragma mark -
+
 - (id)initWithFrame:(CGRect)frameRect
 {
     self = [super initWithFrame:frameRect];

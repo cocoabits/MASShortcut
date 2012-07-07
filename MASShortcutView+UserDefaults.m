@@ -39,6 +39,11 @@ void *kDefaultsObserver = &kDefaultsObserver;
     BOOL _internalShortcutChange;
 }
 
+@synthesize userDefaultsKey = _userDefaultsKey;
+@synthesize shortcutView = _shortcutView;
+
+#pragma mark -
+
 - (id)initWithShortcutView:(MASShortcutView *)shortcutView userDefaultsKey:(NSString *)userDefaultsKey
 {
     self = [super init];
