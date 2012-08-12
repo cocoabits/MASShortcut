@@ -298,7 +298,8 @@ void *kUserDataHint = &kUserDataHint;
     static id eventMonitor = nil;
     if (shouldActivate) {
         __weak MASShortcutView *weakSelf = self;
-        eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^(NSEvent *event) {
+        NSEventMask eventMask = (NSKeyDownMask | NSFlagsChangedMask);
+        eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
             if ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete)) {
