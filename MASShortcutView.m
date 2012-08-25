@@ -320,7 +320,7 @@ void *kUserDataHint = &kUserDataHint;
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {
-                    if (shortcut.hasRequiredModifierFlags) {
+                    if (shortcut.valid) {
                         // Verify that shortcut is not used
                         NSError *error = nil;
                         if ([shortcut isTakenError:&error]) {

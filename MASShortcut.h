@@ -40,7 +40,7 @@ enum {
 @property (nonatomic, readonly) NSString *modifierFlagsString;
 @property (nonatomic, readonly) NSData *data;
 @property (nonatomic, readonly) BOOL shouldBypass;
-@property (nonatomic, readonly) BOOL hasRequiredModifierFlags;
+@property (nonatomic, readonly, getter = isValid) BOOL valid;
 
 - (id)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
 

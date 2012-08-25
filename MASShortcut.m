@@ -202,19 +202,19 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
     return (self.modifierFlags == NSCommandKeyMask) && ([codeString isEqualToString:@"W"] || [codeString isEqualToString:@"Q"]);
 }
 
-- (BOOL)hasRequiredModifierFlags
+- (BOOL)isValid
 {
     BOOL hasFlags = (_modifierFlags > 0);
     BOOL hasCommand = ((_modifierFlags & NSCommandKeyMask) > 0);
     BOOL hasControl = ((_modifierFlags & NSControlKeyMask) > 0);
     BOOL hasOption = ((_modifierFlags & NSAlternateKeyMask) > 0);
-    BOOL isSpecial = ((_keyCode == kVK_Space) || (_keyCode == kVK_Escape) || (_keyCode == kVK_Return) ||
-                      (_keyCode == kVK_F1) || (_keyCode == kVK_F2) || (_keyCode == kVK_F3) || (_keyCode == kVK_F4) ||
-                      (_keyCode == kVK_F5) || (_keyCode == kVK_F6) || (_keyCode == kVK_F7) || (_keyCode == kVK_F8) ||
-                      (_keyCode == kVK_F9) || (_keyCode == kVK_F10) || (_keyCode == kVK_F11) || (_keyCode == kVK_F12) ||
-                      (_keyCode == kVK_F13) || (_keyCode == kVK_F14) || (_keyCode == kVK_F15) || (_keyCode == kVK_F16) ||
-                      (_keyCode == kVK_F17) || (_keyCode == kVK_F18) || (_keyCode == kVK_F19) || (_keyCode == kVK_F20));
-    return (hasFlags && (hasCommand || hasControl || (hasOption && isSpecial)));
+    BOOL isFunction = ((_keyCode == kVK_F1) || (_keyCode == kVK_F2) || (_keyCode == kVK_F3) || (_keyCode == kVK_F4) ||
+                       (_keyCode == kVK_F5) || (_keyCode == kVK_F6) || (_keyCode == kVK_F7) || (_keyCode == kVK_F8) ||
+                       (_keyCode == kVK_F9) || (_keyCode == kVK_F10) || (_keyCode == kVK_F11) || (_keyCode == kVK_F12) ||
+                       (_keyCode == kVK_F13) || (_keyCode == kVK_F14) || (_keyCode == kVK_F15) || (_keyCode == kVK_F16) ||
+                       (_keyCode == kVK_F17) || (_keyCode == kVK_F18) || (_keyCode == kVK_F19) || (_keyCode == kVK_F20));
+    BOOL isSpecial = ((_keyCode == kVK_Space) || (_keyCode == kVK_Escape) || (_keyCode == kVK_Return));
+    return ((hasFlags && (hasCommand || hasControl || (hasOption && isSpecial))) || isFunction);
 }
 
 - (BOOL)isKeyEquivalent:(NSString *)keyEquivalent flags:(NSUInteger)flags takenInMenu:(NSMenu *)menu error:(NSError **)outError
