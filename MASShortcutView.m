@@ -1,12 +1,9 @@
 #import "MASShortcutView.h"
 #import "MASShortcut.h"
 
-#define HINT_BUTTON_WIDTH 23.0f
-#define BUTTON_FONT_SIZE 11.0f
-
-#pragma mark -
-
-@interface MASShortcutCell : NSButtonCell @end
+#define HINT_BUTTON_WIDTH 23.0
+#define BUTTON_FONT_SIZE 11.0
+#define SEGMENT_CHROME_WIDTH 6.0
 
 #pragma mark -
 
@@ -21,7 +18,6 @@
 
 @implementation MASShortcutView {
     NSButtonCell *_shortcutCell;
-
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
@@ -40,9 +36,11 @@
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        _shortcutCell = [[MASShortcutCell alloc] init];
-        [_shortcutCell setFont:[[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE]];
+        _shortcutCell = [[NSButtonCell alloc] init];
+        _shortcutCell.buttonType = NSPushOnPushOffButton;
+        _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
         _enabled = YES;
+        [self resetShortcutCellStyle];
     }
     return self;
 }
@@ -62,6 +60,29 @@
         [self updateTrackingAreas];
         self.recording = NO;
         [self setNeedsDisplay:YES];
+    }
+}
+
+- (void)setAppearance:(MASShortcutViewAppearance)appearance
+{
+    if (_appearance != appearance) {
+        _appearance = appearance;
+        [self resetShortcutCellStyle];
+        [self setNeedsDisplay:YES];
+    }
+}
+
+- (void)resetShortcutCellStyle
+{
+    switch (_appearance) {
+        case MASShortcutViewAppearanceDefault: {
+            _shortcutCell.bezelStyle = NSRoundRectBezelStyle;
+            break;
+        }
+        case MASShortcutViewAppearanceTexturedRect: {
+            _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
+            break;
+        }
     }
 }
 
@@ -117,7 +138,17 @@
     _shortcutCell.alignment = alignment;
     _shortcutCell.state = state;
     _shortcutCell.enabled = self.enabled;
-    [_shortcutCell drawWithFrame:frame inView:self];
+
+    switch (_appearance) {
+        case MASShortcutViewAppearanceDefault: {
+            [_shortcutCell drawWithFrame:frame inView:self];
+            break;
+        }
+        case MASShortcutViewAppearanceTexturedRect: {
+            [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
+            break;
+        }
+    }
 }
 
 - (void)drawRect:(CGRect)dirtyRect
@@ -378,42 +409,6 @@ void *kUserDataHint = &kUserDataHint;
     else {
         [notificationCenter removeObserver:observer];
     }
-}
-
-@end
-
-#pragma mark -
-
-@implementation MASShortcutCell
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.buttonType = NSPushOnPushOffButton;
-        self.bezelStyle = NSRoundRectBezelStyle;
-    }
-    return self;
-}
-
-- (void)drawBezelWithFrame:(CGRect)frame inView:(NSView *)controlView
-{
-    [super drawBezelWithFrame:frame inView:controlView];
-    if ([self state] == NSOnState) {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(frame, 1.0f, 1.0f) xRadius:NSHeight(frame) / 2.0f yRadius:NSHeight(frame) / 2.0f];
-        [[[self class] fillGradient] drawInBezierPath:path angle:90.0f];
-    }
-}
-
-+ (NSGradient *)fillGradient
-{
-    static NSGradient *shared = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceRed:0.88f green:0.94f blue:1.00f alpha:0.35f]
-                                               endingColor:[NSColor colorWithDeviceRed:0.55f green:0.60f blue:0.65f alpha:0.65f]];
-    });
-    return shared;
 }
 
 @end
