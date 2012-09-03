@@ -195,7 +195,11 @@
 - (void)getShortcutRect:(CGRect *)shortcutRectRef hintRect:(CGRect *)hintRectRef
 {
     CGRect shortcutRect, hintRect;
-    CGRectDivide(self.bounds, &hintRect, &shortcutRect, HINT_BUTTON_WIDTH, CGRectMaxXEdge);
+    CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
+    if (self.appearance == MASShortcutViewAppearanceTexturedRect) {
+        hintButtonWidth += 2.0;
+    }
+    CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
     if (shortcutRectRef)  *shortcutRectRef = shortcutRect;
     if (hintRectRef) *hintRectRef = hintRect;
 }
