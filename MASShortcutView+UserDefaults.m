@@ -113,7 +113,11 @@ void *kShortcutValueObserver = &kShortcutValueObserver;
         if (_internalShortcutChange) return;
         MASShortcut *shortcut = [object valueForKey:keyPath];
         _internalPreferenceChange = YES;
-        [[NSUserDefaults standardUserDefaults] setObject:shortcut.data forKey:_userDefaultsKey];
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:(shortcut.data ?: [NSKeyedArchiver archivedDataWithRootObject:nil]) forKey:_userDefaultsKey];
+        [defaults synchronize];
+
         _internalPreferenceChange = NO;
     }
     else {

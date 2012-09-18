@@ -52,7 +52,8 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
 
 + (MASShortcut *)shortcutWithData:(NSData *)data
 {
-    return (data ? (MASShortcut *)[NSKeyedUnarchiver unarchiveObjectWithData:data] : nil);
+    id shortcut = (data ? [NSKeyedUnarchiver unarchiveObjectWithData:data] : nil);
+    return shortcut;
 }
 
 #pragma mark - Shortcut accessors
@@ -80,6 +81,35 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@%@", self.modifierFlagsString, self.keyCodeString];
+}
+
+- (NSString *)keyCodeStringForKeyEquivalent
+{
+    NSString *keyCodeString = self.keyCodeString;
+    if (keyCodeString.length > 1) {
+        switch (self.keyCode) {
+            case kVK_F1: return MASShortcutChar(0xF704);
+            case kVK_F2: return MASShortcutChar(0xF705);
+            case kVK_F3: return MASShortcutChar(0xF706);
+            case kVK_F4: return MASShortcutChar(0xF707);
+            case kVK_F5: return MASShortcutChar(0xF708);
+            case kVK_F6: return MASShortcutChar(0xF709);
+            case kVK_F7: return MASShortcutChar(0xF70a);
+            case kVK_F8: return MASShortcutChar(0xF70b);
+            case kVK_F9: return MASShortcutChar(0xF70c);
+            case kVK_F10: return MASShortcutChar(0xF70d);
+            case kVK_F11: return MASShortcutChar(0xF70e);
+            case kVK_F12: return MASShortcutChar(0xF70f);
+            // From this point down I am guessing F13 etc come sequentially, I don't have a keyboard to test.
+            case kVK_F13: return MASShortcutChar(0xF710);
+            case kVK_F14: return MASShortcutChar(0xF711);
+            case kVK_F15: return MASShortcutChar(0xF712);
+            case kVK_F16: return MASShortcutChar(0xF713);
+            case kVK_Space: return MASShortcutChar(0x20);
+            default: return @"";
+        }
+    }
+    return keyCodeString.lowercaseString;
 }
 
 - (NSString *)keyCodeString
@@ -223,8 +253,15 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
         if (menuItem.hasSubmenu && [self isKeyEquivalent:keyEquivalent flags:flags takenInMenu:menuItem.submenu error:outError]) return YES;
         
         BOOL equalFlags = (MASShortcutClear(menuItem.keyEquivalentModifierMask) == flags);
-        BOOL equalHotkey = [menuItem.keyEquivalent.uppercaseString isEqualToString:keyEquivalent];
-        if (equalFlags && equalHotkey) {
+        BOOL equalHotkeyLowercase = [menuItem.keyEquivalent.lowercaseString isEqualToString:keyEquivalent];
+        
+        // Check if the cases are different, we know ours is lower and that shift is included in our modifiers
+        // If theirs is capitol, we need to add shift to their modifiers
+        if (equalHotkeyLowercase && ![menuItem.keyEquivalent isEqualToString:keyEquivalent]) {
+            equalFlags = (MASShortcutClear(menuItem.keyEquivalentModifierMask | NSShiftKeyMask) == flags);
+        }
+        
+        if (equalFlags && equalHotkeyLowercase) {
             if (outError) {
                 NSString *format = NSLocalizedString(@"This shortcut cannot be used used because it is already used by the menu item ‘%@’.",
                                                      @"Message for alert when shortcut is already used");
@@ -265,7 +302,7 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
         }
         CFRelease(globalHotKeys);
     }
-    return [self isKeyEquivalent:self.keyCodeString flags:self.modifierFlags takenInMenu:[NSApp mainMenu] error:outError];
+    return [self isKeyEquivalent:self.keyCodeStringForKeyEquivalent flags:self.modifierFlags takenInMenu:[NSApp mainMenu] error:outError];
 }
 
 @end

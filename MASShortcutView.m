@@ -83,6 +83,10 @@
             _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
             break;
         }
+        case MASShortcutViewAppearanceRounded: {
+            _shortcutCell.bezelStyle = NSRoundedBezelStyle;
+            break;
+        }
     }
 }
 
@@ -148,6 +152,10 @@
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
+        case MASShortcutViewAppearanceRounded: {
+            [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
+            break;
+        }
     }
 }
 
@@ -195,7 +203,13 @@
 - (void)getShortcutRect:(CGRect *)shortcutRectRef hintRect:(CGRect *)hintRectRef
 {
     CGRect shortcutRect, hintRect;
-    CGRectDivide(self.bounds, &hintRect, &shortcutRect, HINT_BUTTON_WIDTH, CGRectMaxXEdge);
+    CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
+    switch (self.appearance) {
+        case MASShortcutViewAppearanceTexturedRect: hintButtonWidth += 2.0; break;
+        case MASShortcutViewAppearanceRounded: hintButtonWidth += 3.0; break;
+        default: break;
+    }
+    CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
     if (shortcutRectRef)  *shortcutRectRef = shortcutRect;
     if (hintRectRef) *hintRectRef = hintRect;
 }
