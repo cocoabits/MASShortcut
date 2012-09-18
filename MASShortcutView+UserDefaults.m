@@ -25,6 +25,10 @@ void *kDefaultsObserver = &kDefaultsObserver;
 
 - (void)setAssociatedUserDefaultsKey:(NSString *)associatedUserDefaultsKey
 {
+    // First, stop observing previous shortcut view
+    objc_setAssociatedObject(self, kDefaultsObserver, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    // Next, start observing current shortcut view
     MASShortcutDefaultsObserver *defaultsObserver = [[MASShortcutDefaultsObserver alloc] initWithShortcutView:self userDefaultsKey:associatedUserDefaultsKey];
     objc_setAssociatedObject(self, kDefaultsObserver, defaultsObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -109,7 +113,11 @@ void *kShortcutValueObserver = &kShortcutValueObserver;
         if (_internalShortcutChange) return;
         MASShortcut *shortcut = [object valueForKey:keyPath];
         _internalPreferenceChange = YES;
-        [[NSUserDefaults standardUserDefaults] setObject:shortcut.data forKey:_userDefaultsKey];
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:(shortcut.data ?: [NSKeyedArchiver archivedDataWithRootObject:nil]) forKey:_userDefaultsKey];
+        [defaults synchronize];
+
         _internalPreferenceChange = NO;
     }
     else {

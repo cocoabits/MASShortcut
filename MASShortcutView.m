@@ -83,6 +83,10 @@
             _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
             break;
         }
+        case MASShortcutViewAppearanceRounded: {
+            _shortcutCell.bezelStyle = NSRoundedBezelStyle;
+            break;
+        }
     }
 }
 
@@ -145,6 +149,10 @@
             break;
         }
         case MASShortcutViewAppearanceTexturedRect: {
+            [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
+            break;
+        }
+        case MASShortcutViewAppearanceRounded: {
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
