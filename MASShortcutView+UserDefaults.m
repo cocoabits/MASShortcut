@@ -25,6 +25,10 @@ void *kDefaultsObserver = &kDefaultsObserver;
 
 - (void)setAssociatedUserDefaultsKey:(NSString *)associatedUserDefaultsKey
 {
+    // First, stop observing previous shortcut view
+    objc_setAssociatedObject(self, kDefaultsObserver, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    // Next, start observing current shortcut view
     MASShortcutDefaultsObserver *defaultsObserver = [[MASShortcutDefaultsObserver alloc] initWithShortcutView:self userDefaultsKey:associatedUserDefaultsKey];
     objc_setAssociatedObject(self, kDefaultsObserver, defaultsObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
