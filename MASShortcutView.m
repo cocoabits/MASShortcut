@@ -204,8 +204,10 @@
 {
     CGRect shortcutRect, hintRect;
     CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
-    if (self.appearance == MASShortcutViewAppearanceTexturedRect) {
-        hintButtonWidth += 2.0;
+    switch (self.appearance) {
+        case MASShortcutViewAppearanceTexturedRect: hintButtonWidth += 2.0; break;
+        case MASShortcutViewAppearanceRounded: hintButtonWidth += 3.0; break;
+        default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
     if (shortcutRectRef)  *shortcutRectRef = shortcutRect;
