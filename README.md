@@ -4,21 +4,13 @@ Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](htt
 
 The project MASShortcut introduces modern API and user interface for recording, storing and using global keyboard shortcuts. All code is compatible with Xcode 4.3, Mac OS X 10.7 and the sandboxed environment.
 
-# Usage
+# Usage for the branch ‘32-bit’
 
-I hope, it is really easy:
+	// Make a raw keyboard shortcut
+	MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F1 modifierFlags:NSCommandKeyMask];
 
-	// Drop a custom view into XIB and set its class to MASShortcutView
-	@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
-	
-	// Think up a preference key to store a global shortcut between launches
-	NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
-
-	// Assign the preference key and the shortcut view will take care of persistence
-	self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
-
-	// Execute your block of code automatically when user triggers a shortcut from preferences
-	[MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
+	// Execute your block of code automatically when user triggers a shortcut
+	[MASShortcut addGlobalHotkeyMonitorWithShortcut:shortcut handler:^{
 		
 		// Let me know if you find a better or more convenient API.
 	}];
