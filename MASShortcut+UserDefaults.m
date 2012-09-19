@@ -1,4 +1,5 @@
 #import "MASShortcut+UserDefaults.h"
+#import "MASShortcut+Monitoring.h"
 
 @interface MASShortcutUserDefaultsHotKey : NSObject
 
