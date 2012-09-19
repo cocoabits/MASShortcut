@@ -42,12 +42,12 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
 
 + (MASShortcut *)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
 {
-    return [[self alloc] initWithKeyCode:code modifierFlags:flags];
+    return [[[self alloc] initWithKeyCode:code modifierFlags:flags] autorelease];
 }
 
 + (MASShortcut *)shortcutWithEvent:(NSEvent *)event
 {
-    return [[self alloc] initWithKeyCode:event.keyCode modifierFlags:event.modifierFlags];
+    return [[[self alloc] initWithKeyCode:event.keyCode modifierFlags:event.modifierFlags] autorelease];
 }
 
 + (MASShortcut *)shortcutWithData:(NSData *)data
@@ -195,7 +195,7 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
     if (keystroke.length) {
         static NSMutableCharacterSet *validChars = nil;
         if (validChars == nil) {
-            validChars = [[NSMutableCharacterSet alloc] init];
+            validChars = [[[NSMutableCharacterSet alloc] init] autorelease];
             [validChars formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
             [validChars formUnionWithCharacterSet:[NSCharacterSet punctuationCharacterSet]];
             [validChars formUnionWithCharacterSet:[NSCharacterSet symbolCharacterSet]];
@@ -286,8 +286,8 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
             CFNumberRef code = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyCode);
             CFNumberRef flags = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyModifiers);
 
-            if (([(__bridge NSNumber *)code unsignedIntegerValue] == self.keyCode) &&
-                ([(__bridge NSNumber *)flags unsignedIntegerValue] == self.carbonFlags)) {
+            if (([(NSNumber *)code unsignedIntegerValue] == self.keyCode) &&
+                ([(NSNumber *)flags unsignedIntegerValue] == self.carbonFlags)) {
 
                 if (outError) {
                     NSString *description = NSLocalizedString(@"This combination cannot be used used because it is already used by a system-wide "

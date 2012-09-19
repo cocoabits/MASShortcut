@@ -25,7 +25,7 @@ void InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID,
 + (id)addGlobalHotkeyMonitorWithShortcut:(MASShortcut *)shortcut handler:(void (^)())handler
 {
     NSString *monitor = [NSString stringWithFormat:@"%p: %@", shortcut, shortcut.description];
-    MASShortcutHotKey *hotKey = [[MASShortcutHotKey alloc] initWithShortcut:shortcut handler:handler];
+    MASShortcutHotKey *hotKey = [[[MASShortcutHotKey alloc] initWithShortcut:shortcut handler:handler] autorelease];
     [MASRegisteredHotKeys() setObject:hotKey forKey:monitor];
     return monitor;
 }
@@ -57,7 +57,7 @@ void InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID,
 {
     self = [super init];
     if (self) {
-        _shortcut = shortcut;
+        _shortcut = [shortcut retain];
         _handler = [handler copy];
         InstallHotkeyWithShortcut(shortcut, &_carbonHotKeyID, &_carbonHotKey);
     }
@@ -67,6 +67,7 @@ void InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID,
 - (void)dealloc
 {
     [self uninstallExisitingHotKey];
+    [super dealloc];
 }
 
 - (void)uninstallExisitingHotKey
@@ -86,7 +87,7 @@ NSMutableDictionary *MASRegisteredHotKeys()
     static NSMutableDictionary *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shared = [NSMutableDictionary dictionary];
+        shared = [[NSMutableDictionary alloc] init];
     });
     return shared;
 }
