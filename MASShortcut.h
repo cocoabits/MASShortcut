@@ -51,4 +51,7 @@ enum {
 
 - (BOOL)isTakenError:(NSError **)error;
 
++ (id)addGlobalHotkeyMonitorWithShortcut:(MASShortcut *)shortcut handler:(void (^)())handler;
++ (void)removeGlobalHotkeyMonitor:(id)monitor;
+
 @end
