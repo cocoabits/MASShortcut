@@ -7,7 +7,12 @@ void InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID,
 
 #pragma mark -
 
-@interface MASShortcutHotKey : NSObject
+@interface MASShortcutHotKey : NSObject {
+    MASShortcut *_shortcut;
+    void (^_handler)();
+    EventHotKeyRef _carbonHotKey;
+    UInt32 _carbonHotKeyID;
+}
 
 @property (nonatomic, readonly) MASShortcut *shortcut;
 @property (nonatomic, readonly, copy) void (^handler)();
