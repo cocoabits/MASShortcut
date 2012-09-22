@@ -15,3 +15,4 @@ profile
 *.moved-aside
 # Finder
 .DS_Store
+DerivedData
