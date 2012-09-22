@@ -3,10 +3,7 @@
 NSString *const kMASShortcutKeyCode = @"KeyCode";
 NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
 
-@implementation MASShortcut {
-    NSUInteger _keyCode; // NSNotFound if empty
-    NSUInteger _modifierFlags; // 0 if empty
-}
+@implementation MASShortcut
 
 @synthesize modifierFlags = _modifierFlags;
 @synthesize keyCode = _keyCode;
