@@ -67,6 +67,8 @@ void InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID,
 - (void)dealloc
 {
     [self uninstallExisitingHotKey];
+    [_shortcut release];
+    [_handler release];
     [super dealloc];
 }
 
