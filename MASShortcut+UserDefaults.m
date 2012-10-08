@@ -73,7 +73,7 @@
 - (void)userDefaultsDidChange:(NSNotification *)note
 {
     [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
-    [self installHotKeyFromUserDefaults];
+    [self performSelector:@selector(installHotKeyFromUserDefaults) withObject:nil afterDelay:0.0];
 }
 
 - (void)installHotKeyFromUserDefaults
