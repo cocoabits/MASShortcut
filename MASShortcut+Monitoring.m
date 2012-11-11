@@ -38,7 +38,13 @@ void UninstallEventHandler();
 {
     if (monitor == nil) return;
     NSMutableDictionary *registeredHotKeys = MASRegisteredHotKeys();
+    MASShortcutHotKey *hotKey = [registeredHotKeys objectForKey: monitor];
     [registeredHotKeys removeObjectForKey:monitor];
+    if (hotKey)
+    {
+        [hotKey uninstallExisitingHotKey];
+        [hotKey release];
+    }
     if (registeredHotKeys.count == 0) {
         UninstallEventHandler();
     }
