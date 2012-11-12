@@ -25,6 +25,10 @@ I hope, it is really easy:
 
 To set an example, I made a  demo project: [MASShortcutDemo](https://github.com/shpakovski/MASShortcutDemo). Enjoy!
 
+# Non-ARC Version
+
+If you like retain/release, please check out the following fork: [chendo/MASShortcut](https://github.com/chendo/MASShortcut).
+
 # Copyright
 
 MASShortcut is licensed under the BSD license.
