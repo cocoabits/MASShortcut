@@ -243,8 +243,7 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
                        (_keyCode == kVK_F9) || (_keyCode == kVK_F10) || (_keyCode == kVK_F11) || (_keyCode == kVK_F12) ||
                        (_keyCode == kVK_F13) || (_keyCode == kVK_F14) || (_keyCode == kVK_F15) || (_keyCode == kVK_F16) ||
                        (_keyCode == kVK_F17) || (_keyCode == kVK_F18) || (_keyCode == kVK_F19) || (_keyCode == kVK_F20));
-    BOOL isSpecial = ((_keyCode == kVK_Space) || (_keyCode == kVK_Escape) || (_keyCode == kVK_Return));
-    return ((hasFlags && (hasCommand || hasControl || (hasOption && isSpecial))) || isFunction);
+    return ((hasFlags && (hasCommand || hasControl || hasOption)) || isFunction);
 }
 
 - (BOOL)isKeyEquivalent:(NSString *)keyEquivalent flags:(NSUInteger)flags takenInMenu:(NSMenu *)menu error:(NSError **)outError
