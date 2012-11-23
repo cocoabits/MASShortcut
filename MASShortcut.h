@@ -51,4 +51,9 @@ enum {
 
 - (BOOL)isTakenError:(NSError **)error;
 
+// The following API enable hotkeys with the Option key as the only modifier
+// For example, Option-G will not generate © and Option-R will not paste ®
++ (void)setAllowsAnyHotkeyWithOptionModifier:(BOOL)allow;
++ (BOOL)allowsAnyHotkeyWithOptionModifier;
+
 @end
