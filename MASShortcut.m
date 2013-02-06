@@ -300,7 +300,7 @@ BOOL MASShortcutAllowsAnyHotkeyWithOptionModifier = NO;
         
         if (equalFlags && equalHotkeyLowercase) {
             if (outError) {
-                NSString *format = NSLocalizedString(@"This shortcut cannot be used used because it is already used by the menu item ‘%@’.",
+                NSString *format = NSLocalizedString(@"This shortcut cannot be used because it is already used by the menu item ‘%@’.",
                                                      @"Message for alert when shortcut is already used");
                 NSDictionary *info = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:format, menuItem.title]
                                                                  forKey:NSLocalizedDescriptionKey];
@@ -327,7 +327,7 @@ BOOL MASShortcutAllowsAnyHotkeyWithOptionModifier = NO;
                 ([(__bridge NSNumber *)flags unsignedIntegerValue] == self.carbonFlags)) {
 
                 if (outError) {
-                    NSString *description = NSLocalizedString(@"This combination cannot be used used because it is already used by a system-wide "
+                    NSString *description = NSLocalizedString(@"This combination cannot be used because it is already used by a system-wide "
                                                               @"keyboard shortcut.\nIf you really want to use this key combination, most shortcuts "
                                                               @"can be changed in the Keyboard & Mouse panel in System Preferences.",
                                                               @"Message for alert when shortcut is already used by the system");
