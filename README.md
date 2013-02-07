@@ -31,4 +31,4 @@ If you like retain/release, please check out these forks: [heardrwt/MASShortcut]
 
 # Copyright
 
-MASShortcut is licensed under the BSD license.
+MASShortcut is licensed under the 2-clause BSD license.
