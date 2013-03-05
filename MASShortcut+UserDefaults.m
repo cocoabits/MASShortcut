@@ -37,6 +37,13 @@
     [registeredHotKeys removeObjectForKey:userDefaultsKey];
 }
 
++ (void)setShortcut:(MASShortcut *)shortcut forUserDefaultsKey:(NSString *)userDefaultsKey
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:(shortcut.data ?: [NSKeyedArchiver archivedDataWithRootObject:nil]) forKey:userDefaultsKey];
+    [defaults synchronize];
+}
+
 @end
 
 #pragma mark -
