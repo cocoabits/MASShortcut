@@ -41,9 +41,9 @@
 {
     NSData *shortcutData = shortcut.data;
     if (shortcutData)
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:userDefaultsKey];
-    else
         [[NSUserDefaults standardUserDefaults] setObject:shortcutData forKey:userDefaultsKey];
+    else
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:userDefaultsKey];
 }
 
 @end
