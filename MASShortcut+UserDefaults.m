@@ -37,6 +37,15 @@
     [registeredHotKeys removeObjectForKey:userDefaultsKey];
 }
 
++ (void)setGlobalShortcut:(MASShortcut *)shortcut forUserDefaultsKey:(NSString *)userDefaultsKey
+{
+    NSData *shortcutData = shortcut.data;
+    if (shortcutData)
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:userDefaultsKey];
+    else
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutData forKey:userDefaultsKey];
+}
+
 @end
 
 #pragma mark -
