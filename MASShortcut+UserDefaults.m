@@ -50,7 +50,9 @@
 
 #pragma mark -
 
-@implementation MASShortcutUserDefaultsHotKey
+@implementation MASShortcutUserDefaultsHotKey {
+    NSString *_observableKeyPath;
+}
 
 @synthesize monitor = _monitor;
 @synthesize handler = _handler;
@@ -58,26 +60,37 @@
 
 #pragma mark -
 
+void *MASShortcutUserDefaultsContext = &MASShortcutUserDefaultsContext;
+
 - (id)initWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler
 {
     self = [super init];
     if (self) {
         _userDefaultsKey = userDefaultsKey.copy;
         _handler = [handler copy];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsDidChange:)
-                                                     name:NSUserDefaultsDidChangeNotification object:[NSUserDefaults standardUserDefaults]];
-        [self installHotKeyFromUserDefaults];
+        _observableKeyPath = [@"values." stringByAppendingString:_userDefaultsKey];
+        [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:_observableKeyPath options:NSKeyValueObservingOptionInitial context:MASShortcutUserDefaultsContext];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:[NSUserDefaults standardUserDefaults]];
+    [[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:_observableKeyPath context:MASShortcutUserDefaultsContext];
     [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
 }
 
 #pragma mark -
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == MASShortcutUserDefaultsContext) {
+        [self installHotKeyFromUserDefaults];
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
 
 - (void)userDefaultsDidChange:(NSNotification *)note
 {
