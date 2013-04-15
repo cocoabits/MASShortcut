@@ -64,8 +64,7 @@
     if (self) {
         _userDefaultsKey = userDefaultsKey.copy;
         _handler = [handler copy];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsDidChange:)
-                                                     name:NSUserDefaultsDidChangeNotification object:[NSUserDefaults standardUserDefaults]];
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:_userDefaultsKey options:0 context:NULL];
         [self installHotKeyFromUserDefaults];
     }
     return self;
@@ -73,13 +72,13 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:[NSUserDefaults standardUserDefaults]];
+    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:_userDefaultsKey];
     [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
 }
 
 #pragma mark -
 
-- (void)userDefaultsDidChange:(NSNotification *)note
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
     [self installHotKeyFromUserDefaults];
