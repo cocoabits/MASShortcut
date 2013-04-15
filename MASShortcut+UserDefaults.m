@@ -85,17 +85,12 @@ void *MASShortcutUserDefaultsContext = &MASShortcutUserDefaultsContext;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == MASShortcutUserDefaultsContext) {
+        [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
         [self installHotKeyFromUserDefaults];
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
-}
-
-- (void)userDefaultsDidChange:(NSNotification *)note
-{
-    [MASShortcut removeGlobalHotkeyMonitor:self.monitor];
-    [self installHotKeyFromUserDefaults];
 }
 
 - (void)installHotKeyFromUserDefaults
