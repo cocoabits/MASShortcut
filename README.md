@@ -26,26 +26,40 @@ I hope, it is really easy:
 To set an example, I made a  demo project: [MASShortcutDemo](https://github.com/shpakovski/MASShortcutDemo). Enjoy!
 
 #Notifications
-By registering for NSNotifications from NSUserDefaults observing, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling tasks.
+By registering for KVO notifications from `NSUserDefaultsController`, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling tasks.
 
 This is just as easy to implement:
     
-    //implement when loading view
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults addObserver:self
-               forKeyPath:kPreferenceGlobalShortcut
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
+```objective-c
+// Declare an ivar for key path in the user defaults controller
+NSString *_observableKeyPath;
+    
+// Make a global context reference
+void *kGlobalShortcutContext = &kGlobalShortcutContext;
+    
+// Implement when loading view
+_observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortcut];
+[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:_observableKeyPath
+                                                             options:NSKeyValueObservingOptionInitial
+                                                             context:kGlobalShortcutContext];
 
-    //capture the KVO change and do something
-    - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-    {
-        NSLog(@"KVO changed");
+// Capture the KVO change and do something
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)obj
+                        change:(NSDictionary *)change context:(void *)ctx
+{
+    if (ctx == kGlobalShortcutContext) {
+        NSLog(@"Shortcut has changed");
     }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:obj change:change context:ctx];
+    }
+}
 
-    //don't forget to remove the observer
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObserver:self forKeyPath:kPreferenceGlobalShortcut];
+// Do not forget to remove the observer
+[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self
+                                                             forKeyPath:_observableKeyPath
+                                                                context:kGlobalShortcutContext];
+```
 
 # Non-ARC Version
 
