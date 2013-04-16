@@ -43,7 +43,6 @@ This is just as easy to implement:
         NSLog(@"KVO changed");
     }
 
-
     //don't forget to remove the observer
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObserver:self forKeyPath:kPreferenceGlobalShortcut];
