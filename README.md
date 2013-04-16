@@ -25,6 +25,28 @@ I hope, it is really easy:
 
 To set an example, I made a  demo project: [MASShortcutDemo](https://github.com/shpakovski/MASShortcutDemo). Enjoy!
 
+#Notifications
+By registering for NSNotifications from NSUserDefaults observing, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling tasks.
+
+This is just as easy to implement:
+    
+    //implement when loading view
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults addObserver:self
+               forKeyPath:kPreferenceGlobalShortcut
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+
+    //capture the KVO change and do something
+    - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+    {
+        NSLog(@"KVO changed");
+    }
+
+    //don't forget to remove the observer
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObserver:self forKeyPath:kPreferenceGlobalShortcut];
+
 # Non-ARC Version
 
 If you like retain/release, please check out these forks: [heardrwt/MASShortcut](https://github.com/heardrwt/MASShortcut) and [chendo/MASShortcut](https://github.com/chendo/MASShortcut).
