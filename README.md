@@ -25,10 +25,11 @@ I hope, it is really easy:
 
 To set an example, I made a  demo project: [MASShortcutDemo](https://github.com/shpakovski/MASShortcutDemo). Enjoy!
 
-#Notification of Change
-By registering for NSNotifications from NSUserDefaults observing, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling needs. 
+#Notifications
+By registering for NSNotifications from NSUserDefaults observing, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling tasks.
 
 This is just as easy to implement:
+    
     //implement when loading view
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults addObserver:self
