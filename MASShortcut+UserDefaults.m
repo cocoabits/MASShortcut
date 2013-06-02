@@ -37,6 +37,17 @@
     [registeredHotKeys removeObjectForKey:userDefaultsKey];
 }
 
++ (void)unregisterAllGlobalShortcuts {
+    
+    NSMutableDictionary *registeredHotKeys = [self registeredUserDefaultsHotKeys];
+    NSArray *allKeys = [registeredHotKeys allKeys];
+    
+    for (NSString *key in allKeys) {
+        [MASShortcut setGlobalShortcut:nil forUserDefaultsKey:key];
+        [registeredHotKeys removeObjectForKey:key];
+    }
+}
+
 + (void)setGlobalShortcut:(MASShortcut *)shortcut forUserDefaultsKey:(NSString *)userDefaultsKey
 {
     NSData *shortcutData = shortcut.data;
