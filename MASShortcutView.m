@@ -29,6 +29,7 @@
 @synthesize shortcutPlaceholder = _shortcutPlaceholder;
 @synthesize shortcutValueChange = _shortcutValueChange;
 @synthesize recording = _recording;
+@synthesize appearance = _appearance;
 
 #pragma mark -
 
