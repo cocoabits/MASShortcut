@@ -14,4 +14,7 @@ typedef enum {
 @property (nonatomic, copy) void (^shortcutValueChange)(MASShortcutView *sender);
 @property (nonatomic) MASShortcutViewAppearance appearance;
 
+/// Returns custom class for drawing control.
++ (Class)shortcutCellClass;
+
 @end
