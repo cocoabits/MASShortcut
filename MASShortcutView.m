@@ -33,11 +33,16 @@
 
 #pragma mark -
 
++ (Class)shortcutCellClass
+{
+    return [NSButtonCell class];
+}
+
 - (id)initWithFrame:(CGRect)frameRect
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        _shortcutCell = [[NSButtonCell alloc] init];
+        _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
         _shortcutCell.buttonType = NSPushOnPushOffButton;
         _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
         _enabled = YES;
