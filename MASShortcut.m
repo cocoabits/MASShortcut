@@ -189,7 +189,7 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
             UniCharCount length = 0;
             UniChar  chars[256] = { 0 };
             UInt32 deadKeyState = 0;
-            error = UCKeyTranslate(layoutData, self.keyCode, kUCKeyActionDisplay, 0, // No modifiers
+            error = UCKeyTranslate(layoutData, (UInt16)self.keyCode, kUCKeyActionDisplay, 0, // No modifiers
                                    LMGetKbdType(), kUCKeyTranslateNoDeadKeysMask, &deadKeyState,
                                    sizeof(chars) / sizeof(UniChar), &length, chars);
             keystroke = ((error == noErr) && length ? [NSString stringWithCharacters:chars length:length] : @"");
