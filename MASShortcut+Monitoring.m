@@ -1,9 +1,9 @@
 #import "MASShortcut+Monitoring.h"
 
-NSMutableDictionary *MASRegisteredHotKeys();
-BOOL InstallCommonEventHandler();
+NSMutableDictionary *MASRegisteredHotKeys(void);
+BOOL InstallCommonEventHandler(void);
 BOOL InstallHotkeyWithShortcut(MASShortcut *shortcut, UInt32 *outCarbonHotKeyID, EventHotKeyRef *outCarbonHotKey);
-void UninstallEventHandler();
+void UninstallEventHandler(void);
 
 #pragma mark -
 

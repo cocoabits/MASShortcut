@@ -9,7 +9,7 @@ The project MASShortcut introduces modern API and user interface for recording, 
 I hope, it is really easy:
 
 ```objective-c
-// Drop a custom view into XIB and set its class to MASShortcutView
+// Drop a custom view into XIB, set its class to MASShortcutView and its height to 19. If you select another appearance style look up the correct values in MASShortcutView.h
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
 	
 // Think up a preference key to store a global shortcut between launches
