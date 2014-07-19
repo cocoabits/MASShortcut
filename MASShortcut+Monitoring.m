@@ -44,6 +44,13 @@ void UninstallEventHandler(void);
     }
 }
 
++ (void)clearGlobalHotkeyMonitor
+{
+    NSMutableDictionary *registeredHotKeys = MASRegisteredHotKeys();
+    [registeredHotKeys removeAllObjects];
+    UninstallEventHandler();
+}
+
 @end
 
 #pragma mark -
