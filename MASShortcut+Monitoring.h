@@ -4,5 +4,6 @@
 
 + (id)addGlobalHotkeyMonitorWithShortcut:(MASShortcut *)shortcut handler:(void (^)())handler;
 + (void)removeGlobalHotkeyMonitor:(id)monitor;
++ (void)clearGlobalHotkeyMonitor;
 
 @end
