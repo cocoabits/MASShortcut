@@ -160,20 +160,9 @@
 		0D827D151990D4D70010B8EF /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				0D827D9619910FF70010B8EF /* MASKeyCodes.h */,
-				0D827D1B1990D55E0010B8EF /* MASShortcut.h */,
-				0D827D1C1990D55E0010B8EF /* MASShortcut.m */,
-				0D827D9319910B740010B8EF /* MASShortcutTests.m */,
-				0D827D9C19911A190010B8EF /* MASShortcutValidator.h */,
-				0D827D9D19911A190010B8EF /* MASShortcutValidator.m */,
-				0D827D1D1990D55E0010B8EF /* MASShortcut+Monitoring.h */,
-				0D827D1E1990D55E0010B8EF /* MASShortcut+Monitoring.m */,
-				0D827D1F1990D55E0010B8EF /* MASShortcut+UserDefaults.h */,
-				0D827D201990D55E0010B8EF /* MASShortcut+UserDefaults.m */,
-				0D827D211990D55E0010B8EF /* MASShortcutView.h */,
-				0D827D221990D55E0010B8EF /* MASShortcutView.m */,
-				0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */,
-				0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */,
+				0D827DA019912A660010B8EF /* Model */,
+				0D827DA219912A870010B8EF /* Handling & Persistence */,
+				0D827DA119912A6D0010B8EF /* UI */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
 				0D827D98199110F60010B8EF /* Prefix.pch */,
 				0D827D761990F81E0010B8EF /* Shortcut.h */,
@@ -202,6 +191,41 @@
 			);
 			name = "Test Support";
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		0D827DA019912A660010B8EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D827D9619910FF70010B8EF /* MASKeyCodes.h */,
+				0D827D1B1990D55E0010B8EF /* MASShortcut.h */,
+				0D827D1C1990D55E0010B8EF /* MASShortcut.m */,
+				0D827D9319910B740010B8EF /* MASShortcutTests.m */,
+				0D827D9C19911A190010B8EF /* MASShortcutValidator.h */,
+				0D827D9D19911A190010B8EF /* MASShortcutValidator.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0D827DA119912A6D0010B8EF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0D827D211990D55E0010B8EF /* MASShortcutView.h */,
+				0D827D221990D55E0010B8EF /* MASShortcutView.m */,
+				0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */,
+				0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		0D827DA219912A870010B8EF /* Handling & Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0D827D1D1990D55E0010B8EF /* MASShortcut+Monitoring.h */,
+				0D827D1E1990D55E0010B8EF /* MASShortcut+Monitoring.m */,
+				0D827D1F1990D55E0010B8EF /* MASShortcut+UserDefaults.h */,
+				0D827D201990D55E0010B8EF /* MASShortcut+UserDefaults.m */,
+			);
+			name = "Handling & Persistence";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
