@@ -1,8 +1,5 @@
 #import "AppDelegate.h"
-#import "MASShortcutView.h"
-#import "MASShortcutView+UserDefaults.h"
-#import "MASShortcut+UserDefaults.h"
-#import "MASShortcut+Monitoring.h"
+#import <MASShortcut/Shortcut.h>
 
 NSString *const MASPreferenceKeyShortcut = @"MASDemoShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASDemoShortcutEnabled";
