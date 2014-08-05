@@ -1,6 +1,6 @@
 #import "MASKeyCodes.h"
 
-@interface MASShortcut : NSObject <NSCoding>
+@interface MASShortcut : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic) NSUInteger keyCode;
 @property (nonatomic) NSUInteger modifierFlags;

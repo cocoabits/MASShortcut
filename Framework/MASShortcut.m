@@ -8,24 +8,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     NSUInteger _modifierFlags; // 0 if empty
 }
 
-#pragma mark -
-
-- (void)encodeWithCoder:(NSCoder *)coder
-{
-    [coder encodeInteger:(self.keyCode != NSNotFound ? (NSInteger)self.keyCode : - 1) forKey:MASShortcutKeyCode];
-    [coder encodeInteger:(NSInteger)self.modifierFlags forKey:MASShortcutModifierFlags];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)decoder
-{
-    self = [super init];
-    if (self) {
-        NSInteger code = [decoder decodeIntegerForKey:MASShortcutKeyCode];
-        self.keyCode = (code < 0 ? NSNotFound : (NSUInteger)code);
-        self.modifierFlags = [decoder decodeIntegerForKey:MASShortcutModifierFlags];
-    }
-    return self;
-}
+#pragma mark Initialization
 
 - (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
 {
@@ -47,7 +30,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return [[self alloc] initWithKeyCode:event.keyCode modifierFlags:event.modifierFlags];
 }
 
-#pragma mark - Shortcut accessors
+#pragma mark Shortcut Accessors
 
 - (void)setModifierFlags:(NSUInteger)value
 {
@@ -214,6 +197,32 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     if (self.modifierFlags & NSShiftKeyMask) chars[count++] = kShiftUnicode;
     if (self.modifierFlags & NSCommandKeyMask) chars[count++] = kCommandUnicode;
     return (count ? [NSString stringWithCharacters:chars length:count] : @"");
+}
+
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeInteger:(self.keyCode != NSNotFound ? (NSInteger)self.keyCode : - 1) forKey:MASShortcutKeyCode];
+    [coder encodeInteger:(NSInteger)self.modifierFlags forKey:MASShortcutModifierFlags];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        NSInteger code = [decoder decodeIntegerForKey:MASShortcutKeyCode];
+        self.keyCode = (code < 0 ? NSNotFound : (NSUInteger)code);
+        self.modifierFlags = [decoder decodeIntegerForKey:MASShortcutModifierFlags];
+    }
+    return self;
+}
+
+#pragma mark NSCopying
+
+- (instancetype) copyWithZone:(NSZone *)zone
+{
+    return [[self class] shortcutWithKeyCode:_keyCode modifierFlags:_modifierFlags];
 }
 
 @end
