@@ -168,7 +168,7 @@
 - (void)drawRect:(CGRect)dirtyRect
 {
     if (self.shortcutValue) {
-        [self drawInRect:self.bounds withTitle:MASShortcutChar(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
+        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
                alignment:NSRightTextAlignment state:NSOffState];
         
         CGRect shortcutRect;
@@ -185,7 +185,7 @@
     else {
         if (self.recording)
         {
-            [self drawInRect:self.bounds withTitle:MASShortcutChar(kMASShortcutGlyphEscape) alignment:NSRightTextAlignment state:NSOffState];
+            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSRightTextAlignment state:NSOffState];
             
             CGRect shortcutRect;
             [self getShortcutRect:&shortcutRect hintRect:NULL];
