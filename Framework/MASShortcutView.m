@@ -365,10 +365,6 @@ void *kUserDataHint = &kUserDataHint;
                 weakSelf.recording = NO;
                 event = nil;
             }
-            else if (shortcut.shouldBypass) {
-                // Command + W, Command + Q, ESC should deactivate recorder
-                weakSelf.recording = NO;
-            }
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {

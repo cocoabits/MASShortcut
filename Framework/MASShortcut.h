@@ -10,7 +10,6 @@
 @property (nonatomic, readonly) NSString *keyCodeStringForKeyEquivalent;
 @property (nonatomic, readonly) NSString *modifierFlagsString;
 @property (nonatomic, readonly) NSData *data;
-@property (nonatomic, readonly) BOOL shouldBypass;
 
 - (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
 
