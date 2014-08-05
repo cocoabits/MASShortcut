@@ -24,7 +24,7 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     [coder encodeInteger:(NSInteger)self.modifierFlags forKey:MASShortcutModifierFlags];
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (instancetype)initWithCoder:(NSCoder *)decoder
 {
     self = [super init];
     if (self) {
@@ -45,17 +45,17 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return self;
 }
 
-+ (MASShortcut *)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
++ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
 {
     return [[self alloc] initWithKeyCode:code modifierFlags:flags];
 }
 
-+ (MASShortcut *)shortcutWithEvent:(NSEvent *)event
++ (instancetype)shortcutWithEvent:(NSEvent *)event
 {
     return [[self alloc] initWithKeyCode:event.keyCode modifierFlags:event.modifierFlags];
 }
 
-+ (MASShortcut *)shortcutWithData:(NSData *)data
++ (instancetype)shortcutWithData:(NSData *)data
 {
     id shortcut = (data ? [NSKeyedUnarchiver unarchiveObjectWithData:data] : nil);
     return shortcut;
