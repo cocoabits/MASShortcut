@@ -25,6 +25,7 @@
 		0D827D721990D6110010B8EF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D827D6E1990D6110010B8EF /* MainMenu.xib */; };
 		0D827D731990D6590010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
+		0D827D771990F81E0010B8EF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D761990F81E0010B8EF /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		0D827D6C1990D6110010B8EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		0D827D6D1990D6110010B8EF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D827D6E1990D6110010B8EF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		0D827D761990F81E0010B8EF /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
 				0D827D301990D5640010B8EF /* Prefix.pch */,
+				0D827D761990F81E0010B8EF /* Shortcut.h */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				0D827D251990D55E0010B8EF /* MASShortcut.h in Headers */,
 				0D827D2D1990D55E0010B8EF /* MASShortcutView+UserDefaults.h in Headers */,
 				0D827D271990D55E0010B8EF /* MASShortcut+Monitoring.h in Headers */,
+				0D827D771990F81E0010B8EF /* Shortcut.h in Headers */,
 				0D827D291990D55E0010B8EF /* MASShortcut+UserDefaults.h in Headers */,
 				0D827D321990D5640010B8EF /* Prefix.pch in Headers */,
 			);
