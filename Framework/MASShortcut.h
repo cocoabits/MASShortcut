@@ -12,10 +12,10 @@
 @property (nonatomic, readonly) NSData *data;
 @property (nonatomic, readonly) BOOL shouldBypass;
 
-- (id)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
+- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
 
-+ (MASShortcut *)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
-+ (MASShortcut *)shortcutWithEvent:(NSEvent *)anEvent;
-+ (MASShortcut *)shortcutWithData:(NSData *)aData;
++ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
++ (instancetype)shortcutWithEvent:(NSEvent *)anEvent;
++ (instancetype)shortcutWithData:(NSData *)aData;
 
 @end
