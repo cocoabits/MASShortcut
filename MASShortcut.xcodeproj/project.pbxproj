@@ -28,6 +28,7 @@
 		0D827D8419910AFF0010B8EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CEB1990D4420010B8EF /* XCTest.framework */; };
 		0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9319910B740010B8EF /* MASShortcutTests.m */; };
 		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
+		0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D9619910FF70010B8EF /* MASKeyCodes.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		0D827D8719910AFF0010B8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D827D8D19910AFF0010B8EF /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		0D827D9319910B740010B8EF /* MASShortcutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutTests.m; path = Framework/MASShortcutTests.m; sourceTree = "<group>"; };
+		0D827D9619910FF70010B8EF /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		0D827D151990D4D70010B8EF /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0D827D9619910FF70010B8EF /* MASKeyCodes.h */,
 				0D827D1B1990D55E0010B8EF /* MASShortcut.h */,
 				0D827D1C1990D55E0010B8EF /* MASShortcut.m */,
 				0D827D9319910B740010B8EF /* MASShortcutTests.m */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D827D2B1990D55E0010B8EF /* MASShortcutView.h in Headers */,
+				0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */,
 				0D827D251990D55E0010B8EF /* MASShortcut.h in Headers */,
 				0D827D2D1990D55E0010B8EF /* MASShortcutView+UserDefaults.h in Headers */,
 				0D827D271990D55E0010B8EF /* MASShortcut+Monitoring.h in Headers */,
