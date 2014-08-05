@@ -39,7 +39,7 @@
 
 + (void)setGlobalShortcut:(MASShortcut *)shortcut forUserDefaultsKey:(NSString *)userDefaultsKey
 {
-    NSData *shortcutData = shortcut.data;
+    NSData *shortcutData = [NSArchiver archivedDataWithRootObject:shortcut];
     if (shortcutData)
         [[NSUserDefaults standardUserDefaults] setObject:shortcutData forKey:userDefaultsKey];
     else
@@ -96,7 +96,7 @@ void *MASShortcutUserDefaultsContext = &MASShortcutUserDefaultsContext;
 - (void)installHotKeyFromUserDefaults
 {
     NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:_userDefaultsKey];
-    MASShortcut *shortcut = [MASShortcut shortcutWithData:data];
+    MASShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (shortcut == nil) return;
     self.monitor = [MASShortcut addGlobalHotkeyMonitorWithShortcut:shortcut handler:self.handler];
 }

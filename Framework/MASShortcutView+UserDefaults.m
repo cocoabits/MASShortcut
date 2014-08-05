@@ -77,7 +77,7 @@ void *kShortcutValueObserver = &kShortcutValueObserver;
     // Read initial shortcut value from user preferences
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults dataForKey:_userDefaultsKey];
-    _shortcutView.shortcutValue = [MASShortcut shortcutWithData:data];
+    _shortcutView.shortcutValue = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     // Observe user preferences to update shortcut value when it changed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDefaultsDidChange:) name:NSUserDefaultsDidChangeNotification object:defaults];
@@ -93,7 +93,7 @@ void *kShortcutValueObserver = &kShortcutValueObserver;
 
     _internalShortcutChange = YES;
     NSData *data = [note.object dataForKey:_userDefaultsKey];
-    _shortcutView.shortcutValue = [MASShortcut shortcutWithData:data];
+    _shortcutView.shortcutValue = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     _internalShortcutChange = NO;
 }
 
@@ -117,7 +117,7 @@ void *kShortcutValueObserver = &kShortcutValueObserver;
         _internalPreferenceChange = YES;
 
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:(shortcut.data ?: [NSKeyedArchiver archivedDataWithRootObject:nil]) forKey:_userDefaultsKey];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:shortcut] forKey:_userDefaultsKey];
         [defaults synchronize];
 
         _internalPreferenceChange = NO;

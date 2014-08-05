@@ -9,12 +9,10 @@
 @property (nonatomic, readonly) NSString *keyCodeString;
 @property (nonatomic, readonly) NSString *keyCodeStringForKeyEquivalent;
 @property (nonatomic, readonly) NSString *modifierFlagsString;
-@property (nonatomic, readonly) NSData *data;
 
 - (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
 
 + (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
 + (instancetype)shortcutWithEvent:(NSEvent *)anEvent;
-+ (instancetype)shortcutWithData:(NSData *)aData;
 
 @end
