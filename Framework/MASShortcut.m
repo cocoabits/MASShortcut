@@ -52,18 +52,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return [[self alloc] initWithKeyCode:event.keyCode modifierFlags:event.modifierFlags];
 }
 
-+ (instancetype)shortcutWithData:(NSData *)data
-{
-    id shortcut = (data ? [NSKeyedUnarchiver unarchiveObjectWithData:data] : nil);
-    return shortcut;
-}
-
 #pragma mark - Shortcut accessors
-
-- (NSData *)data
-{
-    return [NSKeyedArchiver archivedDataWithRootObject:self];
-}
 
 - (void)setModifierFlags:(NSUInteger)value
 {
