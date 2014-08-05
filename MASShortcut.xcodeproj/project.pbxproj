@@ -18,7 +18,6 @@
 		0D827D2C1990D55E0010B8EF /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D221990D55E0010B8EF /* MASShortcutView.m */; };
 		0D827D2D1990D55E0010B8EF /* MASShortcutView+UserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D827D2E1990D55E0010B8EF /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */; };
-		0D827D321990D5640010B8EF /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D301990D5640010B8EF /* Prefix.pch */; };
 		0D827D381990D5E70010B8EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD61990D4420010B8EF /* Cocoa.framework */; };
 		0D827D6F1990D6110010B8EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D6A1990D6110010B8EF /* AppDelegate.m */; };
 		0D827D711990D6110010B8EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D6D1990D6110010B8EF /* main.m */; };
@@ -60,7 +59,6 @@
 		0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+UserDefaults.h"; path = "Framework/MASShortcutView+UserDefaults.h"; sourceTree = "<group>"; };
 		0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+UserDefaults.m"; path = "Framework/MASShortcutView+UserDefaults.m"; sourceTree = "<group>"; };
 		0D827D2F1990D5640010B8EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = "<group>"; };
-		0D827D301990D5640010B8EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Framework/Prefix.pch; sourceTree = "<group>"; };
 		0D827D371990D5E70010B8EF /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D827D691990D6110010B8EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D827D6A1990D6110010B8EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */,
 				0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
-				0D827D301990D5640010B8EF /* Prefix.pch */,
 				0D827D761990F81E0010B8EF /* Shortcut.h */,
 			);
 			name = Framework;
@@ -169,7 +166,6 @@
 				0D827D271990D55E0010B8EF /* MASShortcut+Monitoring.h in Headers */,
 				0D827D771990F81E0010B8EF /* Shortcut.h in Headers */,
 				0D827D291990D55E0010B8EF /* MASShortcut+UserDefaults.h in Headers */,
-				0D827D321990D5640010B8EF /* Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +357,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,7 +373,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
