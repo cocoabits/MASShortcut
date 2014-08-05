@@ -30,6 +30,8 @@
 		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D9619910FF70010B8EF /* MASKeyCodes.h */; };
 		0D827D99199110F60010B8EF /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D98199110F60010B8EF /* Prefix.pch */; };
+		0D827D9E19911A190010B8EF /* MASShortcutValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D9C19911A190010B8EF /* MASShortcutValidator.h */; };
+		0D827D9F19911A190010B8EF /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9D19911A190010B8EF /* MASShortcutValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		0D827D9319910B740010B8EF /* MASShortcutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutTests.m; path = Framework/MASShortcutTests.m; sourceTree = "<group>"; };
 		0D827D9619910FF70010B8EF /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
 		0D827D98199110F60010B8EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Framework/Prefix.pch; sourceTree = "<group>"; };
+		0D827D9C19911A190010B8EF /* MASShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
+		0D827D9D19911A190010B8EF /* MASShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/MASShortcutValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 				0D827D1B1990D55E0010B8EF /* MASShortcut.h */,
 				0D827D1C1990D55E0010B8EF /* MASShortcut.m */,
 				0D827D9319910B740010B8EF /* MASShortcutTests.m */,
+				0D827D9C19911A190010B8EF /* MASShortcutValidator.h */,
+				0D827D9D19911A190010B8EF /* MASShortcutValidator.m */,
 				0D827D1D1990D55E0010B8EF /* MASShortcut+Monitoring.h */,
 				0D827D1E1990D55E0010B8EF /* MASShortcut+Monitoring.m */,
 				0D827D1F1990D55E0010B8EF /* MASShortcut+UserDefaults.h */,
@@ -213,6 +219,7 @@
 				0D827D271990D55E0010B8EF /* MASShortcut+Monitoring.h in Headers */,
 				0D827D771990F81E0010B8EF /* Shortcut.h in Headers */,
 				0D827D291990D55E0010B8EF /* MASShortcut+UserDefaults.h in Headers */,
+				0D827D9E19911A190010B8EF /* MASShortcutValidator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D827D9F19911A190010B8EF /* MASShortcutValidator.m in Sources */,
 				0D827D2E1990D55E0010B8EF /* MASShortcutView+UserDefaults.m in Sources */,
 				0D827D2C1990D55E0010B8EF /* MASShortcutView.m in Sources */,
 				0D827D2A1990D55E0010B8EF /* MASShortcut+UserDefaults.m in Sources */,

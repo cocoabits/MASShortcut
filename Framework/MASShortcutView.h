@@ -1,4 +1,4 @@
-@class MASShortcut;
+@class MASShortcut, MASShortcutValidator;
 
 typedef enum {
     MASShortcutViewAppearanceDefault = 0,  // Height = 19 px
@@ -10,6 +10,7 @@ typedef enum {
 @interface MASShortcutView : NSView
 
 @property (nonatomic, strong) MASShortcut *shortcutValue;
+@property (nonatomic, strong) MASShortcutValidator *shortcutValidator;
 @property (nonatomic, getter = isRecording) BOOL recording;
 @property (nonatomic, getter = isEnabled) BOOL enabled;
 @property (nonatomic, copy) void (^shortcutValueChange)(MASShortcutView *sender);

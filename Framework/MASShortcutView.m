@@ -1,5 +1,5 @@
 #import "MASShortcutView.h"
-#import "MASShortcut.h"
+#import "MASShortcutValidator.h"
 
 #define HINT_BUTTON_WIDTH 23.0
 #define BUTTON_FONT_SIZE 11.0
@@ -52,6 +52,12 @@
     self = [super initWithCoder:coder];
     if (self) {
         [self commonInit];
+        _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
+        _shortcutCell.buttonType = NSPushOnPushOffButton;
+        _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+        _shortcutValidator = [MASShortcutValidator sharedValidator];
+        _enabled = YES;
+        [self resetShortcutCellStyle];
     }
     return self;
 }
@@ -396,21 +402,21 @@ void *kUserDataHint = &kUserDataHint;
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {
-                    if (shortcut.valid) {
+                    if ([_shortcutValidator isShortcutValid:shortcut]) {
                         // Verify that shortcut is not used
-                        NSError *error = nil;
-                        if ([shortcut isTakenError:&error]) {
+                        NSString *explanation = nil;
+                        if ([_shortcutValidator isShortcutAlreadyTakenBySystem:shortcut explanation:&explanation]) {
                             // Prevent cancel of recording when Alert window is key
                             [weakSelf activateResignObserver:NO];
                             [weakSelf activateEventMonitoring:NO];
                             NSString *format = NSLocalizedString(@"The key combination %@ cannot be used",
                                                                  @"Title for alert when shortcut is already used");
-                            NSAlert *alert = [[NSAlert alloc] init];
+                            NSAlert* alert = [[NSAlert alloc]init];
                             alert.alertStyle = NSCriticalAlertStyle;
                             alert.informativeText = [NSString stringWithFormat:format, shortcut];
-                            alert.messageText = error.localizedDescription;
+                            alert.messageText = explanation;
                             [alert addButtonWithTitle:NSLocalizedString(@"OK", @"Alert button when shortcut is already used")];
-                            
+
                             [alert runModal];
                             weakSelf.shortcutPlaceholder = nil;
                             [weakSelf activateResignObserver:YES];
