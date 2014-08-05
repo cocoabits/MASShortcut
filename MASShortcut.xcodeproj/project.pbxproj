@@ -25,7 +25,20 @@
 		0D827D731990D6590010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D771990F81E0010B8EF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D761990F81E0010B8EF /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D827D8419910AFF0010B8EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CEB1990D4420010B8EF /* XCTest.framework */; };
+		0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9319910B740010B8EF /* MASShortcutTests.m */; };
+		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D827D8E19910AFF0010B8EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D827CCA1990D4420010B8EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D827CD21990D4420010B8EF;
+			remoteInfo = MASShortcut;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0D827D741990D6980010B8EF /* Copy Frameworks */ = {
@@ -67,6 +80,10 @@
 		0D827D6D1990D6110010B8EF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D827D6E1990D6110010B8EF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0D827D761990F81E0010B8EF /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
+		0D827D8319910AFF0010B8EF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D827D8719910AFF0010B8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D827D8D19910AFF0010B8EF /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		0D827D9319910B740010B8EF /* MASShortcutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutTests.m; path = Framework/MASShortcutTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +104,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0D827D8019910AFF0010B8EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D827D8419910AFF0010B8EF /* XCTest.framework in Frameworks */,
+				0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				0D827D151990D4D70010B8EF /* Framework */,
+				0D827D8519910AFF0010B8EF /* Test Support */,
 				0D827D681990D6110010B8EF /* Demo */,
 				0D827CD51990D4420010B8EF /* Frameworks */,
 				0D827CD41990D4420010B8EF /* Products */,
@@ -105,6 +132,7 @@
 			children = (
 				0D827CD31990D4420010B8EF /* MASShortcut.framework */,
 				0D827D371990D5E70010B8EF /* Demo.app */,
+				0D827D8319910AFF0010B8EF /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +154,7 @@
 			children = (
 				0D827D1B1990D55E0010B8EF /* MASShortcut.h */,
 				0D827D1C1990D55E0010B8EF /* MASShortcut.m */,
+				0D827D9319910B740010B8EF /* MASShortcutTests.m */,
 				0D827D1D1990D55E0010B8EF /* MASShortcut+Monitoring.h */,
 				0D827D1E1990D55E0010B8EF /* MASShortcut+Monitoring.m */,
 				0D827D1F1990D55E0010B8EF /* MASShortcut+UserDefaults.h */,
@@ -151,6 +180,16 @@
 				0D827D6D1990D6110010B8EF /* main.m */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		0D827D8519910AFF0010B8EF /* Test Support */ = {
+			isa = PBXGroup;
+			children = (
+				0D827D8719910AFF0010B8EF /* Info.plist */,
+				0D827D8D19910AFF0010B8EF /* Prefix.pch */,
+			);
+			name = "Test Support";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +247,24 @@
 			productReference = 0D827D371990D5E70010B8EF /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0D827D8219910AFF0010B8EF /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				0D827D7F19910AFF0010B8EF /* Sources */,
+				0D827D8019910AFF0010B8EF /* Frameworks */,
+				0D827D8119910AFF0010B8EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D827D8F19910AFF0010B8EF /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 0D827D8319910AFF0010B8EF /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,6 +273,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Vadim Shpakovski";
+				TargetAttributes = {
+					0D827D8219910AFF0010B8EF = {
+						TestTargetID = 0D827CD21990D4420010B8EF;
+					};
+				};
 			};
 			buildConfigurationList = 0D827CCD1990D4420010B8EF /* Build configuration list for PBXProject "MASShortcut" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -232,6 +294,7 @@
 			targets = (
 				0D827CD21990D4420010B8EF /* MASShortcut */,
 				0D827D361990D5E70010B8EF /* Demo */,
+				0D827D8219910AFF0010B8EF /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +312,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D827D721990D6110010B8EF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D827D8119910AFF0010B8EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +346,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0D827D7F19910AFF0010B8EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D827D8F19910AFF0010B8EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D827CD21990D4420010B8EF /* MASShortcut */;
+			targetProxy = 0D827D8E19910AFF0010B8EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0D827CF91990D4420010B8EF /* Debug */ = {
@@ -411,6 +497,40 @@
 			};
 			name = Release;
 		};
+		0D827D9019910AFF0010B8EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Tests/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0D827D9119910AFF0010B8EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Tests/Prefix.pch;
+				INFOPLIST_FILE = Tests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -437,6 +557,15 @@
 			buildConfigurations = (
 				0D827D621990D5E70010B8EF /* Debug */,
 				0D827D631990D5E70010B8EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D827D9019910AFF0010B8EF /* Debug */,
+				0D827D9119910AFF0010B8EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
