@@ -1,15 +1,12 @@
 #import "MASShortcut.h"
 
-NSString *const MASShortcutKeyCode = @"KeyCode";
-NSString *const MASShortcutModifierFlags = @"ModifierFlags";
+static NSString *const MASShortcutKeyCode = @"KeyCode";
+static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 @implementation MASShortcut {
     NSUInteger _keyCode; // NSNotFound if empty
     NSUInteger _modifierFlags; // 0 if empty
 }
-
-@synthesize modifierFlags = _modifierFlags;
-@synthesize keyCode = _keyCode;
 
 #pragma mark -
 
@@ -35,7 +32,7 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return self;
 }
 
-- (id)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
+- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
 {
     self = [super init];
     if (self) {
