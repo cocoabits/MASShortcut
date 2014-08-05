@@ -29,6 +29,7 @@
 		0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9319910B740010B8EF /* MASShortcutTests.m */; };
 		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D9619910FF70010B8EF /* MASKeyCodes.h */; };
+		0D827D99199110F60010B8EF /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D98199110F60010B8EF /* Prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		0D827D8D19910AFF0010B8EF /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		0D827D9319910B740010B8EF /* MASShortcutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutTests.m; path = Framework/MASShortcutTests.m; sourceTree = "<group>"; };
 		0D827D9619910FF70010B8EF /* MASKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
+		0D827D98199110F60010B8EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Framework/Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				0D827D231990D55E0010B8EF /* MASShortcutView+UserDefaults.h */,
 				0D827D241990D55E0010B8EF /* MASShortcutView+UserDefaults.m */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
+				0D827D98199110F60010B8EF /* Prefix.pch */,
 				0D827D761990F81E0010B8EF /* Shortcut.h */,
 			);
 			name = Framework;
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D827D2B1990D55E0010B8EF /* MASShortcutView.h in Headers */,
+				0D827D99199110F60010B8EF /* Prefix.pch in Headers */,
 				0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */,
 				0D827D251990D55E0010B8EF /* MASShortcut.h in Headers */,
 				0D827D2D1990D55E0010B8EF /* MASShortcutView+UserDefaults.h in Headers */,
@@ -447,6 +451,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,6 +468,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -572,6 +578,7 @@
 				0D827D9119910AFF0010B8EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

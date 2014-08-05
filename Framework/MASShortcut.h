@@ -1,14 +1,4 @@
 #import "MASKeyCodes.h"
-#import <AppKit/AppKit.h>
-
-#define MASShortcutChar(char) [NSString stringWithFormat:@"%C", (unsigned short)(char)]
-#define MASShortcutClear(flags) (flags & (NSControlKeyMask | NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask))
-#define MASShortcutCarbonFlags(cocoaFlags) (\
-    (cocoaFlags & NSCommandKeyMask ? cmdKey : 0) | \
-    (cocoaFlags & NSAlternateKeyMask ? optionKey : 0) | \
-    (cocoaFlags & NSControlKeyMask ? controlKey : 0) | \
-    (cocoaFlags & NSShiftKeyMask ? shiftKey : 0))
-
 
 @interface MASShortcut : NSObject <NSSecureCoding>
 

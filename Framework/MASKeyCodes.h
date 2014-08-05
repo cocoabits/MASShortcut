@@ -21,3 +21,22 @@ enum {
 	kMASShortcutGlyphNorthwestArrow = 0x2196,
 	kMASShortcutGlyphSoutheastArrow = 0x2198,
 } MASShortcutGlyph;
+
+NS_INLINE NSString* NSStringFromMASKeyCode(unsigned short ch)
+{
+    return [NSString stringWithFormat:@"%C", ch];
+}
+
+NS_INLINE NSUInteger MASPickCocoaModifiers(NSUInteger flags)
+{
+    return (flags & (NSControlKeyMask | NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask));
+}
+
+NS_INLINE UInt32 MASCarbonModifiersFromCocoaModifiers(NSUInteger cocoaFlags)
+{
+    return
+          (cocoaFlags & NSCommandKeyMask ? cmdKey : 0)
+        | (cocoaFlags & NSAlternateKeyMask ? optionKey : 0)
+        | (cocoaFlags & NSControlKeyMask ? controlKey : 0)
+        | (cocoaFlags & NSShiftKeyMask ? shiftKey : 0);
+}
