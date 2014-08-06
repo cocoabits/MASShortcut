@@ -25,14 +25,6 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     NSTrackingArea *_hintArea;
 }
 
-@synthesize enabled = _enabled;
-@synthesize hinting = _hinting;
-@synthesize shortcutValue = _shortcutValue;
-@synthesize shortcutPlaceholder = _shortcutPlaceholder;
-@synthesize shortcutValueChange = _shortcutValueChange;
-@synthesize recording = _recording;
-@synthesize appearance = _appearance;
-
 #pragma mark -
 
 + (Class)shortcutCellClass
@@ -91,10 +83,10 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     }
 }
 
-- (void)setAppearance:(MASShortcutViewAppearance)appearance
+- (void)setStyle:(MASShortcutViewStyle)newStyle
 {
-    if (_appearance != appearance) {
-        _appearance = appearance;
+    if (_style != newStyle) {
+        _style = newStyle;
         [self resetShortcutCellStyle];
         [self setNeedsDisplay:YES];
     }
@@ -102,20 +94,20 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 
 - (void)resetShortcutCellStyle
 {
-    switch (_appearance) {
-        case MASShortcutViewAppearanceDefault: {
+    switch (_style) {
+        case MASShortcutViewStyleDefault: {
             _shortcutCell.bezelStyle = NSRoundRectBezelStyle;
             break;
         }
-        case MASShortcutViewAppearanceTexturedRect: {
+        case MASShortcutViewStyleTexturedRect: {
             _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
             break;
         }
-        case MASShortcutViewAppearanceRounded: {
+        case MASShortcutViewStyleRounded: {
             _shortcutCell.bezelStyle = NSRoundedBezelStyle;
             break;
         }
-        case MASShortcutViewAppearanceFlat: {
+        case MASShortcutViewStyleFlat: {
             self.wantsLayer = YES;
             _shortcutCell.backgroundColor = [NSColor clearColor];
             _shortcutCell.bordered = NO;
@@ -178,20 +170,20 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutCell.state = state;
     _shortcutCell.enabled = self.enabled;
 
-    switch (_appearance) {
-        case MASShortcutViewAppearanceDefault: {
+    switch (_style) {
+        case MASShortcutViewStyleDefault: {
             [_shortcutCell drawWithFrame:frame inView:self];
             break;
         }
-        case MASShortcutViewAppearanceTexturedRect: {
+        case MASShortcutViewStyleTexturedRect: {
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
-        case MASShortcutViewAppearanceRounded: {
+        case MASShortcutViewStyleRounded: {
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
-        case MASShortcutViewAppearanceFlat: {
+        case MASShortcutViewStyleFlat: {
             [_shortcutCell drawWithFrame:frame inView:self];
             break;
         }
@@ -243,10 +235,10 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 {
     CGRect shortcutRect, hintRect;
     CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
-    switch (self.appearance) {
-        case MASShortcutViewAppearanceTexturedRect: hintButtonWidth += 2.0; break;
-        case MASShortcutViewAppearanceRounded: hintButtonWidth += 3.0; break;
-        case MASShortcutViewAppearanceFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
+    switch (self.style) {
+        case MASShortcutViewStyleTexturedRect: hintButtonWidth += 2.0; break;
+        case MASShortcutViewStyleRounded: hintButtonWidth += 3.0; break;
+        case MASShortcutViewStyleFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
         default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
