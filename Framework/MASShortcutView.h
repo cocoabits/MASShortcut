@@ -3,10 +3,10 @@
 extern NSString *const MASShortcutBinding;
 
 typedef enum {
-    MASShortcutViewAppearanceDefault = 0,  // Height = 19 px
-    MASShortcutViewAppearanceTexturedRect, // Height = 25 px
-    MASShortcutViewAppearanceRounded       // Height = 43 px
-} MASShortcutViewAppearance;
+    MASShortcutViewStyleDefault = 0,  // Height = 19 px
+    MASShortcutViewStyleTexturedRect, // Height = 25 px
+    MASShortcutViewStyleRounded       // Height = 43 px
+} MASShortcutViewStyle;
 
 @interface MASShortcutView : NSView
 
@@ -15,7 +15,7 @@ typedef enum {
 @property (nonatomic, getter = isRecording) BOOL recording;
 @property (nonatomic, getter = isEnabled) BOOL enabled;
 @property (nonatomic, copy) void (^shortcutValueChange)(MASShortcutView *sender);
-@property (nonatomic) MASShortcutViewAppearance appearance;
+@property (nonatomic, assign) MASShortcutViewStyle style;
 
 /// Returns custom class for drawing control.
 + (Class)shortcutCellClass;
