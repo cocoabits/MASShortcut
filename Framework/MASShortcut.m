@@ -196,6 +196,20 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return (count ? [NSString stringWithCharacters:chars length:count] : @"");
 }
 
+#pragma mark NSObject
+
+- (BOOL) isEqual: (MASShortcut*) object
+{
+    return [object isKindOfClass:[self class]]
+        && (object.keyCode == self.keyCode)
+        && (object.modifierFlags == self.modifierFlags);
+}
+
+- (NSUInteger) hash
+{
+    return self.keyCode + self.modifierFlags;
+}
+
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder
