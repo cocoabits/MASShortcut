@@ -3,10 +3,7 @@
 static NSString *const MASShortcutKeyCode = @"KeyCode";
 static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
-@implementation MASShortcut {
-    NSUInteger _keyCode; // NSNotFound if empty
-    NSUInteger _modifierFlags; // 0 if empty
-}
+@implementation MASShortcut
 
 #pragma mark Initialization
 
@@ -212,8 +209,8 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     self = [super init];
     if (self) {
         NSInteger code = [decoder decodeIntegerForKey:MASShortcutKeyCode];
-        self.keyCode = (code < 0 ? NSNotFound : (NSUInteger)code);
-        self.modifierFlags = [decoder decodeIntegerForKey:MASShortcutModifierFlags];
+        _keyCode = (code < 0 ? NSNotFound : (NSUInteger)code);
+        _modifierFlags = [decoder decodeIntegerForKey:MASShortcutModifierFlags];
     }
     return self;
 }
