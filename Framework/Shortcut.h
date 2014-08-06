@@ -1,4 +1,5 @@
 #import "MASShortcut.h"
-#import "MASShortcutView+UserDefaults.h"
-#import "MASShortcut+UserDefaults.h"
-#import "MASShortcut+Monitoring.h"
+#import "MASShortcutValidator.h"
+#import "MASShortcutMonitor.h"
+#import "MASShortcutBinder.h"
+#import "MASShortcutView.h"
