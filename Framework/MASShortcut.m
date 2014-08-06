@@ -29,11 +29,6 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 #pragma mark Shortcut Accessors
 
-- (void)setModifierFlags:(NSUInteger)value
-{
-    _modifierFlags = MASPickCocoaModifiers(value);
-}
-
 - (UInt32)carbonKeyCode
 {
     return (self.keyCode == NSNotFound ? 0 : (UInt32)self.keyCode);
