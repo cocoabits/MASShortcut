@@ -1,16 +1,13 @@
 #import "AppDelegate.h"
-#import <MASShortcut/Shortcut.h>
 
 NSString *const MASPreferenceKeyShortcut = @"MASDemoShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASDemoShortcutEnabled";
 NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShortcutEnabled";
 
 @implementation AppDelegate {
-    __weak id _constantShortcutMonitor;
+    MASShortcutMonitor *_shortcutMonitor;
+    MASShortcutBinder *_shortcutBinder;
 }
-
-@synthesize window = _window;
-@synthesize shortcutView = _shortcutView;
 
 #pragma mark -
 
@@ -18,26 +15,23 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 {
     [super awakeFromNib];
 
+    _shortcutBinder = [[MASShortcutBinder alloc] init];
+    _shortcutMonitor = [[MASShortcutMonitor alloc] init];
+    [_shortcutBinder setShortcutMonitor:_shortcutMonitor];
+
     // Checkbox will enable and disable the shortcut view
     [self.shortcutView bind:@"enabled" toObject:self withKeyPath:@"shortcutEnabled" options:nil];
 }
 
-- (void)dealloc
-{
-    // Cleanup
-    [self.shortcutView unbind:@"enabled"];
-}
-
-#pragma mark - NSApplicationDelegate
+#pragma mark NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Uncomment the following lines to make Command-Shift-D the default shortcut
-//    MASShortcut *defaultShortcut = [MASShortcut shortcutWithKeyCode:0x2 modifierFlags:NSCommandKeyMask|NSShiftKeyMask];
-//    [MASShortcut setGlobalShortcut:defaultShortcut forUserDefaultsKey:MASPreferenceKeyShortcut];
-
     // Shortcut view will follow and modify user preferences automatically
-    self.shortcutView.associatedUserDefaultsKey = MASPreferenceKeyShortcut;
+    [_shortcutView bind:MASShortcutBinding
+        toObject:[NSUserDefaultsController sharedUserDefaultsController]
+        withKeyPath:[@"values." stringByAppendingString:MASPreferenceKeyShortcut]
+        options:@{NSValueTransformerNameBindingOption:NSKeyedUnarchiveFromDataTransformerName}];
 
     // Activate the global keyboard shortcut if it was enabled last time
     [self resetShortcutRegistration];
@@ -69,14 +63,14 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 - (void)resetShortcutRegistration
 {
     if (self.shortcutEnabled) {
-        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut handler:^{
+        [_shortcutBinder bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut toAction:^{
             [[NSAlert alertWithMessageText:NSLocalizedString(@"Global hotkey has been pressed.", @"Alert message for custom shortcut")
                              defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on custom shortcut")
                            alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
         }];
     }
     else {
-        [MASShortcut unregisterGlobalShortcutWithUserDefaultsKey:MASPreferenceKeyShortcut];
+        [_shortcutBinder breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
     }
 }
 
@@ -97,16 +91,16 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 
 - (void)resetConstantShortcutRegistration
 {
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
     if (self.constantShortcutEnabled) {
-        MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
-        _constantShortcutMonitor = [MASShortcut addGlobalHotkeyMonitorWithShortcut:shortcut handler:^{
+        [_shortcutMonitor registerShortcut:shortcut withAction:^{
             [[NSAlert alertWithMessageText:NSLocalizedString(@"⌘F2 has been pressed.", @"Alert message for constant shortcut")
                              defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on constant shortcut")
                            alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
         }];
     }
     else {
-        [MASShortcut removeGlobalHotkeyMonitor:_constantShortcutMonitor];
+        [_shortcutMonitor unregisterShortcut:shortcut];
     }
 }
 
