@@ -86,4 +86,13 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
         @"Deserialize shortcut from user defaults using a custom transformer.");
 }
 
+- (void) testDefaultShortcuts
+{
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:5 modifierFlags:1048576];
+    [_binder registerDefaultShortcuts:@{SampleDefaultsKey: shortcut}];
+    [_binder bindShortcutWithDefaultsKey:SampleDefaultsKey toAction:^{}];
+    XCTAssertTrue([_monitor isShortcutRegistered:shortcut],
+        @"Bind shortcut using a default value.");
+}
+
 @end

@@ -27,7 +27,7 @@
     }
 }
 
-#pragma mark Bindings
+#pragma mark Registration
 
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action
 {
@@ -43,6 +43,26 @@
     [_actions removeObjectForKey:defaultsKeyName];
     [self unbind:defaultsKeyName];
 }
+
+- (void) registerDefaultShortcuts: (NSDictionary*) defaultShortcuts
+{
+    NSValueTransformer *transformer = [_bindingOptions valueForKey:NSValueTransformerBindingOption];
+    if (transformer == nil) {
+        NSString *transformerName = [_bindingOptions valueForKey:NSValueTransformerNameBindingOption];
+        if (transformerName) {
+            transformer = [NSValueTransformer valueTransformerForName:transformerName];
+        }
+    }
+
+    NSAssert(transformer != nil, @"Can’t register default shortcuts without a transformer.");
+
+    [defaultShortcuts enumerateKeysAndObjectsUsingBlock:^(NSString *defaultsKey, MASShortcut *shortcut, BOOL *stop) {
+        id value = [transformer reverseTransformedValue:shortcut];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{defaultsKey:value}];
+    }];
+}
+
+#pragma mark Bindings
 
 - (BOOL) isRegisteredAction: (NSString*) name
 {
