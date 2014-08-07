@@ -1,4 +1,4 @@
-#import "MASShortcutBinder.h"
+#import "Shortcut.h"
 
 static NSString *const SampleDefaultsKey = @"sampleShortcut";
 
@@ -75,6 +75,17 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
     [_binder bindShortcutWithDefaultsKey:SampleDefaultsKey toAction:^{}];
     XCTAssertTrue([_monitor isShortcutRegistered:shortcut],
         @"Bind after unbinding.");
+}
+
+- (void) testTransformerDeserialization
+{
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:5 modifierFlags:1048576];
+    NSDictionary *storedShortcut = @{@"keyCode": @5, @"modifierFlags": @1048576};
+    [_defaults setObject:storedShortcut forKey:SampleDefaultsKey];
+    [_binder setBindingOptions:@{NSValueTransformerBindingOption:[MASDictionaryTransformer new]}];
+    [_binder bindShortcutWithDefaultsKey:SampleDefaultsKey toAction:^{}];
+    XCTAssertTrue([_monitor isShortcutRegistered:shortcut],
+        @"Deserialize shortcut from user defaults using a custom transformer.");
 }
 
 @end

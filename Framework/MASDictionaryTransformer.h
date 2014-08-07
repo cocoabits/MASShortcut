@@ -1,0 +1,2 @@
+@interface MASDictionaryTransformer : NSValueTransformer
+@end
