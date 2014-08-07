@@ -11,12 +11,19 @@ static NSString *const MASModifierFlagsKey = @"modifierFlags";
     return YES;
 }
 
+// Storing nil values as an empty dictionary lets us differ between
+// “not available, use default value” and “explicitly set to none”.
+// See http://stackoverflow.com/questions/5540760 for details.
 - (NSDictionary*) reverseTransformedValue: (MASShortcut*) shortcut
 {
-    return @{
-        MASKeyCodeKey: @([shortcut keyCode]),
-        MASModifierFlagsKey: @([shortcut modifierFlags])
-    };
+    if (shortcut == nil) {
+        return [NSDictionary dictionary];
+    } else {
+        return @{
+            MASKeyCodeKey: @([shortcut keyCode]),
+            MASModifierFlagsKey: @([shortcut modifierFlags])
+        };
+    }
 }
 
 - (MASShortcut*) transformedValue: (NSDictionary*) dictionary
