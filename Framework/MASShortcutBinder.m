@@ -27,6 +27,16 @@
     }
 }
 
++ (instancetype) sharedBinder
+{
+    static dispatch_once_t once;
+    static MASShortcutBinder *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 #pragma mark Registration
 
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action

@@ -4,20 +4,13 @@ NSString *const MASPreferenceKeyShortcut = @"MASDemoShortcut";
 NSString *const MASPreferenceKeyShortcutEnabled = @"MASDemoShortcutEnabled";
 NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShortcutEnabled";
 
-@implementation AppDelegate {
-    MASShortcutMonitor *_shortcutMonitor;
-    MASShortcutBinder *_shortcutBinder;
-}
+@implementation AppDelegate
 
 #pragma mark -
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
-    _shortcutBinder = [[MASShortcutBinder alloc] init];
-    _shortcutMonitor = [MASShortcutMonitor sharedMonitor];
-
     // Checkbox will enable and disable the shortcut view
     [self.shortcutView bind:@"enabled" toObject:self withKeyPath:@"shortcutEnabled" options:nil];
 }
@@ -62,14 +55,14 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 - (void)resetShortcutRegistration
 {
     if (self.shortcutEnabled) {
-        [_shortcutBinder bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut toAction:^{
+        [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut toAction:^{
             [[NSAlert alertWithMessageText:NSLocalizedString(@"Global hotkey has been pressed.", @"Alert message for custom shortcut")
                              defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on custom shortcut")
                            alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
         }];
     }
     else {
-        [_shortcutBinder breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
+        [[MASShortcutBinder sharedBinder] breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
     }
 }
 
@@ -92,14 +85,14 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 {
     MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
     if (self.constantShortcutEnabled) {
-        [_shortcutMonitor registerShortcut:shortcut withAction:^{
+        [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
             [[NSAlert alertWithMessageText:NSLocalizedString(@"⌘F2 has been pressed.", @"Alert message for constant shortcut")
                              defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on constant shortcut")
                            alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
         }];
     }
     else {
-        [_shortcutMonitor unregisterShortcut:shortcut];
+        [[MASShortcutMonitor sharedMonitor] unregisterShortcut:shortcut];
     }
 }
 

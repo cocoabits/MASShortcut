@@ -2,6 +2,8 @@
 
 @interface MASShortcutBinder : NSObject
 
++ (instancetype) sharedBinder;
+
 @property(strong) MASShortcutMonitor *shortcutMonitor;
 @property(copy) NSDictionary *bindingOptions;
 
