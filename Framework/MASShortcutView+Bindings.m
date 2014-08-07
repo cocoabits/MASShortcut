@@ -4,7 +4,7 @@
 
 - (NSString*) associatedUserDefaultsKey
 {
-	NSDictionary* bindingInfo = [self infoForBinding:MASShortcutBinding];
+    NSDictionary* bindingInfo = [self infoForBinding:MASShortcutBinding];
     if (bindingInfo != nil) {
         NSString *keyPath = [bindingInfo objectForKey:NSObservedKeyPathKey];
         NSString *key = [keyPath stringByReplacingOccurrencesOfString:@"values." withString:@""];

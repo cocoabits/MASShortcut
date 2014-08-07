@@ -80,8 +80,8 @@
 
 - (BOOL) isShortcutAlreadyTakenBySystem: (MASShortcut*) shortcut explanation: (NSString**) explanation
 {
-	CFArrayRef globalHotKeys;
-	if (CopySymbolicHotKeys(&globalHotKeys) == noErr) {
+    CFArrayRef globalHotKeys;
+    if (CopySymbolicHotKeys(&globalHotKeys) == noErr) {
 
         // Enumerate all global hotkeys and check if any of them matches current shortcut
         for (CFIndex i = 0, count = CFArrayGetCount(globalHotKeys); i < count; i++) {

@@ -71,13 +71,13 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 - (void) handleEvent: (EventRef) event
 {
-	if (GetEventClass(event) != kEventClassKeyboard) {
+    if (GetEventClass(event) != kEventClassKeyboard) {
         return;
     }
 
-	EventHotKeyID hotKeyID;
-	OSStatus status = GetEventParameter(event, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hotKeyID), NULL, &hotKeyID);
-	if (status != noErr || hotKeyID.signature != MASHotKeySignature) {
+    EventHotKeyID hotKeyID;
+    OSStatus status = GetEventParameter(event, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hotKeyID), NULL, &hotKeyID);
+    if (status != noErr || hotKeyID.signature != MASHotKeySignature) {
         return;
     }
 
