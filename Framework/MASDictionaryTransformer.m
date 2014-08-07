@@ -1,6 +1,8 @@
 #import "MASDictionaryTransformer.h"
 #import "MASShortcut.h"
 
+NSString *const MASDictionaryTransformerName = @"MASDictionaryTransformer";
+
 static NSString *const MASKeyCodeKey = @"keyCode";
 static NSString *const MASModifierFlagsKey = @"modifierFlags";
 
