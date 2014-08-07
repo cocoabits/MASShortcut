@@ -33,6 +33,9 @@
 		0DC2F17C199232EA003A0131 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827DA419912D240010B8EF /* MASShortcutMonitor.m */; };
 		0DC2F17D199232F7003A0131 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827DAC199132840010B8EF /* MASShortcutBinder.m */; };
 		0DC2F18919925F8F003A0131 /* MASShortcutBinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F18819925F8F003A0131 /* MASShortcutBinderTests.m */; };
+		0DC2F18D1993708A003A0131 /* MASDictionaryTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DC2F18B1993708A003A0131 /* MASDictionaryTransformer.h */; };
+		0DC2F18E1993708A003A0131 /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F18C1993708A003A0131 /* MASDictionaryTransformer.m */; };
+		0DC2F190199372B4003A0131 /* MASDictionaryTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F18F199372B4003A0131 /* MASDictionaryTransformerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,9 @@
 		0DC2F17419922798003A0131 /* MASHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/MASHotKey.h; sourceTree = "<group>"; };
 		0DC2F17519922798003A0131 /* MASHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
 		0DC2F18819925F8F003A0131 /* MASShortcutBinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinderTests.m; path = Framework/MASShortcutBinderTests.m; sourceTree = "<group>"; };
+		0DC2F18B1993708A003A0131 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = Framework/MASDictionaryTransformer.h; sourceTree = "<group>"; };
+		0DC2F18C1993708A003A0131 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = Framework/MASDictionaryTransformer.m; sourceTree = "<group>"; };
+		0DC2F18F199372B4003A0131 /* MASDictionaryTransformerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformerTests.m; path = Framework/MASDictionaryTransformerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				0D827DA019912A660010B8EF /* Model */,
-				0D827DA219912A870010B8EF /* Watching & Storage */,
+				0D827DA219912A870010B8EF /* Monitoring */,
+				0DC2F18A19937060003A0131 /* User Defaults Storage */,
 				0D827DA119912A6D0010B8EF /* UI */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
 				0D827D98199110F60010B8EF /* Prefix.pch */,
@@ -217,18 +224,28 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		0D827DA219912A870010B8EF /* Watching & Storage */ = {
+		0D827DA219912A870010B8EF /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
 				0DC2F17419922798003A0131 /* MASHotKey.h */,
 				0DC2F17519922798003A0131 /* MASHotKey.m */,
 				0D827DA319912D240010B8EF /* MASShortcutMonitor.h */,
 				0D827DA419912D240010B8EF /* MASShortcutMonitor.m */,
+			);
+			name = Monitoring;
+			sourceTree = "<group>";
+		};
+		0DC2F18A19937060003A0131 /* User Defaults Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0DC2F18B1993708A003A0131 /* MASDictionaryTransformer.h */,
+				0DC2F18C1993708A003A0131 /* MASDictionaryTransformer.m */,
+				0DC2F18F199372B4003A0131 /* MASDictionaryTransformerTests.m */,
 				0D827DAB199132840010B8EF /* MASShortcutBinder.h */,
 				0D827DAC199132840010B8EF /* MASShortcutBinder.m */,
 				0DC2F18819925F8F003A0131 /* MASShortcutBinderTests.m */,
 			);
-			name = "Watching & Storage";
+			name = "User Defaults Storage";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +263,7 @@
 				0D827D771990F81E0010B8EF /* Shortcut.h in Headers */,
 				0DC2F17619922798003A0131 /* MASHotKey.h in Headers */,
 				0D827D9E19911A190010B8EF /* MASShortcutValidator.h in Headers */,
+				0DC2F18D1993708A003A0131 /* MASDictionaryTransformer.h in Headers */,
 				0D827DA519912D240010B8EF /* MASShortcutMonitor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +394,7 @@
 				0DC2F17C199232EA003A0131 /* MASShortcutMonitor.m in Sources */,
 				0D827D2C1990D55E0010B8EF /* MASShortcutView.m in Sources */,
 				0D827D261990D55E0010B8EF /* MASShortcut.m in Sources */,
+				0DC2F18E1993708A003A0131 /* MASDictionaryTransformer.m in Sources */,
 				0DC2F17D199232F7003A0131 /* MASShortcutBinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC2F190199372B4003A0131 /* MASDictionaryTransformerTests.m in Sources */,
 				0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */,
 				0DC2F18919925F8F003A0131 /* MASShortcutBinderTests.m in Sources */,
 			);
