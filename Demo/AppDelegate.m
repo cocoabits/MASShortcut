@@ -16,8 +16,7 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
     [super awakeFromNib];
 
     _shortcutBinder = [[MASShortcutBinder alloc] init];
-    _shortcutMonitor = [[MASShortcutMonitor alloc] init];
-    [_shortcutBinder setShortcutMonitor:_shortcutMonitor];
+    _shortcutMonitor = [MASShortcutMonitor sharedMonitor];
 
     // Checkbox will enable and disable the shortcut view
     [self.shortcutView bind:@"enabled" toObject:self withKeyPath:@"shortcutEnabled" options:nil];

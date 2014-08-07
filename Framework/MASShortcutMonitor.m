@@ -10,6 +10,8 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 @implementation MASShortcutMonitor
 
+#pragma mark Initialization
+
 - (instancetype) init
 {
     self = [super init];
@@ -31,6 +33,16 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
     }
 }
 
++ (instancetype) sharedMonitor
+{
+    static dispatch_once_t once;
+    static MASShortcutMonitor *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 #pragma mark Registration
 
 - (void) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action
@@ -43,6 +55,11 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 - (void) unregisterShortcut: (MASShortcut*) shortcut
 {
     [_hotKeys removeObjectForKey:shortcut];
+}
+
+- (void) unregisterAllShortcuts
+{
+    [_hotKeys removeAllObjects];
 }
 
 - (BOOL) isShortcutRegistered: (MASShortcut*) shortcut
