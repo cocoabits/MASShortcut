@@ -1,5 +1,3 @@
-#import "MASShortcut.h"
-
 @interface MASShortcutTests : XCTestCase
 @end
 

@@ -1,5 +1,3 @@
-#import "Shortcut.h"
-
 static NSString *const SampleDefaultsKey = @"sampleShortcut";
 
 @interface MASShortcutBinderTests : XCTestCase
