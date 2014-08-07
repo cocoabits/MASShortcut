@@ -56,12 +56,9 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 {
     if (self.shortcutEnabled) {
         [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut toAction:^{
-            [[NSAlert alertWithMessageText:NSLocalizedString(@"Global hotkey has been pressed.", @"Alert message for custom shortcut")
-                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on custom shortcut")
-                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+            [[NSSound soundNamed:@"Ping"] play];
         }];
-    }
-    else {
+    } else {
         [[MASShortcutBinder sharedBinder] breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
     }
 }
@@ -83,15 +80,12 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 
 - (void)resetConstantShortcutRegistration
 {
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_Keypad2 modifierFlags:NSCommandKeyMask];
     if (self.constantShortcutEnabled) {
         [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
-            [[NSAlert alertWithMessageText:NSLocalizedString(@"⌘F2 has been pressed.", @"Alert message for constant shortcut")
-                             defaultButton:NSLocalizedString(@"OK", @"Default button for the alert on constant shortcut")
-                           alternateButton:nil otherButton:nil informativeTextWithFormat:@""] runModal];
+            [[NSSound soundNamed:@"Ping"] play];
         }];
-    }
-    else {
+    } else {
         [[MASShortcutMonitor sharedMonitor] unregisterShortcut:shortcut];
     }
 }
