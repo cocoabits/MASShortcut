@@ -4,3 +4,4 @@
 #import "MASShortcutBinder.h"
 #import "MASDictionaryTransformer.h"
 #import "MASShortcutView.h"
+#import "MASShortcutView+Bindings.h"

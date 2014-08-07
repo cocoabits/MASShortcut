@@ -20,10 +20,7 @@ NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShort
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Shortcut view will follow and modify user preferences automatically
-    [_shortcutView bind:MASShortcutBinding
-        toObject:[NSUserDefaultsController sharedUserDefaultsController]
-        withKeyPath:[@"values." stringByAppendingString:MASPreferenceKeyShortcut]
-        options:@{NSValueTransformerNameBindingOption:NSKeyedUnarchiveFromDataTransformerName}];
+    [_shortcutView setAssociatedUserDefaultsKey:MASPreferenceKeyShortcut];
 
     // Activate the global keyboard shortcut if it was enabled last time
     [self resetShortcutRegistration];
