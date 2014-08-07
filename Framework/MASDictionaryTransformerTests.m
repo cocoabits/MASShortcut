@@ -1,5 +1,3 @@
-#import "Shortcut.h"
-
 @interface MASDictionaryTransformerTests : XCTestCase
 @end
 
