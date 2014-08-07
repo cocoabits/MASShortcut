@@ -20,4 +20,13 @@
         @"Decoding a shortcut from an incomplete dictionary returns nil.");
 }
 
+- (void) testNilRepresentation
+{
+    MASDictionaryTransformer *transformer = [MASDictionaryTransformer new];
+    XCTAssertEqualObjects([transformer reverseTransformedValue:nil], [NSDictionary dictionary],
+        @"Store nil values as an empty dictionary.");
+    XCTAssertNil([transformer transformedValue:[NSDictionary dictionary]],
+        @"Load empty dictionary as nil.");
+}
+
 @end
