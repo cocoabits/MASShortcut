@@ -13,7 +13,7 @@ I hope, it is really easy:
 // and its height to 19. If you select another appearance style,
 // look up the correct height values in MASShortcutView.h.
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
-	
+
 // Pick a preference key to store the shortcut between launches
 static NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
 
