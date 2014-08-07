@@ -16,6 +16,7 @@
     [self setActions:[NSMutableDictionary dictionary]];
     [self setShortcuts:[NSMutableDictionary dictionary]];
     [self setShortcutMonitor:[MASShortcutMonitor sharedMonitor]];
+    [self setBindingOptions:@{NSValueTransformerNameBindingOption: NSKeyedUnarchiveFromDataTransformerName}];
     return self;
 }
 
@@ -31,9 +32,8 @@
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action
 {
     [_actions setObject:[action copy] forKey:defaultsKeyName];
-    NSDictionary *bindingOptions = @{NSValueTransformerNameBindingOption: NSKeyedUnarchiveFromDataTransformerName};
     [self bind:defaultsKeyName toObject:[NSUserDefaultsController sharedUserDefaultsController]
-        withKeyPath:[@"values." stringByAppendingString:defaultsKeyName] options:bindingOptions];
+        withKeyPath:[@"values." stringByAppendingString:defaultsKeyName] options:_bindingOptions];
 }
 
 - (void) breakBindingWithDefaultsKey: (NSString*) defaultsKeyName
