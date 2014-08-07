@@ -1,32 +1,37 @@
 # Intro
 
-Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](http://wafflesoftware.net/shortcut/) for managing keyboard shortcuts in application preferences. However, it became incompatible with a new plugin architecture of Xcode 4.
+Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](http://wafflesoftware.net/shortcut/) for managing keyboard shortcuts in application preferences. However, it became incompatible with the new plugin architecture of Xcode 4.
 
-The project MASShortcut introduces modern API and user interface for recording, storing and using global keyboard shortcuts. All code is compatible with Xcode 4.3, Mac OS X 10.7 and the sandboxed environment.
+The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts. All code is compatible with recent Xcode & OS X versions and the sandboxed environment.
 
 # Usage
 
 I hope, it is really easy:
 
 ```objective-c
-// Drop a custom view into XIB, set its class to MASShortcutView and its height to 19. If you select another appearance style look up the correct values in MASShortcutView.h
+// Drop a custom view into XIB, set its class to MASShortcutView
+// and its height to 19. If you select another appearance style,
+// look up the correct height values in MASShortcutView.h.
 @property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
 	
-// Think up a preference key to store a global shortcut between launches
-NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
+// Pick a preference key to store the shortcut between launches
+static NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
 
-// Assign the preference key and the shortcut view will take care of persistence
+// Associate the shortcut view with user defaults
 self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
 
-// Execute your block of code automatically when user triggers a shortcut from preferences
-[MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
-    // Let me know if you find a better or more convenient API.
+// Associate the preference key with an action
+[[MASShortcutBinder sharedBinder]
+    bindShortcutWithDefaultsKey:kPreferenceGlobalShortcut
+    toAction:^{
+    // Let me know if you find a better or a more convenient API.
 }];
 ```
 
 You can see a real usage example in the Demo target. Enjoy!
 
-#Notifications
+# Notifications
+
 By registering for KVO notifications from `NSUserDefaultsController`, you can get a callback whenever a user changes the shortcut, allowing you to perform any UI updates, or other code handling tasks.
 
 This is just as easy to implement:
