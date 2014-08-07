@@ -13,17 +13,15 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
 - (void) setUp
 {
     [super setUp];
-
     [self setBinder:[[MASShortcutBinder alloc] init]];
-    [self setMonitor:[[MASShortcutMonitor alloc] init]];
-    [_binder setShortcutMonitor:_monitor];
-
+    [self setMonitor:[_binder shortcutMonitor]];
     [self setDefaults:[[NSUserDefaults alloc] init]];
     [_defaults removeObjectForKey:SampleDefaultsKey];
 }
 
 - (void) tearDown
 {
+    [_monitor unregisterAllShortcuts];
     [self setMonitor:nil];
     [self setDefaults:nil];
     [self setBinder:nil];
