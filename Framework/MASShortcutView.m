@@ -1,5 +1,7 @@
 #import "MASShortcutView.h"
-#import "MASShortcut.h"
+#import "MASShortcutValidator.h"
+
+NSString *const MASShortcutBinding = @"shortcutValue";
 
 #define HINT_BUTTON_WIDTH 23.0
 #define BUTTON_FONT_SIZE 11.0
@@ -23,14 +25,6 @@
     NSTrackingArea *_hintArea;
 }
 
-@synthesize enabled = _enabled;
-@synthesize hinting = _hinting;
-@synthesize shortcutValue = _shortcutValue;
-@synthesize shortcutPlaceholder = _shortcutPlaceholder;
-@synthesize shortcutValueChange = _shortcutValueChange;
-@synthesize recording = _recording;
-@synthesize appearance = _appearance;
-
 #pragma mark -
 
 + (Class)shortcutCellClass
@@ -45,6 +39,7 @@
         _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
         _shortcutCell.buttonType = NSPushOnPushOffButton;
         _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+        _shortcutValidator = [MASShortcutValidator sharedValidator];
         _enabled = YES;
         [self resetShortcutCellStyle];
     }
@@ -69,10 +64,10 @@
     }
 }
 
-- (void)setAppearance:(MASShortcutViewAppearance)appearance
+- (void)setStyle:(MASShortcutViewStyle)newStyle
 {
-    if (_appearance != appearance) {
-        _appearance = appearance;
+    if (_style != newStyle) {
+        _style = newStyle;
         [self resetShortcutCellStyle];
         [self setNeedsDisplay:YES];
     }
@@ -80,16 +75,16 @@
 
 - (void)resetShortcutCellStyle
 {
-    switch (_appearance) {
-        case MASShortcutViewAppearanceDefault: {
+    switch (_style) {
+        case MASShortcutViewStyleDefault: {
             _shortcutCell.bezelStyle = NSRoundRectBezelStyle;
             break;
         }
-        case MASShortcutViewAppearanceTexturedRect: {
+        case MASShortcutViewStyleTexturedRect: {
             _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
             break;
         }
-        case MASShortcutViewAppearanceRounded: {
+        case MASShortcutViewStyleRounded: {
             _shortcutCell.bezelStyle = NSRoundedBezelStyle;
             break;
         }
@@ -123,6 +118,7 @@
     _shortcutValue = shortcutValue;
     [self resetToolTips];
     [self setNeedsDisplay:YES];
+    [self propagateValue:shortcutValue forBinding:@"shortcutValue"];
 
     if (self.shortcutValueChange) {
         self.shortcutValueChange(self);
@@ -149,16 +145,16 @@
     _shortcutCell.state = state;
     _shortcutCell.enabled = self.enabled;
 
-    switch (_appearance) {
-        case MASShortcutViewAppearanceDefault: {
+    switch (_style) {
+        case MASShortcutViewStyleDefault: {
             [_shortcutCell drawWithFrame:frame inView:self];
             break;
         }
-        case MASShortcutViewAppearanceTexturedRect: {
+        case MASShortcutViewStyleTexturedRect: {
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
-        case MASShortcutViewAppearanceRounded: {
+        case MASShortcutViewStyleRounded: {
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
@@ -168,7 +164,7 @@
 - (void)drawRect:(CGRect)dirtyRect
 {
     if (self.shortcutValue) {
-        [self drawInRect:self.bounds withTitle:MASShortcutChar(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
+        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
                alignment:NSRightTextAlignment state:NSOffState];
         
         CGRect shortcutRect;
@@ -185,7 +181,7 @@
     else {
         if (self.recording)
         {
-            [self drawInRect:self.bounds withTitle:MASShortcutChar(kMASShortcutGlyphEscape) alignment:NSRightTextAlignment state:NSOffState];
+            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSRightTextAlignment state:NSOffState];
             
             CGRect shortcutRect;
             [self getShortcutRect:&shortcutRect hintRect:NULL];
@@ -210,9 +206,9 @@
 {
     CGRect shortcutRect, hintRect;
     CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
-    switch (self.appearance) {
-        case MASShortcutViewAppearanceTexturedRect: hintButtonWidth += 2.0; break;
-        case MASShortcutViewAppearanceRounded: hintButtonWidth += 3.0; break;
+    switch (self.style) {
+        case MASShortcutViewStyleTexturedRect: hintButtonWidth += 2.0; break;
+        case MASShortcutViewStyleRounded: hintButtonWidth += 3.0; break;
         default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
@@ -364,17 +360,13 @@ void *kUserDataHint = &kUserDataHint;
                 weakSelf.recording = NO;
                 event = nil;
             }
-            else if (shortcut.shouldBypass) {
-                // Command + W, Command + Q, ESC should deactivate recorder
-                weakSelf.recording = NO;
-            }
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {
-                    if (shortcut.valid) {
+                    if ([_shortcutValidator isShortcutValid:shortcut]) {
                         // Verify that shortcut is not used
-                        NSError *error = nil;
-                        if ([shortcut isTakenError:&error]) {
+                        NSString *explanation = nil;
+                        if ([_shortcutValidator isShortcutAlreadyTakenBySystem:shortcut explanation:&explanation]) {
                             // Prevent cancel of recording when Alert window is key
                             [weakSelf activateResignObserver:NO];
                             [weakSelf activateEventMonitoring:NO];
@@ -382,7 +374,7 @@ void *kUserDataHint = &kUserDataHint;
                                                                  @"Title for alert when shortcut is already used");
                             NSAlert* alert = [[NSAlert alloc]init];
                             alert.messageText = [NSString stringWithFormat:format, shortcut];
-                            alert.informativeText = error.localizedDescription;
+                            alert.informativeText = explanation;
                             alert.alertStyle = NSWarningAlertStyle;
                             weakSelf.recording = NO;
                             [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
@@ -434,6 +426,53 @@ void *kUserDataHint = &kUserDataHint;
     else {
         [notificationCenter removeObserver:observer];
     }
+}
+
+#pragma mark Bindings
+
+// http://tomdalling.com/blog/cocoa/implementing-your-own-cocoa-bindings/
+-(void) propagateValue:(id)value forBinding:(NSString*)binding;
+{
+    NSParameterAssert(binding != nil);
+
+    //WARNING: bindingInfo contains NSNull, so it must be accounted for
+    NSDictionary* bindingInfo = [self infoForBinding:binding];
+    if(!bindingInfo)
+        return; //there is no binding
+
+    //apply the value transformer, if one has been set
+    NSDictionary* bindingOptions = [bindingInfo objectForKey:NSOptionsKey];
+    if(bindingOptions){
+        NSValueTransformer* transformer = [bindingOptions valueForKey:NSValueTransformerBindingOption];
+        if(!transformer || (id)transformer == [NSNull null]){
+            NSString* transformerName = [bindingOptions valueForKey:NSValueTransformerNameBindingOption];
+            if(transformerName && (id)transformerName != [NSNull null]){
+                transformer = [NSValueTransformer valueTransformerForName:transformerName];
+            }
+        }
+
+        if(transformer && (id)transformer != [NSNull null]){
+            if([[transformer class] allowsReverseTransformation]){
+                value = [transformer reverseTransformedValue:value];
+            } else {
+                NSLog(@"WARNING: binding \"%@\" has value transformer, but it doesn't allow reverse transformations in %s", binding, __PRETTY_FUNCTION__);
+            }
+        }
+    }
+
+    id boundObject = [bindingInfo objectForKey:NSObservedObjectKey];
+    if(!boundObject || boundObject == [NSNull null]){
+        NSLog(@"ERROR: NSObservedObjectKey was nil for binding \"%@\" in %s", binding, __PRETTY_FUNCTION__);
+        return;
+    }
+
+    NSString* boundKeyPath = [bindingInfo objectForKey:NSObservedKeyPathKey];
+    if(!boundKeyPath || (id)boundKeyPath == [NSNull null]){
+        NSLog(@"ERROR: NSObservedKeyPathKey was nil for binding \"%@\" in %s", binding, __PRETTY_FUNCTION__);
+        return;
+    }
+
+    [boundObject setValue:value forKeyPath:boundKeyPath];
 }
 
 @end
