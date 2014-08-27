@@ -359,7 +359,7 @@ void *kUserDataHint = &kUserDataHint;
                 weakSelf.recording = NO;
                 event = nil;
             }
-            else if (shortcut.keyCode == kVK_Escape) {
+            else if (shortcut.keyCode == kVK_Escape && !shortcut.modifierFlags) {
                 // Cancel recording
                 weakSelf.recording = NO;
                 event = nil;
