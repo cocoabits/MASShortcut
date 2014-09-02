@@ -322,9 +322,11 @@ BOOL MASShortcutAllowsAnyHotkeyWithOptionModifier = NO;
             CFDictionaryRef hotKeyInfo = CFArrayGetValueAtIndex(globalHotKeys, i);
             CFNumberRef code = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyCode);
             CFNumberRef flags = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyModifiers);
+            CFNumberRef enabled = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyEnabled);
 
             if (([(__bridge NSNumber *)code unsignedIntegerValue] == self.keyCode) &&
-                ([(__bridge NSNumber *)flags unsignedIntegerValue] == self.carbonFlags)) {
+                ([(__bridge NSNumber *)flags unsignedIntegerValue] == self.carbonFlags) &&
+                ([(__bridge NSNumber *)enabled boolValue])) {
 
                 if (outError) {
                     NSString *description = NSLocalizedString(@"This combination cannot be used because it is already used by a system-wide "
