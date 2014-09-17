@@ -1,3 +1,5 @@
+#import <AppKit/AppKit.h>
+
 @class MASShortcut;
 
 typedef enum {

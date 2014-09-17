@@ -1,4 +1,5 @@
 #import <Carbon/Carbon.h>
+#import <AppKit/AppKit.h>
 
 #define MASShortcutChar(char) [NSString stringWithFormat:@"%C", (unsigned short)(char)]
 #define MASShortcutClear(flags) (flags & (NSControlKeyMask | NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask))
