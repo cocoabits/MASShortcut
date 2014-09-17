@@ -13,6 +13,11 @@ NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 #pragma mark -
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     [coder encodeInteger:(self.keyCode != NSNotFound ? (NSInteger)self.keyCode : - 1) forKey:MASShortcutKeyCode];

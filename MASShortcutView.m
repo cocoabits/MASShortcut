@@ -42,13 +42,27 @@
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
-        _shortcutCell.buttonType = NSPushOnPushOffButton;
-        _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
-        _enabled = YES;
-        [self resetShortcutCellStyle];
+        [self commonInit];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
+    _shortcutCell.buttonType = NSPushOnPushOffButton;
+    _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+    _enabled = YES;
+    [self resetShortcutCellStyle];
 }
 
 - (void)dealloc
@@ -380,17 +394,16 @@ void *kUserDataHint = &kUserDataHint;
                             [weakSelf activateEventMonitoring:NO];
                             NSString *format = NSLocalizedString(@"The key combination %@ cannot be used",
                                                                  @"Title for alert when shortcut is already used");
-                            NSAlert* alert = [[NSAlert alloc]init];
-                            alert.messageText = [NSString stringWithFormat:format, shortcut];
-                            alert.informativeText = error.localizedDescription;
-                            alert.alertStyle = NSWarningAlertStyle;
-                            weakSelf.recording = NO;
-                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                                weakSelf.shortcutPlaceholder = nil;
-                                [weakSelf activateResignObserver:YES];
-                                [weakSelf activateEventMonitoring:YES];
-                                weakSelf.recording = YES;
-                            }];
+                            NSAlert *alert = [[NSAlert alloc] init];
+                            alert.alertStyle = NSCriticalAlertStyle;
+                            alert.informativeText = [NSString stringWithFormat:format, shortcut];
+                            alert.messageText = error.localizedDescription;
+                            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"Alert button when shortcut is already used")];
+                            
+                            [alert runModal];
+                            weakSelf.shortcutPlaceholder = nil;
+                            [weakSelf activateResignObserver:YES];
+                            [weakSelf activateEventMonitoring:YES];
                         }
                         else {
                             weakSelf.shortcutValue = shortcut;
