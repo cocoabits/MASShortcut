@@ -54,12 +54,6 @@
     NSString *_observableKeyPath;
 }
 
-@synthesize monitor = _monitor;
-@synthesize handler = _handler;
-@synthesize userDefaultsKey = _userDefaultsKey;
-
-#pragma mark -
-
 void *MASShortcutUserDefaultsContext = &MASShortcutUserDefaultsContext;
 
 - (id)initWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler
