@@ -320,6 +320,7 @@ BOOL MASShortcutAllowsAnyHotkeyWithOptionModifier = NO;
 - (BOOL)isTakenError:(NSError **)outError
 {
 	CFArrayRef globalHotKeys;
+	BOOL isTaken = NO;
 	if (CopySymbolicHotKeys(&globalHotKeys) == noErr) {
 
         // Enumerate all global hotkeys and check if any of them matches current shortcut
@@ -341,12 +342,13 @@ BOOL MASShortcutAllowsAnyHotkeyWithOptionModifier = NO;
                     NSDictionary *info = [NSDictionary dictionaryWithObject:description forKey:NSLocalizedDescriptionKey];
                     *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:info];
                 }
-                return YES;
+                isTaken = YES;
+                break;
             }
         }
         CFRelease(globalHotKeys);
     }
-    return [self isKeyEquivalent:self.keyCodeStringForKeyEquivalent flags:self.modifierFlags takenInMenu:[NSApp mainMenu] error:outError];
+    return (isTaken || [self isKeyEquivalent:self.keyCodeStringForKeyEquivalent flags:self.modifierFlags takenInMenu:[NSApp mainMenu] error:outError]);
 }
 
 @end
