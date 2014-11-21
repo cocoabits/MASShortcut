@@ -25,7 +25,7 @@
     return shared;
 }
 
-+ (void)registerGlobalShortcutWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler;
++ (void)registerGlobalShortcutWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler
 {
     MASShortcutUserDefaultsHotKey *hotKey = [[MASShortcutUserDefaultsHotKey alloc] initWithUserDefaultsKey:userDefaultsKey handler:handler];
     [[self registeredUserDefaultsHotKeys] setObject:hotKey forKey:userDefaultsKey];
