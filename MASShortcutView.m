@@ -107,12 +107,12 @@
             _shortcutCell.bezelStyle = NSRoundedBezelStyle;
             break;
         }
-		case MASShortcutViewAppearanceFlat: {
-			self.wantsLayer = YES;
-			_shortcutCell.backgroundColor = [NSColor clearColor];
-			_shortcutCell.bordered = NO;
-			break;
-		}
+        case MASShortcutViewAppearanceFlat: {
+            self.wantsLayer = YES;
+            _shortcutCell.backgroundColor = [NSColor clearColor];
+            _shortcutCell.bordered = NO;
+            break;
+        }
     }
 }
 
@@ -182,16 +182,16 @@
             [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
             break;
         }
-		case MASShortcutViewAppearanceFlat: {
-			[_shortcutCell drawWithFrame:frame inView:self];
-			break;
-		}
+        case MASShortcutViewAppearanceFlat: {
+            [_shortcutCell drawWithFrame:frame inView:self];
+            break;
+        }
     }
 }
 
 - (void)drawRect:(CGRect)dirtyRect
 {
-	if (self.shortcutValue) {
+    if (self.shortcutValue) {
         [self drawInRect:self.bounds withTitle:MASShortcutChar(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
                alignment:NSRightTextAlignment state:NSOffState];
         
@@ -237,8 +237,8 @@
     switch (self.appearance) {
         case MASShortcutViewAppearanceTexturedRect: hintButtonWidth += 2.0; break;
         case MASShortcutViewAppearanceRounded: hintButtonWidth += 3.0; break;
-		case MASShortcutViewAppearanceFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
-		default: break;
+        case MASShortcutViewAppearanceFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
+        default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
     if (shortcutRectRef)  *shortcutRectRef = shortcutRect;
