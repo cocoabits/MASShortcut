@@ -5,7 +5,8 @@
 typedef enum {
     MASShortcutViewAppearanceDefault = 0,  // Height = 19 px
     MASShortcutViewAppearanceTexturedRect, // Height = 25 px
-    MASShortcutViewAppearanceRounded       // Height = 43 px
+    MASShortcutViewAppearanceRounded,      // Height = 43 px
+	MASShortcutViewAppearanceFlat
 } MASShortcutViewAppearance;
 
 @interface MASShortcutView : NSView
