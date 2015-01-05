@@ -379,7 +379,7 @@ void *kUserDataHint = &kUserDataHint;
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
-            if ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete)) {
+            if ((shortcut.modifierFlags == 0) && ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete))) {
                 // Delete shortcut
                 weakSelf.shortcutValue = nil;
                 weakSelf.recording = NO;
