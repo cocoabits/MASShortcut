@@ -1,0 +1,4 @@
+2.0.0 unreleased yet
+    - Major refactoring to simplify long-term maintenance.
+    - First version with a changes file :)
+    - Backwards incompatible.
