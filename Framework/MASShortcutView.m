@@ -46,12 +46,6 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     self = [super initWithCoder:coder];
     if (self) {
         [self commonInit];
-        _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
-        _shortcutCell.buttonType = NSPushOnPushOffButton;
-        _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
-        _shortcutValidator = [MASShortcutValidator sharedValidator];
-        _enabled = YES;
-        [self resetShortcutCellStyle];
     }
     return self;
 }
@@ -61,6 +55,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
     _shortcutCell.buttonType = NSPushOnPushOffButton;
     _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+    _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
     [self resetShortcutCellStyle];
 }
