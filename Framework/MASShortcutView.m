@@ -399,8 +399,8 @@ void *kUserDataHint = &kUserDataHint;
                                                                  @"Title for alert when shortcut is already used");
                             NSAlert* alert = [[NSAlert alloc]init];
                             alert.alertStyle = NSCriticalAlertStyle;
-                            alert.informativeText = [NSString stringWithFormat:format, shortcut];
-                            alert.messageText = explanation;
+                            alert.informativeText = explanation;
+                            alert.messageText = [NSString stringWithFormat:format, shortcut];
                             [alert addButtonWithTitle:NSLocalizedString(@"OK", @"Alert button when shortcut is already used")];
 
                             [alert runModal];
