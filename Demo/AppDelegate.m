@@ -1,90 +1,36 @@
 #import "AppDelegate.h"
 
-NSString *const MASPreferenceKeyShortcut = @"MASDemoShortcut";
-NSString *const MASPreferenceKeyShortcutEnabled = @"MASDemoShortcutEnabled";
-NSString *const MASPreferenceKeyConstantShortcutEnabled = @"MASDemoConstantShortcutEnabled";
+@interface AppDelegate ()
+@property (nonatomic, assign) IBOutlet MASShortcutView *shortcutView;
+@end
 
 @implementation AppDelegate
 
-#pragma mark -
-
-- (void)awakeFromNib
+- (void) awakeFromNib
 {
     [super awakeFromNib];
-    // Checkbox will enable and disable the shortcut view
-    [self.shortcutView bind:@"enabled" toObject:self withKeyPath:@"shortcutEnabled" options:nil];
+
+    static NSString *const ShortcutKey = @"customShortcut";
+
+    // Bind the shortcut recorder view’s value to user defaults.
+    // Run “defaults read com.shpakovski.mac.Demo” to see what’s stored
+    // in user defaults.
+    [_shortcutView setAssociatedUserDefaultsKey:ShortcutKey];
+
+    // Play a ping sound when the shortcut stored in user defaults is pressed.
+    // Note that when the shortcut stored in user defaults changes, you don’t have
+    // to update anything: the old shortcut will automatically stop working and
+    // the sound will play after pressing the new one.
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:ShortcutKey toAction:^{
+        [[NSSound soundNamed:@"Ping"] play];
+    }];
 }
 
 #pragma mark NSApplicationDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Shortcut view will follow and modify user preferences automatically
-    [_shortcutView setAssociatedUserDefaultsKey:MASPreferenceKeyShortcut];
-
-    // Activate the global keyboard shortcut if it was enabled last time
-    [self resetShortcutRegistration];
-
-    // Activate the shortcut Command-F1 if it was enabled
-    [self resetConstantShortcutRegistration];
-}
-
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication*) sender
 {
     return YES;
-}
-
-#pragma mark - Custom shortcut
-
-- (BOOL)isShortcutEnabled
-{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyShortcutEnabled];
-}
-
-- (void)setShortcutEnabled:(BOOL)enabled
-{
-    if (self.shortcutEnabled != enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:MASPreferenceKeyShortcutEnabled];
-        [self resetShortcutRegistration];
-    }
-}
-
-- (void)resetShortcutRegistration
-{
-    if (self.shortcutEnabled) {
-        [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:MASPreferenceKeyShortcut toAction:^{
-            [[NSSound soundNamed:@"Ping"] play];
-        }];
-    } else {
-        [[MASShortcutBinder sharedBinder] breakBindingWithDefaultsKey:MASPreferenceKeyShortcut];
-    }
-}
-
-#pragma mark - Constant shortcut
-
-- (BOOL)isConstantShortcutEnabled
-{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:MASPreferenceKeyConstantShortcutEnabled];
-}
-
-- (void)setConstantShortcutEnabled:(BOOL)enabled
-{
-    if (self.constantShortcutEnabled != enabled) {
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:MASPreferenceKeyConstantShortcutEnabled];
-        [self resetConstantShortcutRegistration];
-    }
-}
-
-- (void)resetConstantShortcutRegistration
-{
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_Keypad2 modifierFlags:NSCommandKeyMask];
-    if (self.constantShortcutEnabled) {
-        [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
-            [[NSSound soundNamed:@"Ping"] play];
-        }];
-    } else {
-        [[MASShortcutMonitor sharedMonitor] unregisterShortcut:shortcut];
-    }
 }
 
 @end
