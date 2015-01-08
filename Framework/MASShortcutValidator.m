@@ -88,9 +88,11 @@
             CFDictionaryRef hotKeyInfo = CFArrayGetValueAtIndex(globalHotKeys, i);
             CFNumberRef code = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyCode);
             CFNumberRef flags = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyModifiers);
+            CFNumberRef enabled = CFDictionaryGetValue(hotKeyInfo, kHISymbolicHotKeyEnabled);
 
             if (([(__bridge NSNumber *)code unsignedIntegerValue] == [shortcut keyCode]) &&
-                ([(__bridge NSNumber *)flags unsignedIntegerValue] == [shortcut carbonFlags])) {
+                ([(__bridge NSNumber *)flags unsignedIntegerValue] == [shortcut carbonFlags]) &&
+                ([(__bridge NSNumber *)enabled boolValue])) {
 
                 if (explanation) {
                     *explanation = NSLocalizedString(@"This combination cannot be used because it is already used by a system-wide "
