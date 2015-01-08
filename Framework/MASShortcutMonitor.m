@@ -54,7 +54,9 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 - (void) unregisterShortcut: (MASShortcut*) shortcut
 {
-    [_hotKeys removeObjectForKey:shortcut];
+    if (shortcut) {
+        [_hotKeys removeObjectForKey:shortcut];
+    }
 }
 
 - (void) unregisterAllShortcuts
