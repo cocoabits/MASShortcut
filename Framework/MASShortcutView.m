@@ -373,18 +373,27 @@ void *kUserDataHint = &kUserDataHint;
         NSEventMask eventMask = (NSKeyDownMask | NSFlagsChangedMask);
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
+            // Create a shortcut from the event
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
-            if ((shortcut.modifierFlags == 0) && ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete))) {
-                // Delete shortcut
+
+            // If the shortcut is a plain Delete or Backspace, clear the current shortcut and cancel recording
+            if (!shortcut.modifierFlags && ((shortcut.keyCode == kVK_Delete) || (shortcut.keyCode == kVK_ForwardDelete))) {
                 weakSelf.shortcutValue = nil;
                 weakSelf.recording = NO;
                 event = nil;
             }
-            else if (shortcut.keyCode == kVK_Escape && !shortcut.modifierFlags) {
-                // Cancel recording
+
+            // If the shortcut is a plain Esc, cancel recording
+            else if (!shortcut.modifierFlags && shortcut.keyCode == kVK_Escape) {
                 weakSelf.recording = NO;
                 event = nil;
             }
+
+            // If the shortcut is Cmd-W or Cmd-Q, cancel recording and pass the event through
+            else if ((shortcut.modifierFlags == NSCommandKeyMask) && (shortcut.keyCode == kVK_ANSI_W || shortcut.keyCode == kVK_ANSI_Q)) {
+                weakSelf.recording = NO;
+            }
+
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {
