@@ -43,7 +43,7 @@ static void *MASObservingContext = &MASObservingContext;
         context:MASObservingContext];
 }
 
-- (void) playShortcutFeedback
+- (void)playShortcutFeedback
 {
     [[NSSound soundNamed:@"Ping"] play];
     [_feedbackTextField setStringValue:@"Shortcut pressed!"];
@@ -83,7 +83,7 @@ static void *MASObservingContext = &MASObservingContext;
 
 - (void) setHardcodedShortcutEnabled: (BOOL) enabled
 {
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_Keypad2 modifierFlags:NSCommandKeyMask];
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
     if (enabled) {
         [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
             [self playShortcutFeedback];

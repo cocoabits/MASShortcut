@@ -17,7 +17,7 @@
 		0D827D711990D6110010B8EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D6D1990D6110010B8EF /* main.m */; };
 		0D827D721990D6110010B8EF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D827D6E1990D6110010B8EF /* MainMenu.xib */; };
 		0D827D731990D6590010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
-		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
+		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0D827D771990F81E0010B8EF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D761990F81E0010B8EF /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9319910B740010B8EF /* MASShortcutTests.m */; };
 		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
@@ -334,7 +334,7 @@
 		0D827CCA1990D4420010B8EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Vadim Shpakovski";
 				TargetAttributes = {
 					0D827D8219910AFF0010B8EF = {
@@ -572,6 +572,7 @@
 		0D827D9019910AFF0010B8EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -591,6 +592,7 @@
 		0D827D9119910AFF0010B8EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
