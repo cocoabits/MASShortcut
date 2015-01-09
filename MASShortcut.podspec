@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                               'Tomáš Znamenáček' => 'tomas.znamenacek@gmail.com' }
 
   s.platform              = :osx
-  s.osx.deployment_target = "10.7"
+  s.osx.deployment_target = "10.6"
   s.source                = { :git => 'https://github.com/shpakovski/MASShortcut.git', :tag => '2.0.1' }
   s.source_files          = 'Framework/*.{h,m}'
   s.exclude_files         = 'Framework/*Tests.m'
