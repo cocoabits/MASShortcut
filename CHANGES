@@ -1,4 +1,5 @@
-2.0.0 unreleased yet
-    - Major refactoring to simplify long-term maintenance.
+2.0.0 2015/1/9
     - First version with a changes file :)
-    - Backwards incompatible.
+    - Major, backwards incompatible refactoring to simplify long-term maintenance.
+    - Added a simple spec describing the recording behaviour.
+    - Adds compatibility mode with Shortcut Recorder.
