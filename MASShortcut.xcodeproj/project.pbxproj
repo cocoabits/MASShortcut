@@ -19,7 +19,6 @@
 		0D827D731990D6590010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D771990F81E0010B8EF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D761990F81E0010B8EF /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D827D8419910AFF0010B8EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CEB1990D4420010B8EF /* XCTest.framework */; };
 		0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9319910B740010B8EF /* MASShortcutTests.m */; };
 		0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D9619910FF70010B8EF /* MASKeyCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,7 +69,6 @@
 		0D827CD91990D4420010B8EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D827CDA1990D4420010B8EF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0D827CDB1990D4420010B8EF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		0D827CEB1990D4420010B8EF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0D827D1B1990D55E0010B8EF /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/MASShortcut.h; sourceTree = "<group>"; };
 		0D827D1C1990D55E0010B8EF /* MASShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/MASShortcut.m; sourceTree = "<group>"; };
 		0D827D211990D55E0010B8EF /* MASShortcutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/MASShortcutView.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D827D8419910AFF0010B8EF /* XCTest.framework in Frameworks */,
 				0D827D9519910C1E0010B8EF /* MASShortcut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				0D827CD61990D4420010B8EF /* Cocoa.framework */,
-				0D827CEB1990D4420010B8EF /* XCTest.framework */,
 				0D827CD91990D4420010B8EF /* Foundation.framework */,
 				0D827CDA1990D4420010B8EF /* CoreData.framework */,
 				0D827CDB1990D4420010B8EF /* AppKit.framework */,
