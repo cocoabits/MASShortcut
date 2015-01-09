@@ -1,3 +1,6 @@
+2.0.1 2015/1/9
+    - Trivial Podspec fix.
+
 2.0.0 2015/1/9
     - First version with a changes file :)
     - Major, backwards incompatible refactoring to simplify long-term maintenance.
