@@ -4,11 +4,23 @@ Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](htt
 
 The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts. All code is compatible with recent Xcode & OS X versions and the sandboxed environment.
 
+# Installation
+
+You can use [CocoaPods](http://cocoapods.org/), adding the following line to your Podfile:
+
+    pod 'MASShortcut'
+
+If you want to stick to the 1.x branch, you can use the version smart match operator:
+
+    pod 'MASShortcut', '~> 1'
+
 # Usage
 
 I hope, it is really easy:
 
 ```objective-c
+#import <MASShortcut/Shortcut.h>
+
 // Drop a custom view into XIB, set its class to MASShortcutView
 // and its height to 19. If you select another appearance style,
 // look up the correct height values in MASShortcutView.h.
