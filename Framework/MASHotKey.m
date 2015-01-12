@@ -19,7 +19,7 @@ FourCharCode const MASHotKeySignature = 'MASS';
     EventHotKeyID hotKeyID = { .signature = MASHotKeySignature, .id = _carbonID };
 
     OSStatus status = RegisterEventHotKey([shortcut carbonKeyCode], [shortcut carbonFlags],
-        hotKeyID, GetEventDispatcherTarget(), kEventHotKeyExclusive, &_hotKeyRef);
+        hotKeyID, GetEventDispatcherTarget(), 0, &_hotKeyRef);
 
     if (status != noErr) {
         return nil;

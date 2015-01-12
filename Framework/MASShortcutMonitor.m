@@ -45,11 +45,16 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 #pragma mark Registration
 
-- (void) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action
+- (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action
 {
     MASHotKey *hotKey = [MASHotKey registeredHotKeyWithShortcut:shortcut];
-    [hotKey setAction:action];
-    [_hotKeys setObject:hotKey forKey:shortcut];
+    if (hotKey) {
+        [hotKey setAction:action];
+        [_hotKeys setObject:hotKey forKey:shortcut];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void) unregisterShortcut: (MASShortcut*) shortcut
