@@ -100,8 +100,11 @@ _observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortc
   1. Install as a Pod using the latest CocoaPods with Swift support.
   2. Create a bridging header file [using the instructions here](http://swiftalicio.us/2014/11/using-cocoapods-from-swift/)
   3. Your bridging header file should contain the following [two](https://github.com/shpakovski/MASShortcut/issues/36) imports:
-        #import <Cocoa/Cocoa.h>
-        #import <MASShortcut/Shortcut.h>
+
+```objective-c
+#import <Cocoa/Cocoa.h>
+#import <MASShortcut/Shortcut.h>
+```
 
 # Non-ARC Version
 
