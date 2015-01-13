@@ -1,3 +1,6 @@
+Unreleased yet
+    - Headerdoc markup that plays better with CocoaDocs.
+
 2.0.1 2015/1/9
     - Trivial Podspec fix.
 
