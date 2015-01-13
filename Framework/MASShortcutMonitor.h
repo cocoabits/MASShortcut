@@ -1,7 +1,7 @@
 #import "MASShortcut.h"
 
 /**
-    @brief Executes action when a shortcut is pressed.
+    Executes action when a shortcut is pressed.
 
     There can only be one instance of this class, otherwise things
     will probably not work. (There’s a Carbon event handler inside
@@ -13,7 +13,7 @@
 + (instancetype) sharedMonitor;
 
 /**
-    @brief Register a shortcut along with an action.
+    Register a shortcut along with an action.
 
     Attempting to insert an already registered shortcut probably won’t work.
     It may burn your house or cut your fingers. You have been warned.
