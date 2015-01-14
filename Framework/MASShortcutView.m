@@ -122,14 +122,24 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     
     // Only enabled view supports recording
     if (flag && !self.enabled) return;
-    
-    if (_recording != flag) {
-        _recording = flag;
-        self.shortcutPlaceholder = nil;
-        [self resetToolTips];
-        [self activateEventMonitoring:_recording];
-        [self activateResignObserver:_recording];
-        [self setNeedsDisplay:YES];
+
+    // Only care about changes in state
+    if (flag == _recording) return;
+
+    _recording = flag;
+    self.shortcutPlaceholder = nil;
+    [self resetToolTips];
+    [self activateEventMonitoring:_recording];
+    [self activateResignObserver:_recording];
+    [self setNeedsDisplay:YES];
+
+    // Give VO users feedback on the result
+    if (_recording == NO) {
+        NSString* msg = (_shortcutValue.description) ?
+                         NSLocalizedString(@"Shortcut set", @"VoiceOver shortcut recording feedback") :
+                         NSLocalizedString(@"Shortcut cleared", @"VoiceOver shortcut recording feedback");
+        NSDictionary *announcementInfo = [[NSDictionary alloc] initWithObjectsAndKeys:msg, NSAccessibilityAnnouncementKey, @"High", NSAccessibilityPriorityKey, nil];
+        NSAccessibilityPostNotificationWithUserInfo(self, NSAccessibilityAnnouncementRequestedNotification, announcementInfo);
     }
 }
 
@@ -506,6 +516,43 @@ void *kUserDataHint = &kUserDataHint;
     }
 
     [boundObject setValue:value forKeyPath:boundKeyPath];
+}
+
+#pragma mark - Accessibility
+
+- (BOOL)accessibilityIsIgnored
+{
+    return NO;
+}
+
+- (NSString *)accessibilityHelp
+{
+    return NSLocalizedString(@"To record a new shortcut, click this button, and then type the"
+                             @" new shortcut, or press delete to clear an existing shortcut.",
+                             @"VoiceOver shortcut help");
+}
+
+- (NSString *)accessibilityLabel
+{
+    NSString* title = _shortcutValue.description ? _shortcutValue.description : @"Empty";
+    title = [title stringByAppendingFormat:@" %@", NSLocalizedString(@"keyboard shortcut", @"VoiceOver title")];
+    return title;
+}
+
+- (BOOL)accessibilityPerformPress
+{
+    if (self.isRecording == NO) {
+        self.recording = YES;
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+- (NSString *)accessibilityRole
+{
+    return NSAccessibilityButtonRole;
 }
 
 @end
