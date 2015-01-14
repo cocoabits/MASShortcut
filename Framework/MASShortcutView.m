@@ -188,7 +188,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 - (void)drawRect:(CGRect)dirtyRect
 {
     if (self.shortcutValue) {
-        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
+        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphClear)
                alignment:NSRightTextAlignment state:NSOffState];
         
         CGRect shortcutRect;
