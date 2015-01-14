@@ -95,6 +95,17 @@ _observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortc
                                                                 context:kGlobalShortcutContext];
 ```
 
+# Using in Swift projects
+
+  1. Install as a Pod using the latest CocoaPods with Swift support.
+  2. Create a bridging header file [using the instructions here](http://swiftalicio.us/2014/11/using-cocoapods-from-swift/)
+  3. Your bridging header file should contain the following [two](https://github.com/shpakovski/MASShortcut/issues/36) imports:
+
+```objective-c
+#import <Cocoa/Cocoa.h>
+#import <MASShortcut/Shortcut.h>
+```
+
 # Non-ARC Version
 
 If you like retain/release, please check out these forks: [heardrwt/MASShortcut](https://github.com/heardrwt/MASShortcut) and [chendo/MASShortcut](https://github.com/chendo/MASShortcut). However, the preferred way is to enable the `-fobjc-arc` in Xcode source options.
