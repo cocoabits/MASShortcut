@@ -106,10 +106,6 @@ _observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortc
 #import <MASShortcut/Shortcut.h>
 ```
 
-# Non-ARC Version
-
-If you like retain/release, please check out these forks: [heardrwt/MASShortcut](https://github.com/heardrwt/MASShortcut) and [chendo/MASShortcut](https://github.com/chendo/MASShortcut). However, the preferred way is to enable the `-fobjc-arc` in Xcode source options.
-
 # Copyright
 
 MASShortcut is licensed under the 2-clause BSD license.
