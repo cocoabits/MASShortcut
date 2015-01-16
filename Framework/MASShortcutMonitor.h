@@ -18,7 +18,7 @@
     Attempting to insert an already registered shortcut probably won’t work.
     It may burn your house or cut your fingers. You have been warned.
 */
-- (void) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action;
+- (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action;
 - (BOOL) isShortcutRegistered: (MASShortcut*) shortcut;
 
 - (void) unregisterShortcut: (MASShortcut*) shortcut;
