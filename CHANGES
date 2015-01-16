@@ -1,4 +1,4 @@
-Unreleased yet
+2.1.0 2015/1/16
     - Added support for older OS X versions down to 10.6 included.
     - Headerdoc markup that plays better with CocoaDocs.
 
