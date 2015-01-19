@@ -12,6 +12,7 @@ Features:
 
 * Record and display keyboard shortcuts
 * Watch for shortcuts and execute actions, system-wide
+* A nice, [documented API](http://cocoadocs.org/docsets/MASShortcut/)
 * Can be configured to be compatible with Shortcut Recorder
 * Can be installed both through CocoaPods and as a Git submodule
 * Mac App Store friendly
