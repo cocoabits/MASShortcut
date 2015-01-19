@@ -4,7 +4,26 @@
 
 Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](http://wafflesoftware.net/shortcut/) for managing keyboard shortcuts in application preferences. However, it became incompatible with the new plugin architecture of Xcode 4.
 
-The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts. All code is compatible with recent Xcode & OS X versions and the sandboxed environment.
+The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts.
+
+![Screenshot of the demo project](/Demo/screenshot.png?raw=true "This is how the demo looks like")
+
+Features:
+
+* Record and display keyboard shortcuts
+* Watch for shortcuts and execute actions, system-wide
+* Can be configured to be compatible with Shortcut Recorder
+* Can be installed both through CocoaPods and as a Git submodule
+* Mac App Store friendly
+* Works on OS X 10.6 and up
+* Hacking-friendly codebase covered with tests
+
+Important features currently missing:
+
+* Localisation
+* Accessibility
+
+Pull requests welcome :)
 
 # Installation
 
