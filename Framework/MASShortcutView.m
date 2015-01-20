@@ -474,7 +474,7 @@ void *kUserDataHint = &kUserDataHint;
 #pragma mark Bindings
 
 // http://tomdalling.com/blog/cocoa/implementing-your-own-cocoa-bindings/
--(void) propagateValue:(id)value forBinding:(NSString*)binding;
+-(void) propagateValue:(id)value forBinding:(NSString*)binding
 {
     NSParameterAssert(binding != nil);
 
