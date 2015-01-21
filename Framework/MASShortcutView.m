@@ -555,4 +555,31 @@ void *kUserDataHint = &kUserDataHint;
     return NSAccessibilityButtonRole;
 }
 
+- (BOOL)acceptsFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)becomeFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super resignFirstResponder];
+}
+
+- (void)drawFocusRingMask
+{
+    [_shortcutCell drawFocusRingMaskWithFrame:[self bounds] inView:self];
+}
+
+- (NSRect)focusRingMaskBounds
+{
+    return [self bounds];
+}
+
 @end
