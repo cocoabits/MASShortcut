@@ -139,10 +139,10 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
         case 115: return NSStringFromMASKeyCode(kMASShortcutGlyphNorthwestArrow);
     }
     
-    // Everything else should be printable so look it up in the current keyboard
+    // Everything else should be printable so look it up in the current ASCII capable keyboard layout
     OSStatus error = noErr;
     NSString *keystroke = nil;
-    TISInputSourceRef inputSource = TISCopyCurrentKeyboardLayoutInputSource();
+    TISInputSourceRef inputSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource();
     if (inputSource) {
         CFDataRef layoutDataRef = TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
         if (layoutDataRef) {
