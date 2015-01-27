@@ -1,3 +1,7 @@
+Not released yet:
+    - Better key equivalent handling for non-ASCII layouts.
+      [Dmitry Obukhov]
+
 2.1.1 2015/1/16
     - Another headerdoc fix for CocoaDocs, hopefully the last one.
 
