@@ -18,7 +18,7 @@ Please stay high-level when writing the spec, do not document particular classes
 
 On different keyboard layouts (such as US and Czech), a single shortcut (a combination of physical keys) can have different “names”.
 
-For example, the default system shortcut for toggling directly to Space #2 is Control–2. But when you switch to the Czech keyboard layout, the physical key with the `2` label now inserts the `ě` character. Thus, on most keyboard layouts the shortcut for toggling to Space #2 is `^2`, but on the Czech layout it’s `^ě`. (I stress that this is the same combination of hardware keys.)
+For example, the default system shortcut for toggling directly to Space #2 is Control–2. But when you switch to the Czech keyboard layout, the physical key with the `2` label now inserts the `ě` character. Thus, on most keyboard layouts the shortcut for toggling to Space #2 is called `^2`, but on the Czech layout it’s called `^ě`. (I stress that this is the same combination of hardware keys and the same `MASShortcut` instance.)
 
 This is reflected by the system: When you open the System Preferences → Keyboard → Shortcuts pane, the shortcuts displayed depend on the currently selected keyboard layout (try switching between the US and Czech keyboard layouts and reopening the preference pane).
 
