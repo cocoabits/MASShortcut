@@ -39,6 +39,11 @@
 
 /**
  A string representing the “key” part of a shortcut, like the `5` in `⌘5`.
+
+ @warning The value may change depending on the active keyboard layout.
+ For example for the `^2` keyboard shortcut (`kVK_ANSI_2+NSControlKeyMask`
+ to be precise) the `keyCodeString` is `2` on the US keyboard, but `ě` when
+ the Czech keyboard layout is active. See the spec for details.
 */
 @property (nonatomic, readonly) NSString *keyCodeString;
 
@@ -49,6 +54,12 @@
  property of `NSMenuItem`. Here the string is used to support shortcut
  validation (“is the shortcut already taken in this menu?”) and
  for display in `NSMenu`.
+
+ The value of this property may differ from `keyCodeString`. For example
+ the Russian keyboard has a `Г` (Ge) Cyrillic character in place of the
+ latin `U` key. This means you can create a `^Г` shortcut, but in menus
+ that’s always displayed as `^U`. So the `keyCodeString` returns `Г`
+ and `keyCodeStringForKeyEquivalent` returns `U`.
 */
 @property (nonatomic, readonly) NSString *keyCodeStringForKeyEquivalent;
 
