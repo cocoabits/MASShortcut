@@ -21,4 +21,6 @@ typedef enum {
 /// Returns custom class for drawing control.
 + (Class)shortcutCellClass;
 
+- (void)setAcceptsFirstResponder:(BOOL)value;
+
 @end

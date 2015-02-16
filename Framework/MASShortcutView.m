@@ -24,6 +24,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
+	BOOL _acceptsFirstResponder;
 }
 
 #pragma mark -
@@ -59,6 +60,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
     _showsDeleteButton = YES;
+	_acceptsFirstResponder = NO;
     [self resetShortcutCellStyle];
 }
 
@@ -565,7 +567,12 @@ void *kUserDataHint = &kUserDataHint;
 
 - (BOOL)acceptsFirstResponder
 {
-    return YES;
+	return _acceptsFirstResponder;
+}
+
+- (void)setAcceptsFirstResponder:(BOOL)value
+{
+	_acceptsFirstResponder = value;
 }
 
 - (BOOL)becomeFirstResponder
