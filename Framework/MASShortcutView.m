@@ -13,6 +13,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 
 @property (nonatomic, getter = isHinting) BOOL hinting;
 @property (nonatomic, copy) NSString *shortcutPlaceholder;
+@property (nonatomic, assign) BOOL showsDeleteButton;
 
 @end
 
@@ -57,6 +58,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
+    _showsDeleteButton = YES;
     [self resetShortcutCellStyle];
 }
 
@@ -198,9 +200,15 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 - (void)drawRect:(CGRect)dirtyRect
 {
     if (self.shortcutValue) {
-        [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(self.recording ? kMASShortcutGlyphEscape : kMASShortcutGlyphDeleteLeft)
-               alignment:NSRightTextAlignment state:NSOffState];
-        
+        NSString *buttonTitle;
+        if (self.recording) {
+            buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphEscape);
+        } else if (self.showsDeleteButton) {
+            buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphClear);
+        }
+        if (buttonTitle != nil) {
+            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSRightTextAlignment state:NSOffState];
+        }
         CGRect shortcutRect;
         [self getShortcutRect:&shortcutRect hintRect:NULL];
         NSString *title = (self.recording
@@ -379,7 +387,7 @@ void *kUserDataHint = &kUserDataHint;
     
     static id eventMonitor = nil;
     if (shouldActivate) {
-        __weak MASShortcutView *weakSelf = self;
+        __unsafe_unretained MASShortcutView *weakSelf = self;
         NSEventMask eventMask = (NSKeyDownMask | NSFlagsChangedMask);
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
@@ -460,7 +468,7 @@ void *kUserDataHint = &kUserDataHint;
     static id observer = nil;
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     if (shouldActivate) {
-        __weak MASShortcutView *weakSelf = self;
+        __unsafe_unretained MASShortcutView *weakSelf = self;
         observer = [notificationCenter addObserverForName:NSWindowDidResignKeyNotification object:self.window
                                                 queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
                                                     weakSelf.recording = NO;

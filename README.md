@@ -4,7 +4,27 @@
 
 Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](http://wafflesoftware.net/shortcut/) for managing keyboard shortcuts in application preferences. However, it became incompatible with the new plugin architecture of Xcode 4.
 
-The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts. All code is compatible with recent Xcode & OS X versions and the sandboxed environment.
+The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts.
+
+![Screenshot of the demo project](/Demo/screenshot.png?raw=true "This is how the demo looks like")
+
+Features:
+
+* Record and display keyboard shortcuts
+* Watch for shortcuts and execute actions, system-wide
+* A nice, [documented API](http://cocoadocs.org/docsets/MASShortcut/)
+* Can be configured to be compatible with Shortcut Recorder
+* Can be installed both through CocoaPods and as a Git submodule
+* Mac App Store friendly
+* Works on OS X 10.6 and up
+* Hacking-friendly codebase covered with tests
+
+Important features currently missing:
+
+* Localisation
+* Accessibility
+
+Pull requests welcome :)
 
 # Installation
 
@@ -15,6 +35,8 @@ You can use [CocoaPods](http://cocoapods.org/), adding the following line to you
 If you want to stick to the 1.x branch, you can use the version smart match operator:
 
     pod 'MASShortcut', '~> 1'
+
+Or can use Git submodules and link against the MASShortcut framework.
 
 # Usage
 
@@ -95,9 +117,16 @@ _observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortc
                                                                 context:kGlobalShortcutContext];
 ```
 
-# Non-ARC Version
+# Using in Swift projects
 
-If you like retain/release, please check out these forks: [heardrwt/MASShortcut](https://github.com/heardrwt/MASShortcut) and [chendo/MASShortcut](https://github.com/chendo/MASShortcut). However, the preferred way is to enable the `-fobjc-arc` in Xcode source options.
+  1. Install as a Pod using the latest CocoaPods with Swift support.
+  2. Create a bridging header file [using the instructions here](http://swiftalicio.us/2014/11/using-cocoapods-from-swift/)
+  3. Your bridging header file should contain the following [two](https://github.com/shpakovski/MASShortcut/issues/36) imports:
+
+```objective-c
+#import <Cocoa/Cocoa.h>
+#import <MASShortcut/Shortcut.h>
+```
 
 # Copyright
 

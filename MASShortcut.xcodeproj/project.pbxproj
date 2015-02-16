@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D39DCA21A668A4400639145 /* MASHotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D39DCA11A668A4400639145 /* MASHotKeyTests.m */; };
+		0D39DCA41A668E5500639145 /* MASShortcutMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */; };
 		0D827CD71990D4420010B8EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD61990D4420010B8EF /* Cocoa.framework */; };
 		0D827D251990D55E0010B8EF /* MASShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D1B1990D55E0010B8EF /* MASShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D827D261990D55E0010B8EF /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D1C1990D55E0010B8EF /* MASShortcut.m */; };
@@ -64,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D39DCA11A668A4400639145 /* MASHotKeyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASHotKeyTests.m; path = Framework/MASHotKeyTests.m; sourceTree = "<group>"; };
+		0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitorTests.m; path = Framework/MASShortcutMonitorTests.m; sourceTree = "<group>"; };
 		0D827CD31990D4420010B8EF /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D827CD61990D4420010B8EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0D827CD91990D4420010B8EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -231,8 +235,10 @@
 			children = (
 				0DC2F17419922798003A0131 /* MASHotKey.h */,
 				0DC2F17519922798003A0131 /* MASHotKey.m */,
+				0D39DCA11A668A4400639145 /* MASHotKeyTests.m */,
 				0D827DA319912D240010B8EF /* MASShortcutMonitor.h */,
 				0D827DA419912D240010B8EF /* MASShortcutMonitor.m */,
+				0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */,
 			);
 			name = Monitoring;
 			sourceTree = "<group>";
@@ -419,6 +425,8 @@
 				0DC2F190199372B4003A0131 /* MASDictionaryTransformerTests.m in Sources */,
 				0D827D9419910B740010B8EF /* MASShortcutTests.m in Sources */,
 				0DC2F18919925F8F003A0131 /* MASShortcutBinderTests.m in Sources */,
+				0D39DCA21A668A4400639145 /* MASHotKeyTests.m in Sources */,
+				0D39DCA41A668E5500639145 /* MASShortcutMonitorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +524,7 @@
 				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -533,6 +542,7 @@
 				GCC_PREFIX_HEADER = Framework/Prefix.pch;
 				INFOPLIST_FILE = Framework/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -551,6 +561,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -564,6 +575,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Demo/Prefix.pch;
 				INFOPLIST_FILE = Demo/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
