@@ -137,12 +137,15 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     [self activateResignObserver:_recording];
     [self setNeedsDisplay:YES];
 
-    // Give VO users feedback on the result
-    if (_recording == NO) {
-        NSString* msg = (_shortcutValue.description) ?
-                         NSLocalizedString(@"Shortcut set", @"VoiceOver shortcut recording feedback") :
-                         NSLocalizedString(@"Shortcut cleared", @"VoiceOver shortcut recording feedback");
-        NSDictionary *announcementInfo = [[NSDictionary alloc] initWithObjectsAndKeys:msg, NSAccessibilityAnnouncementKey, @"High", NSAccessibilityPriorityKey, nil];
+    // Give VoiceOver users feedback on the result. Requires at least 10.9 to run.
+    if (_recording == NO && (&NSAccessibilityPriorityKey != NULL)) {
+        NSString* msg = _shortcutValue ?
+                         NSLocalizedString(@"Shortcut set", @"VoiceOver: Shortcut set") :
+                         NSLocalizedString(@"Shortcut cleared", @"VoiceOver: Shortcut cleared");
+        NSDictionary *announcementInfo = @{
+            NSAccessibilityAnnouncementKey : msg,
+            NSAccessibilityPriorityKey : @(NSAccessibilityPriorityHigh),
+        };
         NSAccessibilityPostNotificationWithUserInfo(self, NSAccessibilityAnnouncementRequestedNotification, announcementInfo);
     }
 }
