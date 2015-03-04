@@ -18,11 +18,11 @@ Features:
 * Mac App Store friendly
 * Works on OS X 10.6 and up
 * Hacking-friendly codebase covered with tests
+* Basic accessibility support
 
 Important features currently missing:
 
 * Localisation
-* Accessibility
 
 Pull requests welcome :)
 
