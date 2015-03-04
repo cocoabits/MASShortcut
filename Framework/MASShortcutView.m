@@ -24,6 +24,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
+	BOOL _acceptsFirstResponder;
 }
 
 #pragma mark -
@@ -59,6 +60,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
     _showsDeleteButton = YES;
+	_acceptsFirstResponder = NO;
     [self resetShortcutCellStyle];
 }
 
@@ -124,14 +126,24 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     
     // Only enabled view supports recording
     if (flag && !self.enabled) return;
-    
-    if (_recording != flag) {
-        _recording = flag;
-        self.shortcutPlaceholder = nil;
-        [self resetToolTips];
-        [self activateEventMonitoring:_recording];
-        [self activateResignObserver:_recording];
-        [self setNeedsDisplay:YES];
+
+    // Only care about changes in state
+    if (flag == _recording) return;
+
+    _recording = flag;
+    self.shortcutPlaceholder = nil;
+    [self resetToolTips];
+    [self activateEventMonitoring:_recording];
+    [self activateResignObserver:_recording];
+    [self setNeedsDisplay:YES];
+
+    // Give VO users feedback on the result
+    if (_recording == NO) {
+        NSString* msg = (_shortcutValue.description) ?
+                         NSLocalizedString(@"Shortcut set", @"VoiceOver shortcut recording feedback") :
+                         NSLocalizedString(@"Shortcut cleared", @"VoiceOver shortcut recording feedback");
+        NSDictionary *announcementInfo = [[NSDictionary alloc] initWithObjectsAndKeys:msg, NSAccessibilityAnnouncementKey, @"High", NSAccessibilityPriorityKey, nil];
+        NSAccessibilityPostNotificationWithUserInfo(self, NSAccessibilityAnnouncementRequestedNotification, announcementInfo);
     }
 }
 
@@ -472,7 +484,7 @@ void *kUserDataHint = &kUserDataHint;
 #pragma mark Bindings
 
 // http://tomdalling.com/blog/cocoa/implementing-your-own-cocoa-bindings/
--(void) propagateValue:(id)value forBinding:(NSString*)binding;
+-(void) propagateValue:(id)value forBinding:(NSString*)binding
 {
     NSParameterAssert(binding != nil);
 
@@ -514,6 +526,75 @@ void *kUserDataHint = &kUserDataHint;
     }
 
     [boundObject setValue:value forKeyPath:boundKeyPath];
+}
+
+#pragma mark - Accessibility
+
+- (BOOL)accessibilityIsIgnored
+{
+    return NO;
+}
+
+- (NSString *)accessibilityHelp
+{
+    return NSLocalizedString(@"To record a new shortcut, click this button, and then type the"
+                             @" new shortcut, or press delete to clear an existing shortcut.",
+                             @"VoiceOver shortcut help");
+}
+
+- (NSString *)accessibilityLabel
+{
+    NSString* title = _shortcutValue.description ? _shortcutValue.description : @"Empty";
+    title = [title stringByAppendingFormat:@" %@", NSLocalizedString(@"keyboard shortcut", @"VoiceOver title")];
+    return title;
+}
+
+- (BOOL)accessibilityPerformPress
+{
+    if (self.isRecording == NO) {
+        self.recording = YES;
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+- (NSString *)accessibilityRole
+{
+    return NSAccessibilityButtonRole;
+}
+
+- (BOOL)acceptsFirstResponder
+{
+	return _acceptsFirstResponder;
+}
+
+- (void)setAcceptsFirstResponder:(BOOL)value
+{
+	_acceptsFirstResponder = value;
+}
+
+- (BOOL)becomeFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self setNeedsDisplay:YES];
+    return [super resignFirstResponder];
+}
+
+- (void)drawFocusRingMask
+{
+    [_shortcutCell drawFocusRingMaskWithFrame:[self bounds] inView:self];
+}
+
+- (NSRect)focusRingMaskBounds
+{
+    return [self bounds];
 }
 
 @end
