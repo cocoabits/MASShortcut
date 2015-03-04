@@ -95,4 +95,11 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
         @"Bind shortcut using a default value.");
 }
 
+- (void) testBindingsWithDotSymbol
+{
+    static NSString *const SampleDefaultsKeyWithDotSymbol = @"sample.Shortcut";
+    XCTAssertThrows([_binder bindShortcutWithDefaultsKey:SampleDefaultsKeyWithDotSymbol toAction:^{}],
+        @"Attempting to use a defaults key with a dot symbol crashes with an exception.");
+}
+
 @end
