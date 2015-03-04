@@ -3,9 +3,8 @@
 
 NSString *const MASShortcutBinding = @"shortcutValue";
 
-#define HINT_BUTTON_WIDTH 23.0
-#define BUTTON_FONT_SIZE 11.0
-#define SEGMENT_CHROME_WIDTH 6.0
+static const CGFloat MASHintButtonWidth = 23;
+static const CGFloat MASButtonFontSize = 11;
 
 #pragma mark -
 
@@ -56,7 +55,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 {
     _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
     _shortcutCell.buttonType = NSPushOnPushOffButton;
-    _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:BUTTON_FONT_SIZE];
+    _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:MASButtonFontSize];
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
     _showsDeleteButton = YES;
@@ -155,7 +154,7 @@ NSString *const MASShortcutBinding = @"shortcutValue";
     _shortcutValue = shortcutValue;
     [self resetToolTips];
     [self setNeedsDisplay:YES];
-    [self propagateValue:shortcutValue forBinding:@"shortcutValue"];
+    [self propagateValue:shortcutValue forBinding:MASShortcutBinding];
 
     if (self.shortcutValueChange) {
         self.shortcutValueChange(self);
@@ -252,11 +251,11 @@ NSString *const MASShortcutBinding = @"shortcutValue";
 - (void)getShortcutRect:(CGRect *)shortcutRectRef hintRect:(CGRect *)hintRectRef
 {
     CGRect shortcutRect, hintRect;
-    CGFloat hintButtonWidth = HINT_BUTTON_WIDTH;
+    CGFloat hintButtonWidth = MASHintButtonWidth;
     switch (self.style) {
         case MASShortcutViewStyleTexturedRect: hintButtonWidth += 2.0; break;
         case MASShortcutViewStyleRounded: hintButtonWidth += 3.0; break;
-        case MASShortcutViewStyleFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - BUTTON_FONT_SIZE); break;
+        case MASShortcutViewStyleFlat: hintButtonWidth -= 8.0 - (_shortcutCell.font.pointSize - MASButtonFontSize); break;
         default: break;
     }
     CGRectDivide(self.bounds, &hintRect, &shortcutRect, hintButtonWidth, CGRectMaxXEdge);
@@ -547,7 +546,7 @@ void *kUserDataHint = &kUserDataHint;
 
 - (NSString *)accessibilityLabel
 {
-    NSString* title = _shortcutValue.description ? _shortcutValue.description : @"Empty";
+    NSString* title = _shortcutValue.description ?: @"Empty";
     title = [title stringByAppendingFormat:@" %@", NSLocalizedString(@"keyboard shortcut", @"VoiceOver title")];
     return title;
 }
