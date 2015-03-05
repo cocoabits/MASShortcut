@@ -95,11 +95,22 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
         @"Bind shortcut using a default value.");
 }
 
+// The connection between user defaults and shortcuts is implemented
+// using Cocoa Bindings where the dot symbol (“.”) has a special meaning.
+// This means we have to escape the dot symbol used in defaults keys,
+// otherwise things blow up. Details at <http://git.io/x5YS>.
 - (void) testBindingsWithDotSymbol
 {
     static NSString *const SampleDefaultsKeyWithDotSymbol = @"sample.Shortcut";
-    XCTAssertThrows([_binder bindShortcutWithDefaultsKey:SampleDefaultsKeyWithDotSymbol toAction:^{}],
-        @"Attempting to use a defaults key with a dot symbol crashes with an exception.");
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:1 modifierFlags:1];
+    XCTAssertNoThrow([_binder bindShortcutWithDefaultsKey:SampleDefaultsKeyWithDotSymbol toAction:^{}],
+        @"Binding a shortcut to a defaults key with a dot symbol must not throw.");
+    [_defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:shortcut] forKey:SampleDefaultsKeyWithDotSymbol];
+    XCTAssertTrue([_monitor isShortcutRegistered:shortcut],
+        @"Read a shortcut value using a defaults key with a dot symbol.");
+    [_binder breakBindingWithDefaultsKey:SampleDefaultsKeyWithDotSymbol];
+    XCTAssertFalse([_monitor isShortcutRegistered:shortcut],
+        @"Breaking a binding with a dot symbol.");
 }
 
 @end

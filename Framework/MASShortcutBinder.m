@@ -23,7 +23,7 @@
 - (void) dealloc
 {
     for (NSString *bindingName in [_actions allKeys]) {
-        [self unbind:bindingName];
+        [self unbind:[self encodeBindingName:bindingName]];
     }
 }
 
@@ -42,8 +42,10 @@
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action
 {
     [_actions setObject:[action copy] forKey:defaultsKeyName];
-    [self bind:defaultsKeyName toObject:[NSUserDefaultsController sharedUserDefaultsController]
-        withKeyPath:[@"values." stringByAppendingString:defaultsKeyName] options:_bindingOptions];
+    [self bind:[self encodeBindingName:defaultsKeyName]
+        toObject:[NSUserDefaultsController sharedUserDefaultsController]
+        withKeyPath:[@"values." stringByAppendingString:defaultsKeyName]
+        options:_bindingOptions];
 }
 
 - (void) breakBindingWithDefaultsKey: (NSString*) defaultsKeyName
@@ -51,7 +53,7 @@
     [_shortcutMonitor unregisterShortcut:[_shortcuts objectForKey:defaultsKeyName]];
     [_shortcuts removeObjectForKey:defaultsKeyName];
     [_actions removeObjectForKey:defaultsKeyName];
-    [self unbind:defaultsKeyName];
+    [self unbind:[self encodeBindingName:defaultsKeyName]];
 }
 
 - (void) registerDefaultShortcuts: (NSDictionary*) defaultShortcuts
@@ -74,6 +76,18 @@
 
 #pragma mark Bindings
 
+static NSString *const MASDotSymbolReplacement = @"__dot__";
+
+- (NSString*) encodeBindingName: (NSString*) binding
+{
+    return [binding stringByReplacingOccurrencesOfString:@"." withString:MASDotSymbolReplacement];
+}
+
+- (NSString*) decodeBindingName: (NSString*) binding
+{
+    return [binding stringByReplacingOccurrencesOfString:MASDotSymbolReplacement withString:@"."];
+}
+
 - (BOOL) isRegisteredAction: (NSString*) name
 {
     return !![_actions objectForKey:name];
@@ -81,6 +95,7 @@
 
 - (id) valueForUndefinedKey: (NSString*) key
 {
+    key = [self decodeBindingName:key];
     return [self isRegisteredAction:key] ?
         [_shortcuts objectForKey:key] :
         [super valueForUndefinedKey:key];
@@ -88,6 +103,8 @@
 
 - (void) setValue: (id) value forUndefinedKey: (NSString*) key
 {
+    key = [self decodeBindingName:key];
+
     if (![self isRegisteredAction:key]) {
         [super setValue:value forUndefinedKey:key];
         return;
