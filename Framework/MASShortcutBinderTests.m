@@ -95,22 +95,13 @@ static NSString *const SampleDefaultsKey = @"sampleShortcut";
         @"Bind shortcut using a default value.");
 }
 
-// The connection between user defaults and shortcuts is implemented
-// using Cocoa Bindings where the dot symbol (“.”) has a special meaning.
-// This means we have to escape the dot symbol used in defaults keys,
-// otherwise things blow up. Details at <http://git.io/x5YS>.
-- (void) testBindingsWithDotSymbol
+// See issue #64 <http://git.io/x5YS> for rationale and discussion.
+- (void) testIllegalSymbolsInBindingNames
 {
-    static NSString *const SampleDefaultsKeyWithDotSymbol = @"sample.Shortcut";
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:1 modifierFlags:1];
-    XCTAssertNoThrow([_binder bindShortcutWithDefaultsKey:SampleDefaultsKeyWithDotSymbol toAction:^{}],
-        @"Binding a shortcut to a defaults key with a dot symbol must not throw.");
-    [_defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:shortcut] forKey:SampleDefaultsKeyWithDotSymbol];
-    XCTAssertTrue([_monitor isShortcutRegistered:shortcut],
-        @"Read a shortcut value using a defaults key with a dot symbol.");
-    [_binder breakBindingWithDefaultsKey:SampleDefaultsKeyWithDotSymbol];
-    XCTAssertFalse([_monitor isShortcutRegistered:shortcut],
-        @"Breaking a binding with a dot symbol.");
+    XCTAssertThrows([_binder bindShortcutWithDefaultsKey:@"foo.bar" toAction:^{}],
+        @"Throw for illegal binding symbols: a dot (“.”).");
+    XCTAssertThrows([_binder bindShortcutWithDefaultsKey:@"foo bar" toAction:^{}],
+        @"Throw for illegal binding symbols: a space (“ ”).");
 }
 
 @end

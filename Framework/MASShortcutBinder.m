@@ -23,7 +23,7 @@
 - (void) dealloc
 {
     for (NSString *bindingName in [_actions allKeys]) {
-        [self unbind:[self encodeBindingName:bindingName]];
+        [self unbind:bindingName];
     }
 }
 
@@ -41,8 +41,12 @@
 
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action
 {
+    NSAssert([defaultsKeyName rangeOfString:@"."].location == NSNotFound,
+        @"Illegal character in binding name (“.”), please see http://git.io/x5YS.");
+    NSAssert([defaultsKeyName rangeOfString:@" "].location == NSNotFound,
+        @"Illegal character in binding name (“ ”), please see http://git.io/x5YS.");
     [_actions setObject:[action copy] forKey:defaultsKeyName];
-    [self bind:[self encodeBindingName:defaultsKeyName]
+    [self bind:defaultsKeyName
         toObject:[NSUserDefaultsController sharedUserDefaultsController]
         withKeyPath:[@"values." stringByAppendingString:defaultsKeyName]
         options:_bindingOptions];
@@ -53,7 +57,7 @@
     [_shortcutMonitor unregisterShortcut:[_shortcuts objectForKey:defaultsKeyName]];
     [_shortcuts removeObjectForKey:defaultsKeyName];
     [_actions removeObjectForKey:defaultsKeyName];
-    [self unbind:[self encodeBindingName:defaultsKeyName]];
+    [self unbind:defaultsKeyName];
 }
 
 - (void) registerDefaultShortcuts: (NSDictionary*) defaultShortcuts
@@ -76,18 +80,6 @@
 
 #pragma mark Bindings
 
-static NSString *const MASDotSymbolReplacement = @"__dot__";
-
-- (NSString*) encodeBindingName: (NSString*) binding
-{
-    return [binding stringByReplacingOccurrencesOfString:@"." withString:MASDotSymbolReplacement];
-}
-
-- (NSString*) decodeBindingName: (NSString*) binding
-{
-    return [binding stringByReplacingOccurrencesOfString:MASDotSymbolReplacement withString:@"."];
-}
-
 - (BOOL) isRegisteredAction: (NSString*) name
 {
     return !![_actions objectForKey:name];
@@ -95,7 +87,6 @@ static NSString *const MASDotSymbolReplacement = @"__dot__";
 
 - (id) valueForUndefinedKey: (NSString*) key
 {
-    key = [self decodeBindingName:key];
     return [self isRegisteredAction:key] ?
         [_shortcuts objectForKey:key] :
         [super valueForUndefinedKey:key];
@@ -103,8 +94,6 @@ static NSString *const MASDotSymbolReplacement = @"__dot__";
 
 - (void) setValue: (id) value forUndefinedKey: (NSString*) key
 {
-    key = [self decodeBindingName:key];
-
     if (![self isRegisteredAction:key]) {
         [super setValue:value forUndefinedKey:key];
         return;
