@@ -1,6 +1,7 @@
 unreleased yet
     - Basic accessibility support [starkos]
     - Added an option to hide the shortcut delete button [oreshinya]
+    - Added support for Carthage [Tom Brown]
 
 2.1.2 2015/1/28
     - Better key equivalent handling for non-ASCII layouts.
