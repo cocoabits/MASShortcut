@@ -318,9 +318,9 @@
 			productReference = 0D827D371990D5E70010B8EF /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0D827D8219910AFF0010B8EF /* Tests */ = {
+		0D827D8219910AFF0010B8EF /* MASShortcutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "MASShortcutTests" */;
 			buildPhases = (
 				0D827D7F19910AFF0010B8EF /* Sources */,
 				0D827D8019910AFF0010B8EF /* Frameworks */,
@@ -331,7 +331,7 @@
 			dependencies = (
 				0D827D8F19910AFF0010B8EF /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = MASShortcutTests;
 			productName = Tests;
 			productReference = 0D827D8319910AFF0010B8EF /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -364,8 +364,8 @@
 			projectRoot = "";
 			targets = (
 				0D827CD21990D4420010B8EF /* MASShortcut */,
+				0D827D8219910AFF0010B8EF /* MASShortcutTests */,
 				0D827D361990D5E70010B8EF /* Demo */,
-				0D827D8219910AFF0010B8EF /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -653,7 +653,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		0D827D9219910AFF0010B8EF /* Build configuration list for PBXNativeTarget "MASShortcutTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D827D9019910AFF0010B8EF /* Debug */,
