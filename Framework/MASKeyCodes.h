@@ -21,7 +21,7 @@ enum {
     kMASShortcutGlyphPadClear = 0x2327,
     kMASShortcutGlyphNorthwestArrow = 0x2196,
     kMASShortcutGlyphSoutheastArrow = 0x2198,
-} MASShortcutGlyph;
+};
 
 NS_INLINE NSString* NSStringFromMASKeyCode(unsigned short ch)
 {
