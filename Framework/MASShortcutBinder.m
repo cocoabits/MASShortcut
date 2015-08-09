@@ -109,6 +109,7 @@
 
     // Just deleting the old shortcut
     if (newShortcut == nil) {
+        [_shortcuts removeObjectForKey:key];
         return;
     }
 
