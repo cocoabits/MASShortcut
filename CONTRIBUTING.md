@@ -1,3 +1,11 @@
+# Backward Compatibility
+
+Please note that this framework supports older OS X versions down to 10.6. When changing the code, be careful not to call any API functions not available in 10.6 or call them conditionally, only where supported.
+
+# Commit Messages
+
+Please use descriptive commit message. As an example, _Bug fix_ commit message doesn’t say much, while _Fixed a memory-management bug in formatting code_ works much better.
+
 # How to Release a New Version
 
 First, update the version numbers. (MASShortcut uses [Semantic Versioning](http://semver.org/), so please read the docs if you’re not sure what the deal is.) The version number is stored in `Framework/Info.plist` and `MASShortcut.podspec` (twice in both files).
