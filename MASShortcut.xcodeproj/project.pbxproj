@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2CAB131B8332E5005431FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D2CAB151B8332E5005431FC /* Localizable.strings */; };
+		0D2CAB191B8339F4005431FC /* MASLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2CAB171B8339F4005431FC /* MASLocalization.h */; };
+		0D2CAB1A1B8339F4005431FC /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2CAB181B8339F4005431FC /* MASLocalization.m */; };
+		0D2CAB1B1B83409C005431FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2CAB1D1B83409C005431FC /* MainMenu.xib */; };
+		0D2CAB211B834464005431FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D2CAB231B834464005431FC /* Localizable.strings */; };
 		0D39DCA21A668A4400639145 /* MASHotKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D39DCA11A668A4400639145 /* MASHotKeyTests.m */; };
 		0D39DCA41A668E5500639145 /* MASShortcutMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */; };
 		0D827CD71990D4420010B8EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD61990D4420010B8EF /* Cocoa.framework */; };
@@ -17,7 +22,6 @@
 		0D827D381990D5E70010B8EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD61990D4420010B8EF /* Cocoa.framework */; };
 		0D827D6F1990D6110010B8EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D6A1990D6110010B8EF /* AppDelegate.m */; };
 		0D827D711990D6110010B8EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D6D1990D6110010B8EF /* main.m */; };
-		0D827D721990D6110010B8EF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D827D6E1990D6110010B8EF /* MainMenu.xib */; };
 		0D827D731990D6590010B8EF /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; };
 		0D827D751990D6A60010B8EF /* MASShortcut.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0D827CD31990D4420010B8EF /* MASShortcut.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0D827D771990F81E0010B8EF /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827D761990F81E0010B8EF /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +70,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D2CAB141B8332E5005431FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D2CAB161B8332EE005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D2CAB171B8339F4005431FC /* MASLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
+		0D2CAB181B8339F4005431FC /* MASLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
+		0D2CAB1C1B83409C005431FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D2CAB1E1B8340A4005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = cs.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D2CAB221B834464005431FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D2CAB241B834467005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D39DCA11A668A4400639145 /* MASHotKeyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASHotKeyTests.m; path = Framework/MASHotKeyTests.m; sourceTree = "<group>"; };
 		0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitorTests.m; path = Framework/MASShortcutMonitorTests.m; sourceTree = "<group>"; };
 		0D827CD31990D4420010B8EF /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,9 +96,8 @@
 		0D827D6B1990D6110010B8EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D827D6C1990D6110010B8EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		0D827D6D1990D6110010B8EF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0D827D6E1990D6110010B8EF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0D827D761990F81E0010B8EF /* Shortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
-		0D827D8319910AFF0010B8EF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D827D8319910AFF0010B8EF /* MASShortcutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASShortcutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D827D8719910AFF0010B8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D827D8D19910AFF0010B8EF /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		0D827D9319910B740010B8EF /* MASShortcutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutTests.m; path = Framework/MASShortcutTests.m; sourceTree = "<group>"; };
@@ -154,7 +165,7 @@
 			children = (
 				0D827CD31990D4420010B8EF /* MASShortcut.framework */,
 				0D827D371990D5E70010B8EF /* Demo.app */,
-				0D827D8319910AFF0010B8EF /* Tests.xctest */,
+				0D827D8319910AFF0010B8EF /* MASShortcutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 				0D827DA119912A6D0010B8EF /* UI */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
 				EAFFDC811AACFF3300F38834 /* MASShortcut.modulemap */,
+				0D2CAB151B8332E5005431FC /* Localizable.strings */,
 				0D827D98199110F60010B8EF /* Prefix.pch */,
 				0D827D761990F81E0010B8EF /* Shortcut.h */,
 			);
@@ -188,9 +200,10 @@
 		0D827D681990D6110010B8EF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0D2CAB231B834464005431FC /* Localizable.strings */,
 				0D827D691990D6110010B8EF /* AppDelegate.h */,
 				0D827D6A1990D6110010B8EF /* AppDelegate.m */,
-				0D827D6E1990D6110010B8EF /* MainMenu.xib */,
+				0D2CAB1D1B83409C005431FC /* MainMenu.xib */,
 				0D827D6B1990D6110010B8EF /* Info.plist */,
 				0D827D6C1990D6110010B8EF /* Prefix.pch */,
 				0D827D6D1990D6110010B8EF /* main.m */,
@@ -224,6 +237,8 @@
 		0D827DA119912A6D0010B8EF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0D2CAB171B8339F4005431FC /* MASLocalization.h */,
+				0D2CAB181B8339F4005431FC /* MASLocalization.m */,
 				0D827D211990D55E0010B8EF /* MASShortcutView.h */,
 				0D827D221990D55E0010B8EF /* MASShortcutView.m */,
 				0DC2F19619938EFA003A0131 /* MASShortcutView+Bindings.h */,
@@ -274,6 +289,7 @@
 				0DC2F18D1993708A003A0131 /* MASDictionaryTransformer.h in Headers */,
 				0D827DA519912D240010B8EF /* MASShortcutMonitor.h in Headers */,
 				0D827DAD199132840010B8EF /* MASShortcutBinder.h in Headers */,
+				0D2CAB191B8339F4005431FC /* MASLocalization.h in Headers */,
 				0DC2F17619922798003A0131 /* MASHotKey.h in Headers */,
 				0D827D771990F81E0010B8EF /* Shortcut.h in Headers */,
 			);
@@ -333,7 +349,7 @@
 			);
 			name = MASShortcutTests;
 			productName = Tests;
-			productReference = 0D827D8319910AFF0010B8EF /* Tests.xctest */;
+			productReference = 0D827D8319910AFF0010B8EF /* MASShortcutTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -356,7 +372,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				cs,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -375,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D2CAB131B8332E5005431FC /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +399,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D827D721990D6110010B8EF /* MainMenu.xib in Resources */,
+				0D2CAB1B1B83409C005431FC /* MainMenu.xib in Resources */,
+				0D2CAB211B834464005431FC /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +424,7 @@
 				0D827D2C1990D55E0010B8EF /* MASShortcutView.m in Sources */,
 				0D827D261990D55E0010B8EF /* MASShortcut.m in Sources */,
 				0DC2F18E1993708A003A0131 /* MASDictionaryTransformer.m in Sources */,
+				0D2CAB1A1B8339F4005431FC /* MASLocalization.m in Sources */,
 				0DC2F19919938EFA003A0131 /* MASShortcutView+Bindings.m in Sources */,
 				0DC2F17D199232F7003A0131 /* MASShortcutBinder.m in Sources */,
 			);
@@ -441,6 +460,36 @@
 			targetProxy = 0D827D8E19910AFF0010B8EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D2CAB151B8332E5005431FC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D2CAB141B8332E5005431FC /* en */,
+				0D2CAB161B8332EE005431FC /* cs */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		0D2CAB1D1B83409C005431FC /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D2CAB1C1B83409C005431FC /* en */,
+				0D2CAB1E1B8340A4005431FC /* cs */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0D2CAB231B834464005431FC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D2CAB221B834464005431FC /* en */,
+				0D2CAB241B834467005431FC /* cs */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0D827CF91990D4420010B8EF /* Debug */ = {
