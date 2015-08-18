@@ -7,7 +7,7 @@ Some time ago Cocoa developers used a brilliant framework [ShortcutRecorder](htt
 
 The MASShortcut project introduces a modern API and user interface for recording, storing and using system-wide keyboard shortcuts.
 
-![Screenshot of the demo project](/Demo/screenshot.png?raw=true "This is how the demo looks like")
+![Screenshot of the demo project](https://raw.githubusercontent.com/shpakovski/MASShortcut/master/Demo/screenshot.png "This is how the demo looks like")
 
 Features:
 
