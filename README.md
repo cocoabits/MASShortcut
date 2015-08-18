@@ -37,7 +37,7 @@ If you want to stick to the 1.x branch, you can use the version smart match oper
 
     pod 'MASShortcut', '~> 1'
 
-Or can use Git submodules and link against the MASShortcut framework.
+You can also install via [Carthage](https://github.com/Carthage/Carthage), or you can use Git submodules and link against the MASShortcut framework manually.
 
 # Usage
 
