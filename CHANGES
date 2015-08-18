@@ -1,7 +1,9 @@
-unreleased yet
+2.2.0 2015/8/18
     - Basic accessibility support [starkos]
     - Added an option to hide the shortcut delete button [oreshinya]
-    - Added support for Carthage [Tom Brown]
+    - Advertised support for Carthage [Tom Brown]
+    - Bugfix for shortcuts not working after set twice [Roman Sokolov]
+    - Ignore a solo Tab key when recording shortcuts [Roman Sokolov]
 
 2.1.2 2015/1/28
     - Better key equivalent handling for non-ASCII layouts.
