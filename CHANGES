@@ -1,3 +1,6 @@
+2.3.1 2015/9/10
+    - Trying to work around a strange build error in CocoaPods.
+
 2.3.0 2015/9/10
     - Basic localization support for Czech, German, Spanish,
       Italian, French, and Japanese. Native speaking testers welcome!
