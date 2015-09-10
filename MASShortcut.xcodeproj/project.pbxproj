@@ -80,6 +80,11 @@
 		0D2CAB241B834467005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D39DCA11A668A4400639145 /* MASHotKeyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASHotKeyTests.m; path = Framework/MASHotKeyTests.m; sourceTree = "<group>"; };
 		0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitorTests.m; path = Framework/MASShortcutMonitorTests.m; sourceTree = "<group>"; };
+		0D58DE521BA165FC0023BFBE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D58DE531BA166170023BFBE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D58DE541BA166270023BFBE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D58DE551BA166390023BFBE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D58DE561BA166420023BFBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D827CD31990D4420010B8EF /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D827CD61990D4420010B8EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0D827CD91990D4420010B8EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -373,6 +378,11 @@
 			knownRegions = (
 				en,
 				cs,
+				de,
+				es,
+				it,
+				fr,
+				ja,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -467,6 +477,11 @@
 			children = (
 				0D2CAB141B8332E5005431FC /* en */,
 				0D2CAB161B8332EE005431FC /* cs */,
+				0D58DE521BA165FC0023BFBE /* de */,
+				0D58DE531BA166170023BFBE /* es */,
+				0D58DE541BA166270023BFBE /* it */,
+				0D58DE551BA166390023BFBE /* fr */,
+				0D58DE561BA166420023BFBE /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
