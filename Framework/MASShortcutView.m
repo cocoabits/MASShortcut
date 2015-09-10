@@ -1,5 +1,6 @@
 #import "MASShortcutView.h"
 #import "MASShortcutValidator.h"
+#import "MASLocalization.h"
 
 NSString *const MASShortcutBinding = @"shortcutValue";
 
