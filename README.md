@@ -19,11 +19,11 @@ Features:
 * Mac App Store friendly
 * Works on OS X 10.6 and up
 * Hacking-friendly codebase covered with tests
-* Basic accessibility support
 
-Important features currently missing:
+Partially done:
 
-* Localisation
+* Accessibility support. There’s some basic accessibility code, testers and feedback welcome.
+* Localisation. The English and Czech localization should be complete, there’s basic support for German, French, Spanish, Italian, and Japanese. If you’re a native speaker in one of the mentioned languages, please test the localization and report issues or add missing strings.
 
 Pull requests welcome :)
 
