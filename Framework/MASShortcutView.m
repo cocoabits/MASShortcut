@@ -138,6 +138,12 @@ static const CGFloat MASButtonFontSize = 11;
     [self setNeedsDisplay:YES];
 
     // Give VoiceOver users feedback on the result. Requires at least 10.9 to run.
+    // We’re silencing the “tautological compare” warning here so that if someone
+    // takes the naked source files and compiles them with -Wall, the following
+    // NSAccessibilityPriorityKey comparison doesn’t cause a warning. See:
+    // https://github.com/shpakovski/MASShortcut/issues/76
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wtautological-compare"
     if (_recording == NO && (&NSAccessibilityPriorityKey != NULL)) {
         NSString* msg = _shortcutValue ?
                          MASLocalizedString(@"Shortcut set", @"VoiceOver: Shortcut set") :
@@ -148,6 +154,7 @@ static const CGFloat MASButtonFontSize = 11;
         };
         NSAccessibilityPostNotificationWithUserInfo(self, NSAccessibilityAnnouncementRequestedNotification, announcementInfo);
     }
+    #pragma clang diagnostic pop
 }
 
 - (void)setShortcutValue:(MASShortcut *)shortcutValue
