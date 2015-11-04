@@ -6,12 +6,13 @@
 // and the Localized.strings file won’t be bundled correctly.
 // See https://github.com/shpakovski/MASShortcut/issues/74
 NSString *MASLocalizedString(NSString *key, NSString *comment) {
-    NSBundle *frameworkBundle = nil;
-#ifdef COCOAPODS
-    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"MASShortcut" withExtension:@"bundle"];
-    frameworkBundle = [NSBundle bundleWithURL:bundleURL];
-#else
-    frameworkBundle = [NSBundle bundleForClass:[MASShortcut class]];
-#endif
-    return [frameworkBundle localizedStringForKey:key value:@"XXX" table:@"Localizable"];
+    static NSBundle *localizationBundle = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSURL *cocoaPodsBundleURL = [[NSBundle mainBundle] URLForResource:@"MASShortcut" withExtension:@"bundle"];
+        localizationBundle = cocoaPodsBundleURL ?
+            [NSBundle bundleWithURL:cocoaPodsBundleURL] :
+            [NSBundle bundleForClass:[MASShortcut class]];
+    });
+    return [localizationBundle localizedStringForKey:key value:@"XXX" table:@"Localizable"];
 }
