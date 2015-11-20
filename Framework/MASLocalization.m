@@ -13,25 +13,20 @@ NSString *MASLocalizedString(NSString *key, NSString *comment) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSBundle *frameworkBundle = [NSBundle bundleForClass:[MASShortcut class]];
-        NSURL *cocoaPodsBundleURL = [[NSBundle mainBundle] URLForResource:@"MASShortcut" withExtension:@"bundle"];
-        if (cocoaPodsBundleURL) {
-            NSBundle *cocoaPodsBundle = [NSBundle bundleWithURL:cocoaPodsBundleURL];
-            NSString *testingString = [cocoaPodsBundle
-                localizedStringForKey:@"Cancel"
-                value:MASPlaceholderLocalizationString
-                table:MASLocalizationTableName];
-            if (![testingString isEqualToString:MASPlaceholderLocalizationString]) {
-                // We have a CocoaPods bundle and it works, use it.
-                localizationBundle = cocoaPodsBundle;
-            } else {
-                // We have a CocoaPods bundle, but it doesn’t contain
-                // the localization files. Let’s use the framework bundle instead.
-                localizationBundle = frameworkBundle;
-            }
-        } else {
-            // CocoaPods bundle not present, use the framework bundle.
-            localizationBundle = frameworkBundle;
-        }
+		// first we'll check if resources bundle was copied to MASShortcut framework bundle when !use_frameworks option is active
+		NSURL *cocoaPodsBundleURL = [frameworkBundle URLForResource:@"MASShortcut" withExtension:@"bundle"];
+		if (cocoaPodsBundleURL) {
+			localizationBundle = [NSBundle bundleWithURL: cocoaPodsBundleURL];
+		} else {
+			// trying to fetch cocoapods bundle from main bundle
+			cocoaPodsBundleURL = [[NSBundle mainBundle] URLForResource: @"MASShortcut" withExtension:@"bundle"];
+			if (cocoaPodsBundleURL) {
+				localizationBundle = [NSBundle bundleWithURL: cocoaPodsBundleURL];
+			} else {
+				// fallback to framework bundle
+				localizationBundle = frameworkBundle;
+			}
+		}
     });
     return [localizationBundle localizedStringForKey:key
         value:MASPlaceholderLocalizationString
