@@ -1,9 +1,23 @@
 #import "MASShortcut.h"
 
+/**
+ This class is used by the recording control to tell which shortcuts are acceptable.
+
+ There are two kinds of shortcuts that are not considered acceptable: shortcuts that
+ are too simple (like single letter keys) and shortcuts that are already used by the
+ operating system.
+*/
 @interface MASShortcutValidator : NSObject
 
-// The following API enable hotkeys with the Option key as the only modifier
-// For example, Option-G will not generate © and Option-R will not paste ®
+/**
+ Set to `YES` if you want to accept Option-something shortcuts.
+
+ `NO` by default, since Option-something shortcuts are often used by system,
+ for example Option-G will type the © sign. This also applies to Option-Shift
+ shortcuts – in other words, shortcut recorder will not accept shortcuts like
+ Option-Shift-K by default. (Again, since Option-Shift-K inserts the Apple
+ logo sign by default.)
+*/
 @property(assign) BOOL allowAnyShortcutWithOptionModifier;
 
 + (instancetype) sharedValidator;
