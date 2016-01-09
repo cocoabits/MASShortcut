@@ -1,4 +1,4 @@
-not released yet
+2.3.3 2016/1/9
     - Improved Japanese localization [oreshinya]
     - Improved Frech localization [magiclantern]
     - Fixed CocoaPods localization with use_frameworks! [nivanchikov]
