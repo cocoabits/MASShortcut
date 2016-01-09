@@ -1,6 +1,7 @@
 not released yet
     - Improved Japanese localization [oreshinya]
     - Improved Frech localization [magiclantern]
+    - Fixed CocoaPods localization with use_frameworks! [nivanchikov]
 
 2.3.2 2015/10/12
     - Fixed localization when building through CocoaPods [Allan Beaufour]
