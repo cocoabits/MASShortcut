@@ -32,7 +32,7 @@
 "This combination cannot be used because it is already used by a system-wide keyboard shortcut.\nIf you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Diese Kombination kann nicht genutzt werden, weil sie bereits als systemweiter Kurzbefehl genutzt wird.\nFalls du diese Tastenkombination wirklich benutzen willst, können die meisten Kurzbefehle in den Tastatur Systemeinstellungen geändert werden.";
 
 /* Message for alert when shortcut is already used */
-"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Dieser Kurzbefehl kann nicht genutzt werden, weil er bereits vom Menüpunkt ‘%@’ genutzt wird.";
+"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Dieser Kurzbefehl kann nicht genutzt werden, weil er bereits vom Menüpunkt „%@“ genutzt wird.";
 
 /* VoiceOver shortcut help */
 "To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Drücke diesen Button, um einen neuen Kurzbefehl aufzunehmen. Tippe dann den neuen Kurzbefehl oder drücke Löschen, um den aktuellen Kurzbefehl zu löschen.";
