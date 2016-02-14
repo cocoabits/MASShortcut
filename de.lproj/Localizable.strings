@@ -38,10 +38,10 @@
 "To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Drücke diesen Button, um einen neuen Kurzbefehl aufzunehmen. Tippe dann den neuen Kurzbefehl oder drücke Löschen, um den aktuellen Kurzbefehl zu löschen.";
 
 /* Non-empty shortcut button in recording state */
-"Type New Shortcut" = "Neuen Kurzbefehl eingeben";
+"Type New Shortcut" = "Neuen eingeben";
 
 /* Empty shortcut button in recording state */
 "Type Shortcut" = "Kurzbefehl eingeben";
 
 /* Cancel action button for non-empty shortcut in recording state */
-"Use Old Shortcut" = "Alten Kurzbefehl nutzen";
+"Use Old Shortcut" = "Alten nutzen";
