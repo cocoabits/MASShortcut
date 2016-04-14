@@ -123,6 +123,10 @@
 		0DC2F19619938EFA003A0131 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		0DC2F19719938EFA003A0131 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
 		0DEDAA021C6BB479001605F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EA6034E1CBF822000A3ED9C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EA6034F1CBF822800A3ED9C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EA603501CBF822D00A3ED9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EA603511CBF823600A3ED9C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A0597D1C51DC940014B271 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		76A0597E1C51DC9F0014B271 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAFFDC811AACFF3300F38834 /* MASShortcut.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = MASShortcut.modulemap; path = Framework/MASShortcut.modulemap; sourceTree = "<group>"; };
@@ -389,6 +393,10 @@
 				ja,
 				"zh-Hans",
 				"zh-Hant",
+				pl,
+				ko,
+				ru,
+				nl,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -490,6 +498,10 @@
 				0D58DE561BA166420023BFBE /* ja */,
 				76A0597D1C51DC940014B271 /* zh-Hans */,
 				76A0597E1C51DC9F0014B271 /* zh-Hant */,
+				6EA6034E1CBF822000A3ED9C /* pl */,
+				6EA6034F1CBF822800A3ED9C /* ko */,
+				6EA603501CBF822D00A3ED9C /* ru */,
+				6EA603511CBF823600A3ED9C /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
