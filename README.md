@@ -39,6 +39,8 @@ If you want to stick to the 1.x branch, you can use the version smart match oper
 
 You can also install via [Carthage](https://github.com/Carthage/Carthage), or you can use Git submodules and link against the MASShortcut framework manually.
 
+To build from the command line, type 'make release'. The framework will be created in a temporary directory and revealed in Finder when the build is complete.
+
 # Usage
 
 I hope, it is really easy:
