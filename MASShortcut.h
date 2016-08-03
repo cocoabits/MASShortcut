@@ -10,7 +10,7 @@
     (cocoaFlags & NSShiftKeyMask ? shiftKey : 0))
 
 // These glyphs are missed in Carbon.h
-enum {
+typedef enum {
     kMASShortcutGlyphEject = 0x23CF,
     kMASShortcutGlyphClear = 0x2715,
 	kMASShortcutGlyphDeleteLeft = 0x232B,
