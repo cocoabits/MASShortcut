@@ -4,7 +4,7 @@ Please note that this framework supports older OS X versions down to 10.6. When
 
 # Commit Messages
 
-Please use descriptive commit message. As an example, _Bug fix_ commit message doesn’t say much, while _Fixed a memory-management bug in formatting code_ works much better.
+Please use descriptive commit message. As an example, _Bug fix_ commit message doesn’t say much, while _Fix a memory-management bug in formatting code_ works much better. A [nice detailed article about writing commit messages](http://chris.beams.io/posts/git-commit/) is also available.
 
 # How to Release a New Version
 
