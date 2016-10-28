@@ -10,7 +10,7 @@
 //
 // It should be safe to remove this whole thing once the 10.12 SDK is ubiquitous.
 
-#if __MAC_OS_X_VERSION_MAX_ALLOWED < __MAC_10_12
+#if __MAC_OS_X_VERSION_MAX_ALLOWED < 101200
 #define NSEventModifierFlagCommand  NSCommandKeyMask
 #define NSEventModifierFlagControl  NSControlKeyMask
 #define NSEventModifierFlagOption   NSAlternateKeyMask
