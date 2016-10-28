@@ -1,6 +1,6 @@
 #import <Carbon/Carbon.h>
 #import <AppKit/AppKit.h>
-#import "MASKeyCodes.h"
+#import "MASKeyMasks.h"
 
 // These glyphs are missed in Carbon.h
 enum {
