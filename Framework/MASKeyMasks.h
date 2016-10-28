@@ -1,3 +1,5 @@
+#import <Availability.h>
+
 // https://github.com/shpakovski/MASShortcut/issues/99
 //
 // Long story short: NSControlKeyMask and friends were replaced with NSEventModifierFlagControl
@@ -7,8 +9,8 @@
 // since it breaks the build on older SDKs – in Travis, for example.
 //
 // It should be safe to remove this whole thing once the 10.12 SDK is ubiquitous.
-//
-#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12
+
+#if __MAC_OS_X_VERSION_MAX_ALLOWED < 1012
 #define NSEventModifierFlagCommand  NSCommandKeyMask
 #define NSEventModifierFlagControl  NSControlKeyMask
 #define NSEventModifierFlagOption   NSAlternateKeyMask

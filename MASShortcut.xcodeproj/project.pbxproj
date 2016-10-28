@@ -33,7 +33,7 @@
 		0D827D9F19911A190010B8EF /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827D9D19911A190010B8EF /* MASShortcutValidator.m */; };
 		0D827DA519912D240010B8EF /* MASShortcutMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827DA319912D240010B8EF /* MASShortcutMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D827DAD199132840010B8EF /* MASShortcutBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D827DAB199132840010B8EF /* MASShortcutBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0DA8BCFC1DC37D8000C96EB9 /* MASKeyMasks.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA8BCFB1DC37D8000C96EB9 /* MASKeyMasks.h */; };
+		0DA8BCFC1DC37D8000C96EB9 /* MASKeyMasks.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA8BCFB1DC37D8000C96EB9 /* MASKeyMasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DC2F17619922798003A0131 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DC2F17419922798003A0131 /* MASHotKey.h */; };
 		0DC2F17719922798003A0131 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F17519922798003A0131 /* MASHotKey.m */; };
 		0DC2F17C199232EA003A0131 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D827DA419912D240010B8EF /* MASShortcutMonitor.m */; };
@@ -296,6 +296,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA8BCFC1DC37D8000C96EB9 /* MASKeyMasks.h in Headers */,
 				0D827D9719910FF70010B8EF /* MASKeyCodes.h in Headers */,
 				0D827D2B1990D55E0010B8EF /* MASShortcutView.h in Headers */,
 				0D827D99199110F60010B8EF /* Prefix.pch in Headers */,
@@ -303,7 +304,6 @@
 				0DC2F19819938EFA003A0131 /* MASShortcutView+Bindings.h in Headers */,
 				0D827D9E19911A190010B8EF /* MASShortcutValidator.h in Headers */,
 				0DC2F18D1993708A003A0131 /* MASDictionaryTransformer.h in Headers */,
-				0DA8BCFC1DC37D8000C96EB9 /* MASKeyMasks.h in Headers */,
 				0D827DA519912D240010B8EF /* MASShortcutMonitor.h in Headers */,
 				0D827DAD199132840010B8EF /* MASShortcutBinder.h in Headers */,
 				0D2CAB191B8339F4005431FC /* MASLocalization.h in Headers */,
