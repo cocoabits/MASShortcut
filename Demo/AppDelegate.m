@@ -83,7 +83,7 @@ static void *MASObservingContext = &MASObservingContext;
 
 - (void) setHardcodedShortcutEnabled: (BOOL) enabled
 {
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSCommandKeyMask];
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_F2 modifierFlags:NSEventModifierFlagCommand];
     if (enabled) {
         [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
             [self playShortcutFeedback];
