@@ -1,3 +1,6 @@
+2.3.6 2016/10/30
+    - Improve compatibility with the 10.12 SDK [thanks to Clemens Schulz]
+
 2.3.5 2016/9/7
     - Improve Italian localization [zoul]
 
