@@ -8,7 +8,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 #pragma mark Initialization
 
-- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
+- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSEventModifierFlags)flags
 {
     self = [super init];
     if (self) {
@@ -18,7 +18,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return self;
 }
 
-+ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
++ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSEventModifierFlags)flags
 {
     return [[self alloc] initWithKeyCode:code modifierFlags:flags];
 }

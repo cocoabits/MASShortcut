@@ -23,7 +23,7 @@
 
  Same as in `NSEvent`: `NSCommandKeyMask`, `NSAlternateKeyMask`, etc.
 */
-@property (nonatomic, readonly) NSUInteger modifierFlags;
+@property (nonatomic, readonly) NSEventModifierFlags modifierFlags;
 
 /**
  Same as `keyCode`, just a different type.
@@ -68,8 +68,8 @@
 */
 @property (nonatomic, readonly) NSString *modifierFlagsString;
 
-- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
-+ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags;
+- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSEventModifierFlags)flags;
++ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSEventModifierFlags)flags;
 
 /**
  Creates a new shortcut from an `NSEvent` object.
