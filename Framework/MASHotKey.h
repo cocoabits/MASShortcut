@@ -1,5 +1,7 @@
 #import "MASShortcut.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern FourCharCode const MASHotKeySignature;
 
 @interface MASHotKey : NSObject
@@ -7,6 +9,8 @@ extern FourCharCode const MASHotKeySignature;
 @property(readonly) UInt32 carbonID;
 @property(copy) dispatch_block_t action;
 
-+ (instancetype) registeredHotKeyWithShortcut: (MASShortcut*) shortcut;
++ (nullable instancetype) registeredHotKeyWithShortcut: (MASShortcut*) shortcut;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -1,5 +1,7 @@
 #import "MASKeyCodes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  A model class to hold a key combination.
 
@@ -79,3 +81,5 @@
 + (instancetype)shortcutWithEvent:(NSEvent *)anEvent;
 
 @end
+
+NS_ASSUME_NONNULL_END

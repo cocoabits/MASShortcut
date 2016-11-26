@@ -1,5 +1,7 @@
 @class MASShortcut, MASShortcutValidator;
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString *const MASShortcutBinding;
 
 typedef NS_ENUM(NSInteger, MASShortcutViewStyle) {
@@ -11,11 +13,11 @@ typedef NS_ENUM(NSInteger, MASShortcutViewStyle) {
 
 @interface MASShortcutView : NSView
 
-@property (nonatomic, strong) MASShortcut *shortcutValue;
+@property (nonatomic, strong, nullable) MASShortcut *shortcutValue;
 @property (nonatomic, strong) MASShortcutValidator *shortcutValidator;
 @property (nonatomic, getter = isRecording) BOOL recording;
 @property (nonatomic, getter = isEnabled) BOOL enabled;
-@property (nonatomic, copy) void (^shortcutValueChange)(MASShortcutView *sender);
+@property (nonatomic, copy, nullable) void (^shortcutValueChange)(MASShortcutView *sender);
 @property (nonatomic, assign) MASShortcutViewStyle style;
 
 /// Returns custom class for drawing control.
@@ -24,3 +26,5 @@ typedef NS_ENUM(NSInteger, MASShortcutViewStyle) {
 - (void)setAcceptsFirstResponder:(BOOL)value;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -1,5 +1,7 @@
 #import "MASShortcutMonitor.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Binds actions to user defaults keys.
 
@@ -37,7 +39,7 @@
  binder is to work with `MASShortcutView`, both object have to use the same storage
  format.
 */
-@property(copy) NSDictionary *bindingOptions;
+@property(copy, nullable) NSDictionary *bindingOptions;
 
 /**
  Binds given action to a shortcut stored under the given defaults key.
@@ -62,6 +64,8 @@
  keyboard shortcuts. The shortcuts will be transformed according to
  `bindingOptions` and registered using `registerDefaults`.
 */
-- (void) registerDefaultShortcuts: (NSDictionary*) defaultShortcuts;
+- (void) registerDefaultShortcuts: (NSDictionary<NSString *, MASShortcut *>*) defaultShortcuts;
 
 @end
+
+NS_ASSUME_NONNULL_END

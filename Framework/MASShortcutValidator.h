@@ -1,5 +1,7 @@
 #import "MASShortcut.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  This class is used by the recording control to tell which shortcuts are acceptable.
 
@@ -22,8 +24,10 @@
 
 + (instancetype) sharedValidator;
 
-- (BOOL) isShortcutValid: (MASShortcut*) shortcut;
-- (BOOL) isShortcut: (MASShortcut*) shortcut alreadyTakenInMenu: (NSMenu*) menu explanation: (NSString**) explanation;
-- (BOOL) isShortcutAlreadyTakenBySystem: (MASShortcut*) shortcut explanation: (NSString**) explanation;
+- (BOOL) isShortcutValid: (nullable MASShortcut*) shortcut;
+- (BOOL) isShortcut: (MASShortcut*) shortcut alreadyTakenInMenu: (NSMenu*) menu explanation: (NSString * __autoreleasing __nullable * __nullable) explanation;
+- (BOOL) isShortcutAlreadyTakenBySystem: (MASShortcut*) shortcut explanation: (NSString * __autoreleasing __nullable * __nullable) explanation;
 
 @end
+
+NS_ASSUME_NONNULL_END

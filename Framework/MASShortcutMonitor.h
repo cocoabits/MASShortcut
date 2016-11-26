@@ -1,5 +1,7 @@
 #import "MASShortcut.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Executes action when a shortcut is pressed.
 
@@ -25,3 +27,5 @@
 - (void) unregisterAllShortcuts;
 
 @end
+
+NS_ASSUME_NONNULL_END
