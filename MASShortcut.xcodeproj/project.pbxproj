@@ -125,6 +125,8 @@
 		0DC2F19619938EFA003A0131 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		0DC2F19719938EFA003A0131 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
 		0DEDAA021C6BB479001605F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		57B25C2D1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		57B25C2E1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA6034E1CBF822000A3ED9C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA6034F1CBF822800A3ED9C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA603501CBF822D00A3ED9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				ko,
 				ru,
 				nl,
+				pt,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -506,6 +509,7 @@
 				6EA6034F1CBF822800A3ED9C /* ko */,
 				6EA603501CBF822D00A3ED9C /* ru */,
 				6EA603511CBF823600A3ED9C /* nl */,
+				57B25C2D1E78E06D0061A9EC /* pt */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -526,6 +530,7 @@
 				0D2CAB241B834467005431FC /* cs */,
 				ED8737791BCE459800BB1716 /* ja */,
 				0DEDAA021C6BB479001605F5 /* de */,
+				57B25C2E1E78E06D0061A9EC /* pt */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
