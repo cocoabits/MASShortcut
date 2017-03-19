@@ -185,10 +185,10 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     unichar chars[4];
     NSUInteger count = 0;
     // These are in the same order as the menu manager shows them
-    if (self.modifierFlags & NSControlKeyMask) chars[count++] = kControlUnicode;
-    if (self.modifierFlags & NSAlternateKeyMask) chars[count++] = kOptionUnicode;
-    if (self.modifierFlags & NSShiftKeyMask) chars[count++] = kShiftUnicode;
-    if (self.modifierFlags & NSCommandKeyMask) chars[count++] = kCommandUnicode;
+    if (self.modifierFlags & NSEventModifierFlagControl) chars[count++] = kControlUnicode;
+    if (self.modifierFlags & NSEventModifierFlagOption) chars[count++] = kOptionUnicode;
+    if (self.modifierFlags & NSEventModifierFlagShift) chars[count++] = kShiftUnicode;
+    if (self.modifierFlags & NSEventModifierFlagCommand) chars[count++] = kCommandUnicode;
     return (count ? [NSString stringWithCharacters:chars length:count] : @"");
 }
 
