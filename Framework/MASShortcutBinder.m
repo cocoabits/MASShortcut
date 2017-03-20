@@ -1,5 +1,6 @@
 #import "MASShortcutBinder.h"
 #import "MASShortcut.h"
+#import "MASSettings.h"
 
 @interface MASShortcutBinder ()
 @property(strong) NSMutableDictionary *actions;
@@ -47,7 +48,7 @@
         @"Illegal character in binding name (“ ”), please see http://git.io/x5YS.");
     [_actions setObject:[action copy] forKey:defaultsKeyName];
     [self bind:defaultsKeyName
-        toObject:[NSUserDefaultsController sharedUserDefaultsController]
+        toObject:[MASSettings userDefaultsController]
         withKeyPath:[@"values." stringByAppendingString:defaultsKeyName]
         options:_bindingOptions];
 }
@@ -74,7 +75,7 @@
 
     [defaultShortcuts enumerateKeysAndObjectsUsingBlock:^(NSString *defaultsKey, MASShortcut *shortcut, BOOL *stop) {
         id value = [transformer reverseTransformedValue:shortcut];
-        [[NSUserDefaults standardUserDefaults] registerDefaults:@{defaultsKey:value}];
+        [[MASSettings userDefaults] registerDefaults:@{defaultsKey:value}];
     }];
 }
 

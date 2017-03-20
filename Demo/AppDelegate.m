@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "MASSettings.h"
 
 static NSString *const MASCustomShortcutKey = @"customShortcut";
 static NSString *const MASCustomShortcutEnabledKey = @"customShortcutEnabled";
@@ -17,7 +18,7 @@ static void *MASObservingContext = &MASObservingContext;
 {
     [super awakeFromNib];
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [MASSettings userDefaults];
 
 	// Most apps need default shortcut, delete these lines if this is not your case
 	MASShortcut *firstLaunchShortcut = [MASShortcut shortcutWithKeyCode:kVK_F1 modifierFlags:NSEventModifierFlagCommand];

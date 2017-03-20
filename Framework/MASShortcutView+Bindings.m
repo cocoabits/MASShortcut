@@ -1,4 +1,5 @@
 #import "MASShortcutView+Bindings.h"
+#import "MASSettings.h"
 
 @implementation MASShortcutView (Bindings)
 
@@ -32,7 +33,7 @@
         nil;
 
     [self bind:MASShortcutBinding
-        toObject:[NSUserDefaultsController sharedUserDefaultsController]
+        toObject:[MASSettings userDefaultsController]
         withKeyPath:[@"values." stringByAppendingString:newKey]
         options:options];
 }

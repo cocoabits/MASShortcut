@@ -6,3 +6,4 @@
 #import "MASDictionaryTransformer.h"
 #import "MASShortcutView.h"
 #import "MASShortcutView+Bindings.h"
+#import "MASSettings.h"
