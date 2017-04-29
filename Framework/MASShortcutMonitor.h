@@ -10,7 +10,12 @@
 @interface MASShortcutMonitor : NSObject
 
 - (instancetype) init __unavailable;
+- (instancetype) initWithKeyUp;
 + (instancetype) sharedMonitor;
++ (instancetype) sharedMonitorWithKeyUp;
+
+- (OSStatus) installEventHandlersWithKeyup: (BOOL) keyUp;
+- (OSStatus) installEventHandlers: (int) itemCount withEventTypeSpecs: (EventTypeSpec *) eventTypeSpecs;
 
 /**
  Register a shortcut along with an action.
