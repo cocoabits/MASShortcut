@@ -132,7 +132,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
         case kVK_ANSI_KeypadClear: return NSStringFromMASKeyCode(kMASShortcutGlyphPadClear);
         case kVK_ANSI_KeypadDivide: return @"/";
         case kVK_ANSI_KeypadEnter: return NSStringFromMASKeyCode(kMASShortcutGlyphReturn);
-        case kVK_ANSI_KeypadMinus: return @"–";
+        case kVK_ANSI_KeypadMinus: return @"-";
         case kVK_ANSI_KeypadEquals: return @"=";
             
         // Hardcode
