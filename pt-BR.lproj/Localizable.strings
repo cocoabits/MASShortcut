@@ -1,0 +1,50 @@
+/* (No Commment) */
+"Cancel" = "Cancelar";
+
+/* (No Commment) */
+"Click to record new shortcut" = "Clique para gravar o atalho";
+
+/* (No Commment) */
+"Delete shortcut" = "Apagar atalho";
+
+/* (No Commment) */
+"OK" = "OK";
+
+/* (No Commment) */
+"Record Shortcut" = "Gravar Atalho";
+
+/* (No Commment) */
+"Shortcut cleared" = "Atalho limpo";
+
+/* (No Commment) */
+"Shortcut set" = "Atalho definido";
+
+/* (No Commment) */
+"Space" = "Espaço";
+
+/* (No Commment) */
+"The key combination %@ cannot be used" = "A combinação de teclas “%@” não pode ser usada";
+
+/* (No Commment) */
+"This combination cannot be used because it is already used by a system-wide keyboard shortcut.
+If you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Esta combinação não pode ser usada porque ela já é usada por um atalho global do sistema.
+A maioria dos atalhos pode ser alterada no painel Teclado das Preferências do Sistema, caso realmente queira usar esta combinação.";
+
+/* (No Commment) */
+"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Este atalho não pode ser usado porque ele já é usado pelo item de menu “%@”.";
+
+/* (No Commment) */
+"To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Para gravar um atalho novo, clique neste botão e digite o novo atalho ou pressione apagar para limpar o atalho existente.";
+
+/* (No Commment) */
+"Type New Shortcut" = "Digite o atalho";
+
+/* (No Commment) */
+"Type Shortcut" = "Digite o atalho";
+
+/* (No Commment) */
+"Use Old Shortcut" = "Usar atalho antigo";
+
+/* (No Commment) */
+"keyboard shortcut" = "atalho de teclado";
+

@@ -127,6 +127,7 @@
 		0DC2F19619938EFA003A0131 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		0DC2F19719938EFA003A0131 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
 		0DEDAA021C6BB479001605F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		137123E51F0684CC008FB4E0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		13B2DA7D1E7BE7EC00D438D2 /* MASSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASSettings.h; path = Framework/MASSettings.h; sourceTree = "<group>"; };
 		13B2DA7E1E7BE7EC00D438D2 /* MASSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASSettings.m; path = Framework/MASSettings.m; sourceTree = "<group>"; };
 		57B25C2D1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -517,7 +518,8 @@
 				6EA6034F1CBF822800A3ED9C /* ko */,
 				6EA603501CBF822D00A3ED9C /* ru */,
 				6EA603511CBF823600A3ED9C /* nl */,
-				57B25C2D1E78E06D0061A9EC /* pt */,
+                57B25C2D1E78E06D0061A9EC /* pt */,
+				137123E51F0684CC008FB4E0 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
