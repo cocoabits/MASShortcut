@@ -5,6 +5,8 @@ FourCharCode const MASHotKeySignature = 'MASS';
 @interface MASHotKey ()
 @property(assign) EventHotKeyRef hotKeyRef;
 @property(assign) UInt32 carbonID;
+@property(assign) UInt32 carbonKeyCode;
+@property(assign) UInt32 carbonFlags;
 @end
 
 @implementation MASHotKey
@@ -16,14 +18,11 @@ FourCharCode const MASHotKeySignature = 'MASS';
     static UInt32 CarbonHotKeyID = 0;
 
     _carbonID = ++CarbonHotKeyID;
-    EventHotKeyID hotKeyID = { .signature = MASHotKeySignature, .id = _carbonID };
-
-    OSStatus status = RegisterEventHotKey([shortcut carbonKeyCode], [shortcut carbonFlags],
-        hotKeyID, GetEventDispatcherTarget(), 0, &_hotKeyRef);
-
-    if (status != noErr) {
+    _carbonKeyCode = [shortcut carbonKeyCode];
+    _carbonFlags = [shortcut carbonFlags];
+    
+    if (![self activate])
         return nil;
-    }
 
     return self;
 }
@@ -35,6 +34,20 @@ FourCharCode const MASHotKeySignature = 'MASS';
 
 - (void) dealloc
 {
+    [self deactivate];
+}
+
+- (BOOL) activate {
+    if (_hotKeyRef)
+        return YES;
+    
+    EventHotKeyID hotKeyID = { .signature = MASHotKeySignature, .id = _carbonID };
+    OSStatus status = RegisterEventHotKey(_carbonKeyCode, _carbonFlags, hotKeyID,
+                                          GetEventDispatcherTarget(), 0, &_hotKeyRef);
+    return status == noErr;
+}
+
+- (void) deactivate {
     if (_hotKeyRef) {
         UnregisterEventHotKey(_hotKeyRef);
         _hotKeyRef = NULL;
