@@ -16,9 +16,14 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 {
     self = [super init];
     [self setHotKeys:[NSMutableDictionary dictionary]];
-    EventTypeSpec hotKeyPressedSpec = { .eventClass = kEventClassKeyboard, .eventKind = kEventHotKeyPressed };
+    EventTypeSpec eventTypeSpecs[2] = {
+        { .eventClass = kEventClassKeyboard, .eventKind = kEventHotKeyPressed },
+        { .eventClass = kEventClassKeyboard, .eventKind = kEventHotKeyReleased }
+    };
+    
     OSStatus status = InstallEventHandler(GetEventDispatcherTarget(), MASCarbonEventCallback,
-        1, &hotKeyPressedSpec, (__bridge void*)self, &_eventHandlerRef);
+                                          2, eventTypeSpecs,
+                                          (__bridge void*)self, &_eventHandlerRef);
     if (status != noErr) {
         return nil;
     }
@@ -47,9 +52,15 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 - (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action
 {
+    [self registerShortcut:shortcut withAction:action onKeyUp:nil];
+}
+
+- (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action onKeyUp: (dispatch_block_t) actionUp
+{
     MASHotKey *hotKey = [MASHotKey registeredHotKeyWithShortcut:shortcut];
     if (hotKey) {
         [hotKey setAction:action];
+        [hotKey setActionUp:actionUp];
         [_hotKeys setObject:hotKey forKey:shortcut];
         return YES;
     } else {
@@ -91,7 +102,9 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
     [_hotKeys enumerateKeysAndObjectsUsingBlock:^(MASShortcut *shortcut, MASHotKey *hotKey, BOOL *stop) {
         if (hotKeyID.id == [hotKey carbonID]) {
             if ([hotKey action]) {
-                dispatch_async(dispatch_get_main_queue(), [hotKey action]);
+                dispatch_block_t action = (GetEventKind(event) == kEventHotKeyReleased) ? [hotKey actionUp] : [hotKey action];
+                if (action)
+                    dispatch_async(dispatch_get_main_queue(), action);
             }
             *stop = YES;
         }

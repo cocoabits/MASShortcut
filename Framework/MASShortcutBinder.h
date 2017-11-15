@@ -48,6 +48,14 @@
 - (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action;
 
 /**
+ Binds given actions to a shortcut stored under the given defaults key.
+ 
+ In other words, no matter what shortcut you store under the given key,
+ pressing it will always trigger the given action.
+ */
+- (void) bindShortcutWithDefaultsKey: (NSString*) defaultsKeyName toAction: (dispatch_block_t) action onKeyUp: (dispatch_block_t) actionUp;
+
+/**
  Disconnect the binding between user defaults and action.
 
  In other words, the shortcut stored under the given key will no longer trigger an action.
