@@ -52,7 +52,7 @@ static OSStatus MASCarbonEventCallback(EventHandlerCallRef, EventRef, void*);
 
 - (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action
 {
-    [self registerShortcut:shortcut withAction:action onKeyUp:nil];
+    return [self registerShortcut:shortcut withAction:action onKeyUp:nil];
 }
 
 - (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action onKeyUp: (dispatch_block_t) actionUp
