@@ -135,6 +135,7 @@
 		76A0597E1C51DC9F0014B271 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAFFDC811AACFF3300F38834 /* MASShortcut.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = MASShortcut.modulemap; path = Framework/MASShortcut.modulemap; sourceTree = "<group>"; };
 		ED8737791BCE459800BB1716 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FDFF016F20CB2FB400CC88F3 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +405,7 @@
 				ru,
 				nl,
 				pt,
+				sv,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -510,6 +512,7 @@
 				6EA603501CBF822D00A3ED9C /* ru */,
 				6EA603511CBF823600A3ED9C /* nl */,
 				57B25C2D1E78E06D0061A9EC /* pt */,
+				FDFF016F20CB2FB400CC88F3 /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
