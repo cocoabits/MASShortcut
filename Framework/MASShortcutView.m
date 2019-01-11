@@ -175,6 +175,13 @@ static const CGFloat MASButtonFontSize = 11;
     [self setNeedsDisplay:YES];
 }
 
+#pragma mark - Appearance
+
+- (BOOL)allowsVibrancy
+{
+	return YES;
+}
+
 #pragma mark - Drawing
 
 - (BOOL)isFlipped
