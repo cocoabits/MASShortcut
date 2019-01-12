@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="101000" identifier="macosx"/>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -812,7 +812,7 @@
                     </visualEffectView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="139.5" y="422"/>
+            <point key="canvasLocation" x="140" y="398"/>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
