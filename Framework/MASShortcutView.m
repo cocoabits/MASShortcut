@@ -554,11 +554,6 @@ void *kUserDataHint = &kUserDataHint;
 
 #pragma mark - Accessibility
 
-- (BOOL)accessibilityIsIgnored
-{
-    return NO;
-}
-
 - (NSString *)accessibilityHelp
 {
     return MASLocalizedString(@"To record a new shortcut, click this button, and then type the"
