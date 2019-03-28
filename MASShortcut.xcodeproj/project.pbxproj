@@ -77,7 +77,6 @@
 		0D2CAB161B8332EE005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D2CAB171B8339F4005431FC /* MASLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
 		0D2CAB181B8339F4005431FC /* MASLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
-		0D2CAB1C1B83409C005431FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0D2CAB1E1B8340A4005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = cs.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0D2CAB221B834464005431FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0D2CAB241B834467005431FC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -130,6 +129,7 @@
 		137123E51F0684CC008FB4E0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		13B2DA7D1E7BE7EC00D438D2 /* MASSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MASSettings.h; path = Framework/MASSettings.h; sourceTree = "<group>"; };
 		13B2DA7E1E7BE7EC00D438D2 /* MASSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MASSettings.m; path = Framework/MASSettings.m; sourceTree = "<group>"; };
+		33788751224CC9C600FACF1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		57B25C2D1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		57B25C2E1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA6034E1CBF822000A3ED9C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 		0D827CCA1990D4420010B8EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Vadim Shpakovski";
 				TargetAttributes = {
 					0D827D8219910AFF0010B8EF = {
@@ -396,7 +396,7 @@
 			};
 			buildConfigurationList = 0D827CCD1990D4420010B8EF /* Build configuration list for PBXProject "MASShortcut" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -414,6 +414,8 @@
 				nl,
 				pt,
 				sv,
+				"pt-BR",
+				Base,
 			);
 			mainGroup = 0D827CC91990D4420010B8EF;
 			productRefGroup = 0D827CD41990D4420010B8EF /* Products */;
@@ -530,8 +532,8 @@
 		0D2CAB1D1B83409C005431FC /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0D2CAB1C1B83409C005431FC /* en */,
 				0D2CAB1E1B8340A4005431FC /* cs */,
+				33788751224CC9C600FACF1D /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
