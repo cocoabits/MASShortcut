@@ -24,7 +24,7 @@ static const CGFloat MASButtonFontSize = 11;
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
-	BOOL _acceptsFirstResponder;
+    BOOL _acceptsFirstResponder;
 }
 
 #pragma mark -
@@ -60,7 +60,7 @@ static const CGFloat MASButtonFontSize = 11;
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
     _showsDeleteButton = YES;
-	_acceptsFirstResponder = NO;
+    _acceptsFirstResponder = NO;
     [self resetShortcutCellStyle];
 }
 
@@ -78,6 +78,7 @@ static const CGFloat MASButtonFontSize = 11;
         _enabled = flag;
         [self updateTrackingAreas];
         self.recording = NO;
+        [self invalidateIntrinsicContentSize];
         [self setNeedsDisplay:YES];
     }
 }
@@ -87,6 +88,7 @@ static const CGFloat MASButtonFontSize = 11;
     if (_style != newStyle) {
         _style = newStyle;
         [self resetShortcutCellStyle];
+        [self invalidateIntrinsicContentSize];
         [self setNeedsDisplay:YES];
     }
 }
@@ -135,6 +137,7 @@ static const CGFloat MASButtonFontSize = 11;
     [self resetToolTips];
     [self activateEventMonitoring:_recording];
     [self activateResignObserver:_recording];
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
 
     // Give VoiceOver users feedback on the result. Requires at least 10.9 to run.
@@ -161,6 +164,7 @@ static const CGFloat MASButtonFontSize = 11;
 {
     _shortcutValue = shortcutValue;
     [self resetToolTips];
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
     [self propagateValue:shortcutValue forBinding:MASShortcutBinding];
 
@@ -172,6 +176,7 @@ static const CGFloat MASButtonFontSize = 11;
 - (void)setShortcutPlaceholder:(NSString *)shortcutPlaceholder
 {
     _shortcutPlaceholder = shortcutPlaceholder.copy;
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
 }
 
@@ -179,7 +184,7 @@ static const CGFloat MASButtonFontSize = 11;
 
 - (BOOL)allowsVibrancy
 {
-	return YES;
+    return YES;
 }
 
 #pragma mark - Drawing
@@ -260,6 +265,25 @@ static const CGFloat MASButtonFontSize = 11;
         }
     }
 }
+
+
+- (NSSize)intrinsicContentSize
+{
+    NSSize cellSize = _shortcutCell.cellSize;
+
+    // Use a "fake" value for width.  Since determining the actual width requires information
+    // that is not determined until drawRect: is called, it doesn't seem feasible to properly
+    // calculate the intrinsic size without refactoring the code.  That would give better results,
+    // however.
+
+    // 120 is an arbitray number that seems to be wide enough for English localization.  This
+    // may need to be adjusted for other locales/languages.
+
+    // NOTE:  Simply returning cellSize results in a display that is sometimes correct
+    // and sometimes not, and changes based on whether the mouse is hovering or not.
+    return NSMakeSize(120, cellSize.height);
+}
+
 
 #pragma mark - Mouse handling
 
@@ -351,6 +375,7 @@ static const CGFloat MASButtonFontSize = 11;
 {
     if (_hinting != flag) {
         _hinting = flag;
+        [self invalidateIntrinsicContentSize];
         [self setNeedsDisplay:YES];
     }
 }
@@ -586,22 +611,24 @@ void *kUserDataHint = &kUserDataHint;
 
 - (BOOL)acceptsFirstResponder
 {
-	return _acceptsFirstResponder;
+    return _acceptsFirstResponder;
 }
 
 - (void)setAcceptsFirstResponder:(BOOL)value
 {
-	_acceptsFirstResponder = value;
+    _acceptsFirstResponder = value;
 }
 
 - (BOOL)becomeFirstResponder
 {
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
     return [super becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder
 {
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
     return [super resignFirstResponder];
 }
