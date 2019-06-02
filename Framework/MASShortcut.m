@@ -8,7 +8,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 #pragma mark Initialization
 
-- (instancetype)initWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
+- (instancetype)initWithKeyCode:(NSInteger)code modifierFlags:(NSEventModifierFlags)flags
 {
     self = [super init];
     if (self) {
@@ -18,7 +18,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     return self;
 }
 
-+ (instancetype)shortcutWithKeyCode:(NSUInteger)code modifierFlags:(NSUInteger)flags
++ (instancetype)shortcutWithKeyCode:(NSInteger)code modifierFlags:(NSEventModifierFlags)flags
 {
     return [[self alloc] initWithKeyCode:code modifierFlags:flags];
 }
@@ -211,7 +211,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-    [coder encodeInteger:(self.keyCode != NSNotFound ? (NSInteger)self.keyCode : - 1) forKey:MASShortcutKeyCode];
+    [coder encodeInteger:(self.keyCode != NSNotFound ? self.keyCode : - 1) forKey:MASShortcutKeyCode];
     [coder encodeInteger:(NSInteger)self.modifierFlags forKey:MASShortcutModifierFlags];
 }
 
@@ -220,7 +220,7 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
     self = [super init];
     if (self) {
         NSInteger code = [decoder decodeIntegerForKey:MASShortcutKeyCode];
-        _keyCode = (code < 0 ? NSNotFound : (NSUInteger)code);
+        _keyCode = (code < 0) ? NSNotFound : code;
         _modifierFlags = [decoder decodeIntegerForKey:MASShortcutModifierFlags];
     }
     return self;
