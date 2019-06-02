@@ -466,7 +466,7 @@ void *kUserDataHint = &kUserDataHint;
             else {
                 // Verify possible shortcut
                 if (shortcut.keyCodeString.length > 0) {
-                    if ([weakSelf.shortcutValidator isShortcutValid:shortcut]) {
+                    if (!weakSelf.shortcutValidator || [weakSelf.shortcutValidator isShortcutValid:shortcut]) {
                         // Verify that shortcut is not used
                         NSString *explanation = nil;
                         if ([weakSelf.shortcutValidator isShortcutAlreadyTakenBySystem:shortcut explanation:&explanation]) {
