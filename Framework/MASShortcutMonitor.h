@@ -19,6 +19,13 @@
  It may burn your house or cut your fingers. You have been warned.
 */
 - (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action;
+/**
+ Register a shortcut along with an actions.
+ 
+ Attempting to insert an already registered shortcut probably won’t work.
+ It may burn your house or cut your fingers. You have been warned.
+ */
+- (BOOL) registerShortcut: (MASShortcut*) shortcut withAction: (dispatch_block_t) action onKeyUp: (dispatch_block_t) actionUp;
 - (BOOL) isShortcutRegistered: (MASShortcut*) shortcut;
 
 - (void) unregisterShortcut: (MASShortcut*) shortcut;
