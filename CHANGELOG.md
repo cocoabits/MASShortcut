@@ -2,6 +2,17 @@ Details about this file’s format at <http://keepachangelog.com/>. The change l
 
 ## [Unreleased]
 
+- Use properly typedef’d enumerations to improve Swift syntax [Tony Arnold]
+- Fix return from a NSToolTip method that expects a non-null return value [Tony Arnold]
+- Brazilian Portuguese localization [vitu]
+- `kVK_ANSI_KeypadMinus` fixes [Vyacheslav Dubovitsky]
+- Swedish localization [Pavel Kozárek]
+- Provide intrinsicContenSize to improve compatibility with autolayout [Fletcher T. Penney]
+- Allow app extension API only for the framework target [zoul]
+- Make it possible to turn off shortcut validation [zoul]
+- Use more specific types for -keyCode and -modifierFlags [zoul]
+- Use NSEvent constants instead of hard-coded numbers [zoul]
+
 ## [2.3.6] - 2016-10-30
 - Improve compatibility with the 10.12 SDK [thanks to Clemens Schulz]
 
@@ -17,7 +28,7 @@ Details about this file’s format at <http://keepachangelog.com/>. The change l
 ## [2.3.3] - 2016-1-9
 - Improved Japanese localization [oreshinya]
 - Improved Frech localization [magiclantern]
-- Fixed CocoaPods localization with use_frameworks! [nivanchikov]
+- Fixed CocoaPods localization with `use_frameworks!` [nivanchikov]
 
 ## [2.3.2] - 2015-10-12
 - Fixed localization when building through CocoaPods [Allan Beaufour]
