@@ -13,5 +13,8 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+.bundle
+Fastlane/README.md
+Fastlane/report.xml
 # Finder
 .DS_Store
