@@ -1,0 +1,34 @@
+desc "Make a new release: Bump version number, update changelog and commit & tag the changes"
+lane :release do |options|
+
+    # Make sure we don't commit any work-in-progress with the release
+    ensure_git_status_clean
+
+    # Read the release type from command-line arguments, default to patch
+    release_type = options[:type] ? options[:type] : "patch"
+
+    # Bump version number
+    increment_version_number(bump_type: release_type)
+    version_number = get_version_number(target: "MASShortcut")
+    increment_build_number(build_number: version_number)
+
+    # Update changelog with the version number and release date
+    stamp_changelog(section_identifier: version_number)
+    git_add(path: 'CHANGELOG.md')
+
+    # Update CocoaPods version
+    version_bump_podspec(path: "MASShortcut.podspec", bump_type: release_type)
+    git_add(path: 'MASShortcut.podspec')
+
+    # Commit and tag the release
+    commit_version_bump(
+        message: "Release #{version_number}",
+        xcodeproj: "MASShortcut.xcodeproj",
+        force: true)
+    add_git_tag(tag: version_number)
+end
+
+desc "Push podspec to CocoaPods trunk"
+lane :trunk do |options|
+    pod_push
+end
