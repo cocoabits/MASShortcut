@@ -172,6 +172,7 @@
 			children = (
 				0D827D151990D4D70010B8EF /* Framework */,
 				0D827D8519910AFF0010B8EF /* Test Support */,
+				0DBA0B9C22A4F88C008685CD /* Resources */,
 				0D827D681990D6110010B8EF /* Demo */,
 				0D827CD51990D4420010B8EF /* Frameworks */,
 				0D827CD41990D4420010B8EF /* Products */,
@@ -208,7 +209,6 @@
 				0D827DA119912A6D0010B8EF /* UI */,
 				0D827D2F1990D5640010B8EF /* Info.plist */,
 				EAFFDC811AACFF3300F38834 /* MASShortcut.modulemap */,
-				0D2CAB151B8332E5005431FC /* Localizable.strings */,
 				0D827D98199110F60010B8EF /* Prefix.pch */,
 				0D827D761990F81E0010B8EF /* Shortcut.h */,
 			);
@@ -277,6 +277,14 @@
 				0D39DCA31A668E5500639145 /* MASShortcutMonitorTests.m */,
 			);
 			name = Monitoring;
+			sourceTree = "<group>";
+		};
+		0DBA0B9C22A4F88C008685CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0D2CAB151B8332E5005431FC /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		0DC2F18A19937060003A0131 /* User Defaults Storage */ = {
@@ -391,6 +399,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				cs,
 				de,

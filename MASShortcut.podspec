@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.exclude_files         = 'Framework/*Tests.m'
   s.osx.frameworks        = 'Carbon', 'AppKit'
   s.requires_arc          = true
-  s.osx.resource_bundles  = { 'MASShortcut' => ['*.lproj'] }
+  s.osx.resource_bundles  = { 'MASShortcut' => ['Resources/*.lproj'] }
 end
