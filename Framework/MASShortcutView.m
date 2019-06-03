@@ -1,5 +1,6 @@
 #import "MASShortcutView.h"
 #import "MASShortcutValidator.h"
+#import "MASShortcutMonitor.h"
 #import "MASLocalization.h"
 
 NSString *const MASShortcutBinding = @"shortcutValue";
@@ -139,6 +140,7 @@ static const CGFloat MASButtonFontSize = 11;
     [self activateResignObserver:_recording];
     [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
+    [[MASShortcutMonitor sharedMonitor] setShortcut:[self shortcutValue] active:!flag];
 
     // Give VoiceOver users feedback on the result. Requires at least 10.9 to run.
     // We’re silencing the “tautological compare” warning here so that if someone
