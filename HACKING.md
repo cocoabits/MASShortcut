@@ -1,6 +1,6 @@
 # Backward Compatibility
 
-Please note that this framework supports older OS X versions down to 10.6. When changing the code, be careful not to call any API functions not available in 10.6 or call them conditionally, only where supported.
+Please note that this framework supports older OS X versions down to 10.10. When changing the code, be careful not to call any API functions not available in 10.10 or call them conditionally, only where supported.
 
 # Commit Messages
 
