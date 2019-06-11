@@ -2,6 +2,8 @@ Details about this file’s format at <http://keepachangelog.com/>. The change l
 
 ## [Unreleased]
 
+## [2.4.0] - 2019-06-11
+
 - Use properly typedef’d enumerations to improve Swift syntax [Tony Arnold]
 - Fix return from a NSToolTip method that expects a non-null return value [Tony Arnold]
 - Brazilian Portuguese localization [vitu]
