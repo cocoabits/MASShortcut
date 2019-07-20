@@ -16,14 +16,9 @@
 
 - (void) setAssociatedUserDefaultsKey: (NSString*) newKey withTransformer: (NSValueTransformer*) transformer
 {
-    // Break previous binding if any
-    NSString *currentKey = [self associatedUserDefaultsKey];
-    if (currentKey != nil) {
-        [self unbind:currentKey];
-    }
-
-    // Stop if the new binding is nil
+    // Break previous binding if the new binding is nil
     if (newKey == nil) {
+        [self unbind:MASShortcutBinding];
         return;
     }
 
