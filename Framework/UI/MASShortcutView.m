@@ -441,7 +441,7 @@ void *kUserDataHint = &kUserDataHint;
             MASShortcut *shortcut = [MASShortcut shortcutWithEvent:event];
 
             // Tab key must pass through.
-            if (shortcut.keyCode == kVK_Tab){
+            if (shortcut.keyCode == kVK_Tab && !self.allowTabs){
                 return event;
             }
 
