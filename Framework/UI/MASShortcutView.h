@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, MASShortcutViewStyle) {
 @property (nonatomic, getter = isEnabled) BOOL enabled;
 @property (nonatomic, copy, nullable) void (^shortcutValueChange)(MASShortcutView * _Nonnull sender);
 @property (nonatomic, assign) MASShortcutViewStyle style;
+@property (nonatomic, assign) BOOL allowTabs;
 
 /// Returns custom class for drawing control.
 + (nonnull Class)shortcutCellClass;
