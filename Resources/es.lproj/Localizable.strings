@@ -8,19 +8,19 @@
 "Delete shortcut" = "Borrar atajo";
 
 /* VoiceOver title */
-"keyboard shortcut" = "atajo de teclado";
+"keyboard shortcut" = "función rápida de teclado";
 
 /* Alert button when shortcut is already used */
 "OK" = "OK";
 
 /* Empty shortcut button in normal state */
-"Record Shortcut" = "Grabar atajo";
+"Record Shortcut" = "Grabar Función rápida";
 
 /* VoiceOver: Shortcut cleared */
-"Shortcut cleared" = "Atajo borrado";
+"Shortcut cleared" = "Función rápida eliminada";
 
 /* VoiceOver: Shortcut set */
-"Shortcut set" = "Atajo creado";
+"Shortcut set" = "Función rápida creada";
 
 /* Shortcut glyph name for SPACE key */
 "Space" = "Espacio";
@@ -29,19 +29,19 @@
 "The key combination %@ cannot be used" = "La combinación de teclas %@ no puede ser utilizada";
 
 /* Message for alert when shortcut is already used by the system */
-"This combination cannot be used because it is already used by a system-wide keyboard shortcut.\nIf you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Esta combinación no puede ser utilizar debido a que es un atajo del sistema.\nSi realmente desea utilizar esta combinación de teclas, la mayoría de los atajos se puede cambiar en el panel de Teclado y Ratón en las Preferencias del Sistema.";
+"This combination cannot be used because it is already used by a system-wide keyboard shortcut.\nIf you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Esta combinación no puede ser utilizar debido a que es una función rápida del sistema.\nSi realmente desea utilizar esta combinación de teclas, la mayoría de las funciones rápidas se puede cambiar en el Panel de Teclado en las Preferencias del sistema.";
 
 /* Message for alert when shortcut is already used */
-"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Este atajo no se puede utilizar debido a que ya es utilizado por el elemento de menú '%@'.";
+"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Esta función rápida no se puede utilizar debido a que ya está siendo utilizada por el elemento de menú '%@'.";
 
 /* VoiceOver shortcut help */
-"To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Para grabar un nuevo atajo, haga clic en este botón, y luego teclee el nuevo atajo, o pulse borrar para quitar un atajo existente.";
+"To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Para grabar una nueva función rápida, haga clic en este botón, y luego teclee la nueva función rápida, o pulse borrar para quitar una función rápida existente.";
 
 /* Non-empty shortcut button in recording state */
-"Type New Shortcut" = "Teclee el nuevo atajo";
+"Type New Shortcut" = "Teclee la nueva función rápida";
 
 /* Empty shortcut button in recording state */
-"Type Shortcut" = "Teclee atajo";
+"Type Shortcut" = "Teclee la función rápida";
 
 /* Cancel action button for non-empty shortcut in recording state */
-"Use Old Shortcut" = "Usar un atajo previo";
+"Use Old Shortcut" = "Usar una función rápida previa";
