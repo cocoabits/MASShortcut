@@ -2,25 +2,25 @@
 "Cancel" = "Annulla";
 
 /* Tooltip for non-empty shortcut button */
-"Click to record new shortcut" = "Cliccare per registrare una nuova combinazione";
+"Click to record new shortcut" = "Fai clic per registrare una nuova abbreviazione";
 
 /* Tooltip for hint button near the non-empty shortcut */
-"Delete shortcut" = "Cancella scorciatoia";
+"Delete shortcut" = "Cancella abbreviazione";
 
 /* VoiceOver title */
-"keyboard shortcut" = "Scorciatoia da tastiera";
+"keyboard shortcut" = "Abbreviazione da tastiera";
 
 /* Alert button when shortcut is already used */
 "OK" = "OK";
 
 /* Empty shortcut button in normal state */
-"Record Shortcut" = "Registra scorciatoia";
+"Record Shortcut" = "Registra abbreviazione";
 
 /* VoiceOver: Shortcut cleared */
-"Shortcut cleared" = "Scorciatoia rimossa";
+"Shortcut cleared" = "Abbreviazione rimossa";
 
 /* VoiceOver: Shortcut set */
-"Shortcut set" = "Scorciatoia impostata";
+"Shortcut set" = "Abbreviazione impostata";
 
 /* Shortcut glyph name for SPACE key */
 "Space" = "Spazio";
@@ -29,19 +29,19 @@
 "The key combination %@ cannot be used" = "Questa combinazione %@ di tasti non può essere usata";
 
 /* Message for alert when shortcut is already used by the system */
-"This combination cannot be used because it is already used by a system-wide keyboard shortcut.\nIf you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Questa combinazione di tasti non può essere usata perchè è già usata da una scorciatoia da tastiera a livello di Sistema.\nSe volete davvero usare questa combinazione di tasti, la maggior parte delle scorciatoie possono essere cambiate nel pannello Tastiera e Mouse delle Preferenze di Sistema.";
+"This combination cannot be used because it is already used by a system-wide keyboard shortcut.\nIf you really want to use this key combination, most shortcuts can be changed in the Keyboard & Mouse panel in System Preferences." = "Questa combinazione di tasti non può essere usata perché già assegnata a un'abbreviazione da tastiera a livello di Sistema.\nSe vuoi davvero usare questa combinazione di tasti, puoi modificare la maggior parte delle abbreviazioni nei pannelli Tastiera e Mouse delle Preferenze di Sistema.";
 
 /* Message for alert when shortcut is already used */
-"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Questa combinazione di tasti non può essere usata perchè è già usata dalla voce di menù ‘%@’.";
+"This shortcut cannot be used because it is already used by the menu item ‘%@’." = "Questa combinazione di tasti non può essere usata perché già usata dalla voce di menu ‘%@’.";
 
 /* VoiceOver shortcut help */
-"To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Per registrare una nuova scorciatoia, cliccare su questo pulsante e poi inserire la muova scorciatoia o premere cancella per resettare una scorciatoia esistente.";
+"To record a new shortcut, click this button, and then type the new shortcut, or press delete to clear an existing shortcut." = "Per registrare una nuova abbreviazione fai clic su questo pulsante, quindi inserisci i tasti della nuova abbreviazione o premi cancella per ripristinare un'abbreviazione esistente.";
 
 /* Non-empty shortcut button in recording state */
-"Type New Shortcut" = "Digita nuova";
+"Type New Shortcut" = "Digita nuova abbreviazione";
 
 /* Empty shortcut button in recording state */
-"Type Shortcut" = "Digita scorciatoia";
+"Type Shortcut" = "Digita abbreviazione";
 
 /* Cancel action button for non-empty shortcut in recording state */
-"Use Old Shortcut" = "Usare vecchia";
+"Use Old Shortcut" = "Usa abbreviazione precedente";
