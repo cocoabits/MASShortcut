@@ -114,6 +114,10 @@ static const CGFloat MASButtonFontSize = 11;
             _shortcutCell.bordered = NO;
             break;
         }
+        case MASShortcutViewStyleRegularSquare: {
+            _shortcutCell.bezelStyle = NSBezelStyleRegularSquare;
+            break;
+        }
     }
 }
 
@@ -201,24 +205,21 @@ static const CGFloat MASButtonFontSize = 11;
     _shortcutCell.state = state;
     _shortcutCell.enabled = self.enabled;
 
+    CGFloat yOffset;
+
     switch (_style) {
-        case MASShortcutViewStyleDefault: {
-            [_shortcutCell drawWithFrame:frame inView:self];
+        case MASShortcutViewStyleTexturedRect:
+        case MASShortcutViewStyleRounded:
+        case MASShortcutViewStyleRegularSquare: {
+            yOffset = 1.0;
             break;
         }
-        case MASShortcutViewStyleTexturedRect: {
-            [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
+        default:
+            yOffset = 0.0;
             break;
-        }
-        case MASShortcutViewStyleRounded: {
-            [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, 1.0) inView:self];
-            break;
-        }
-        case MASShortcutViewStyleFlat: {
-            [_shortcutCell drawWithFrame:frame inView:self];
-            break;
-        }
     }
+
+    [_shortcutCell drawWithFrame:CGRectOffset(frame, 0.0, yOffset) inView:self];
 }
 
 - (void)drawRect:(CGRect)dirtyRect

@@ -6,7 +6,8 @@ typedef NS_ENUM(NSInteger, MASShortcutViewStyle) {
     MASShortcutViewStyleDefault = 0,  // Height = 19 px
     MASShortcutViewStyleTexturedRect, // Height = 25 px
     MASShortcutViewStyleRounded,      // Height = 43 px
-    MASShortcutViewStyleFlat
+    MASShortcutViewStyleFlat,
+    MASShortcutViewStyleRegularSquare
 };
 
 @interface MASShortcutView : NSView
