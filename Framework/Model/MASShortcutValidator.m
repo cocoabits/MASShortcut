@@ -31,12 +31,12 @@
     if (!hasModifierFlags) return NO;
 
     // Allow any hotkey containing Control or Command modifier
-    BOOL includesCommand = ((modifiers & NSCommandKeyMask) > 0);
-    BOOL includesControl = ((modifiers & NSControlKeyMask) > 0);
+    BOOL includesCommand = ((modifiers & NSEventModifierFlagCommand) > 0);
+    BOOL includesControl = ((modifiers & NSEventModifierFlagControl) > 0);
     if (includesCommand || includesControl) return YES;
 
     // Allow Option key only in selected cases
-    BOOL includesOption = ((modifiers & NSAlternateKeyMask) > 0);
+    BOOL includesOption = ((modifiers & NSEventModifierFlagOption) > 0);
     if (includesOption) {
 
         // Always allow Option-Space and Option-Escape because they do not have any bind system commands
@@ -64,7 +64,7 @@
         // Check if the cases are different, we know ours is lower and that shift is included in our modifiers
         // If theirs is capitol, we need to add shift to their modifiers
         if (equalHotkeyLowercase && ![menuItem.keyEquivalent isEqualToString:keyEquivalent]) {
-            equalFlags = (MASPickCocoaModifiers(menuItem.keyEquivalentModifierMask | NSShiftKeyMask) == flags);
+            equalFlags = (MASPickCocoaModifiers(menuItem.keyEquivalentModifierMask | NSEventModifierFlagShift) == flags);
         }
         
         if (equalFlags && equalHotkeyLowercase) {

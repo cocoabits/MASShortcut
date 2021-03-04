@@ -13,7 +13,7 @@
 - (void) testShortcutRegistration
 {
     MASShortcutMonitor *monitor = [MASShortcutMonitor sharedMonitor];
-    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_H modifierFlags:NSCommandKeyMask|NSAlternateKeyMask];
+    MASShortcut *shortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_H modifierFlags:NSEventModifierFlagCommand|NSEventModifierFlagOption];
     XCTAssertTrue([monitor registerShortcut:shortcut withAction:NULL], @"Register a shortcut.");
     XCTAssertTrue([monitor isShortcutRegistered:shortcut], @"Remember a previously registered shortcut.");
     [monitor unregisterShortcut:shortcut];
