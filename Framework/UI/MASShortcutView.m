@@ -55,7 +55,7 @@ static const CGFloat MASButtonFontSize = 11;
 - (void)commonInit
 {
     _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
-    _shortcutCell.buttonType = NSPushOnPushOffButton;
+    _shortcutCell.buttonType = NSButtonTypePushOnPushOff;
     _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:MASButtonFontSize];
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
@@ -97,15 +97,15 @@ static const CGFloat MASButtonFontSize = 11;
 {
     switch (_style) {
         case MASShortcutViewStyleDefault: {
-            _shortcutCell.bezelStyle = NSRoundRectBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleRoundRect;
             break;
         }
         case MASShortcutViewStyleTexturedRect: {
-            _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleTexturedRounded;
             break;
         }
         case MASShortcutViewStyleRounded: {
-            _shortcutCell.bezelStyle = NSRoundedBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleRounded;
             break;
         }
         case MASShortcutViewStyleFlat: {
@@ -232,7 +232,7 @@ static const CGFloat MASButtonFontSize = 11;
             buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphClear);
         }
         if (buttonTitle != nil) {
-            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSRightTextAlignment state:NSOffState];
+            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSTextAlignmentRight state:NSControlStateValueOff];
         }
         CGRect shortcutRect;
         [self getShortcutRect:&shortcutRect hintRect:NULL];
@@ -243,12 +243,12 @@ static const CGFloat MASButtonFontSize = 11;
                                  ? self.shortcutPlaceholder
                                  : MASLocalizedString(@"Type New Shortcut", @"Non-empty shortcut button in recording state")))
                            : _shortcutValue ? _shortcutValue.description : @"");
-        [self drawInRect:shortcutRect withTitle:title alignment:NSCenterTextAlignment state:self.isRecording ? NSOnState : NSOffState];
+        [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:self.isRecording ? NSControlStateValueOff: NSControlStateValueOff];
     }
     else {
         if (self.recording)
         {
-            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSRightTextAlignment state:NSOffState];
+            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSTextAlignmentRight state:NSControlStateValueOff];
             
             CGRect shortcutRect;
             [self getShortcutRect:&shortcutRect hintRect:NULL];
@@ -257,12 +257,12 @@ static const CGFloat MASButtonFontSize = 11;
                                : (self.shortcutPlaceholder.length > 0
                                   ? self.shortcutPlaceholder
                                   : MASLocalizedString(@"Type Shortcut", @"Empty shortcut button in recording state")));
-            [self drawInRect:shortcutRect withTitle:title alignment:NSCenterTextAlignment state:NSOnState];
+            [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:NSControlStateValueOn];
         }
         else
         {
             [self drawInRect:self.bounds withTitle:MASLocalizedString(@"Record Shortcut", @"Empty shortcut button in normal state")
-                   alignment:NSCenterTextAlignment state:NSOffState];
+                   alignment:NSTextAlignmentCenter state:NSControlStateValueOff];
         }
     }
 }
@@ -435,7 +435,7 @@ void *kUserDataHint = &kUserDataHint;
     static id eventMonitor = nil;
     if (shouldActivate) {
         __unsafe_unretained MASShortcutView *weakSelf = self;
-        NSEventMask eventMask = (NSKeyDownMask | NSFlagsChangedMask);
+        NSEventMask eventMask = (NSEventMaskKeyDown | NSEventMaskFlagsChanged);
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
             // Create a shortcut from the event
@@ -460,7 +460,7 @@ void *kUserDataHint = &kUserDataHint;
             }
 
             // If the shortcut is Cmd-W or Cmd-Q, cancel recording and pass the event through
-            else if ((shortcut.modifierFlags == NSCommandKeyMask) && (shortcut.keyCode == kVK_ANSI_W || shortcut.keyCode == kVK_ANSI_Q)) {
+            else if ((shortcut.modifierFlags == NSEventModifierFlagCommand) && (shortcut.keyCode == kVK_ANSI_W || shortcut.keyCode == kVK_ANSI_Q)) {
                 weakSelf.recording = NO;
             }
 
@@ -477,7 +477,7 @@ void *kUserDataHint = &kUserDataHint;
                             NSString *format = MASLocalizedString(@"The key combination %@ cannot be used",
                                                                  @"Title for alert when shortcut is already used");
                             NSAlert* alert = [[NSAlert alloc]init];
-                            alert.alertStyle = NSCriticalAlertStyle;
+                            alert.alertStyle = NSAlertStyleCritical;
                             alert.informativeText = explanation;
                             alert.messageText = [NSString stringWithFormat:format, shortcut];
                             [alert addButtonWithTitle:MASLocalizedString(@"OK", @"Alert button when shortcut is already used")];
