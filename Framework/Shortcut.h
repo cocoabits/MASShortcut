@@ -1,3 +1,4 @@
+#import <AppKit/AppKit.h>
 #import "MASKeyMasks.h"
 #import "MASShortcut.h"
 #import "MASShortcutValidator.h"

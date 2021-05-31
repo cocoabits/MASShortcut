@@ -18,3 +18,5 @@ Fastlane/README.md
 Fastlane/report.xml
 # Finder
 .DS_Store
+.swiftpm
+.build

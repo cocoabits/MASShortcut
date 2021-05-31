@@ -1,0 +1,1 @@
+/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/Model/MASShortcut.h
