@@ -28,8 +28,14 @@ Partially done:
 Pull requests welcome :)
 
 # Installation
+### Swift Package Manager
+[Swift Package Manager](https://swift.org/package-manager/) is the simplest way to install for Xcode projects. Simply add the following Package Dependency:
+    
+    https://github.com/sweetppro/MASShortcut
 
-You can use [CocoaPods](http://cocoapods.org/), adding the following line to your Podfile:
+
+### CocoaPods
+You can also use [CocoaPods](http://cocoapods.org/), by adding the following line to your Podfile:
 
     pod 'MASShortcut'
 
@@ -37,6 +43,7 @@ If you want to stick to the 1.x branch, you can use the version smart match oper
 
     pod 'MASShortcut', '~> 1'
 
+### Carthage
 You can also install via [Carthage](https://github.com/Carthage/Carthage), or you can use Git submodules and link against the MASShortcut framework manually.
 
 To build from the command line, type 'make release'. The framework will be created in a temporary directory and revealed in Finder when the build is complete.
@@ -46,7 +53,7 @@ To build from the command line, type 'make release'. The framework will be creat
 I hope, it is really easy:
 
 ```objective-c
-#import <MASShortcut/Shortcut.h>
+#import <Shortcut.h>
 
 // Drop a custom view into XIB, set its class to MASShortcutView
 // and its height to 19. If you select another appearance style,
@@ -65,6 +72,12 @@ self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
     toAction:^{
     // Let me know if you find a better or a more convenient API.
 }];
+```
+
+When you have installed via a method other than Swift Package Manager, then the import is slightly different:
+
+```objective-c
+#import <MASShortcut/Shortcut.h>
 ```
 
 You can see a real usage example in the Demo target. Enjoy!
@@ -121,6 +134,14 @@ _observableKeyPath = [@"values." stringByAppendingString:kPreferenceGlobalShortc
 ```
 
 # Using in Swift projects
+
+Swift Package Manager is the simplest way to import MASShortcut, just import the Module like so:
+
+```
+import MASShortcut
+```
+
+Alternatively, you can also:
 
   1. Install as a Pod using the latest CocoaPods with Swift support.
   2. Create a bridging header file [using the instructions here](http://swiftalicio.us/2014/11/using-cocoapods-from-swift/)
