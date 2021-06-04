@@ -1,5 +1,0 @@
-framework module MASShortcut {
-    umbrella header "include/Shortcut.h"
-    export *
-    module * { export * }
-}
