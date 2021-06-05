@@ -1,6 +1,7 @@
 #import "MASShortcutView.h"
 #import "MASShortcutValidator.h"
 #import "MASLocalization.h"
+#import "MASShortcutViewButtonCell.h"
 
 NSString *const MASShortcutBinding = @"shortcutValue";
 
@@ -20,7 +21,7 @@ static const CGFloat MASButtonFontSize = 11;
 #pragma mark -
 
 @implementation MASShortcutView {
-    NSButtonCell *_shortcutCell;
+    MASShortcutViewButtonCell *_shortcutCell;
     NSInteger _shortcutToolTipTag;
     NSInteger _hintToolTipTag;
     NSTrackingArea *_hintArea;
@@ -31,7 +32,7 @@ static const CGFloat MASButtonFontSize = 11;
 
 + (Class)shortcutCellClass
 {
-    return [NSButtonCell class];
+    return [MASShortcutViewButtonCell class];
 }
 
 - (id)initWithFrame:(CGRect)frameRect
