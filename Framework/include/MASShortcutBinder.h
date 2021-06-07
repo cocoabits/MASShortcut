@@ -1,1 +1,1 @@
-User\ Defaults\ Storage/MASShortcutBinder.h
+../User Defaults Storage/MASShortcutBinder.h

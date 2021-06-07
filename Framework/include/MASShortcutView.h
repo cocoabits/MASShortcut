@@ -1,1 +1,1 @@
-UI/MASShortcutView.h
+../UI/MASShortcutView.h

@@ -1,1 +1,1 @@
-UI/MASShortcutViewButtonCell.h
+../UI/MASShortcutViewButtonCell.h

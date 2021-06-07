@@ -1,1 +1,1 @@
-Model/MASShortcutValidator.h
+../Model/MASShortcutValidator.h

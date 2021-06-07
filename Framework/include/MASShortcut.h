@@ -1,1 +1,1 @@
-Model/MASShortcut.h
+../Model/MASShortcut.h
