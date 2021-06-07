@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/Monitoring/MASShortcutMonitor.h
+Monitoring/MASShortcutMonitor.h

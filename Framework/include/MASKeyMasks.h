@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/Model/MASKeyMasks.h
+Model/MASKeyMasks.h

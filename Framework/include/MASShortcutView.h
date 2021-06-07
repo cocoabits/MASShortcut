@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/UI/MASShortcutView.h
+UI/MASShortcutView.h

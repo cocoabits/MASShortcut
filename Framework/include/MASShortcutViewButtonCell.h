@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/UI/MASShortcutViewButtonCell.h
+UI/MASShortcutViewButtonCell.h

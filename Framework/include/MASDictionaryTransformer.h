@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/User Defaults Storage/MASDictionaryTransformer.h
+User\ Defaults\ Storage/MASDictionaryTransformer.h

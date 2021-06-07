@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/User Defaults Storage/MASShortcutBinder.h
+User\ Defaults\ Storage/MASShortcutBinder.h
