@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/UI/MASLocalization.h
+UI/MASLocalization.h

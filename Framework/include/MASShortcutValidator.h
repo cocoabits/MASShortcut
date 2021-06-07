@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/Model/MASShortcutValidator.h
+Model/MASShortcutValidator.h

@@ -1,1 +1,1 @@
-/Users/mrqwirk/Documents/GitHub/MASShortcut/Framework/Monitoring/MASHotKey.h
+Monitoring/MASHotKey.h
