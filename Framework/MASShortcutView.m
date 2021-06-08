@@ -402,7 +402,7 @@ void *kUserDataHint = &kUserDataHint;
     static id eventMonitor = nil;
     if (shouldActivate) {
         __unsafe_unretained MASShortcutView *weakSelf = self;
-        NSEventMask eventMask = (NSKeyDownMask | NSFlagsChangedMask);
+        NSEventMask eventMask = (NSEventMaskKeyDown | NSEventMaskFlagsChanged);
         eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 
             // Create a shortcut from the event
@@ -427,7 +427,7 @@ void *kUserDataHint = &kUserDataHint;
             }
 
             // If the shortcut is Cmd-W or Cmd-Q, cancel recording and pass the event through
-            else if ((shortcut.modifierFlags == NSCommandKeyMask) && (shortcut.keyCode == kVK_ANSI_W || shortcut.keyCode == kVK_ANSI_Q)) {
+            else if ((shortcut.modifierFlags == NSEventModifierFlagCommand) && (shortcut.keyCode == kVK_ANSI_W || shortcut.keyCode == kVK_ANSI_Q)) {
                 weakSelf.recording = NO;
             }
 
