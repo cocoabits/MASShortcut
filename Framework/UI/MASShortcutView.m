@@ -244,7 +244,7 @@ static const CGFloat MASButtonFontSize = 11;
                                  ? self.shortcutPlaceholder
                                  : MASLocalizedString(@"Type New Shortcut", @"Non-empty shortcut button in recording state")))
                            : _shortcutValue ? _shortcutValue.description : @"");
-        [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:self.isRecording ? NSControlStateValueOff: NSControlStateValueOff];
+        [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:self.isRecording ? NSControlStateValueOn : NSControlStateValueOff];
     }
     else {
         if (self.recording)
