@@ -31,7 +31,7 @@ Pull requests welcome :)
 ### Swift Package Manager
 [Swift Package Manager](https://swift.org/package-manager/) is the simplest way to install for Xcode projects. Simply add the following Package Dependency:
     
-    https://github.com/sweetppro/MASShortcut
+    https://github.com/shpakovski/MASShortcut
 
 
 ### CocoaPods

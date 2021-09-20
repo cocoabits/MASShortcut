@@ -23,6 +23,7 @@ let package = Package(
                 "User Defaults Storage/MASDictionaryTransformerTests.m",
                 "User Defaults Storage/MASShortcutBinderTests.m",
                 "Info.plist",
+                "MASShortcut.modulemap",
                 "Prefix.pch"
             ],
             resources: [
