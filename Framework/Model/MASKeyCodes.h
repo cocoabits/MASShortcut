@@ -1,6 +1,5 @@
 #import <Carbon/Carbon.h>
 #import <AppKit/AppKit.h>
-#import "MASKeyMasks.h"
 
 // These glyphs are missed in Carbon.h
 typedef NS_ENUM(unsigned short, kMASShortcutGlyph) {

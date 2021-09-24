@@ -9,7 +9,7 @@
     XCTAssertNil([transformer transformedValue:nil],
         @"Decoding a shortcut from a nil dictionary returns nil.");
     XCTAssertNil([transformer transformedValue:(id)@"foo"],
-        @"Decoding a shortcut from a invalid-type dictionary returns nil.");
+        @"Decoding a shortcut from an invalid-type dictionary returns nil.");
     XCTAssertNil([transformer transformedValue:@{}],
         @"Decoding a shortcut from an empty dictionary returns nil.");
     XCTAssertNil([transformer transformedValue:@{@"keyCode":@"foo"}],

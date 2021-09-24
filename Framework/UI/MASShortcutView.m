@@ -278,7 +278,7 @@ static const CGFloat MASButtonFontSize = 11;
     // calculate the intrinsic size without refactoring the code.  That would give better results,
     // however.
 
-    // 120 is an arbitray number that seems to be wide enough for English localization.  This
+    // 120 is an arbitrary number that seems to be wide enough for English localization.  This
     // may need to be adjusted for other locales/languages.
 
     // NOTE:  Simply returning cellSize results in a display that is sometimes correct
