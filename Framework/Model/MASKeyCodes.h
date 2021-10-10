@@ -23,6 +23,15 @@ typedef NS_ENUM(unsigned short, kMASShortcutGlyph) {
     kMASShortcutGlyphSoutheastArrow = 0x2198,
 };
 
+// The missing function key definitions for `NS*FunctionKey`s
+typedef NS_ENUM(unsigned short, kMASShortcutFuctionKey) {
+    kMASShortcutEscapeFunctionKey = 0x001B,
+    kMASShortcutDeleteFunctionKey = 0x0008,
+    kMASShortcutSpaceFunctionKey = 0x0020,
+    kMASShortcutReturnFunctionKey = 0x000D,
+    kMASShortcutTabFunctionKey = 0x0009,
+};
+
 NS_INLINE NSString* NSStringFromMASKeyCode(unsigned short ch)
 {
     return [NSString stringWithFormat:@"%C", ch];
