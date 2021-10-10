@@ -49,10 +49,6 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
 {
     NSString *keyCodeString = self.keyCodeString;
 
-    if (keyCodeString.length <= 1) {
-        return keyCodeString.lowercaseString;
-    }
-
     switch (self.keyCode) {
         case kVK_F1: return NSStringFromMASKeyCode(NSF1FunctionKey);
         case kVK_F2: return NSStringFromMASKeyCode(NSF2FunctionKey);
@@ -73,9 +69,24 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
         case kVK_F17: return NSStringFromMASKeyCode(NSF17FunctionKey);
         case kVK_F18: return NSStringFromMASKeyCode(NSF18FunctionKey);
         case kVK_F19: return NSStringFromMASKeyCode(NSF19FunctionKey);
-        case kVK_Space: return NSStringFromMASKeyCode(0x20);
-        default: return @"";
+        case kVK_Space: return NSStringFromMASKeyCode(kMASShortcutSpaceFunctionKey);
+        case kVK_Escape: return NSStringFromMASKeyCode(kMASShortcutEscapeFunctionKey);
+        case kVK_Delete: return NSStringFromMASKeyCode(NSBackspaceCharacter);
+        case kVK_ForwardDelete: return NSStringFromMASKeyCode(NSDeleteFunctionKey);
+        case kVK_LeftArrow: return NSStringFromMASKeyCode(NSLeftArrowFunctionKey);
+        case kVK_RightArrow: return NSStringFromMASKeyCode(NSRightArrowFunctionKey);
+        case kVK_UpArrow: return NSStringFromMASKeyCode(NSUpArrowFunctionKey);
+        case kVK_DownArrow: return NSStringFromMASKeyCode(NSDownArrowFunctionKey);
+        case kVK_Help: return NSStringFromMASKeyCode(NSHelpFunctionKey);
+        case kVK_Home: return NSStringFromMASKeyCode(NSHomeFunctionKey);
+        case kVK_End: return NSStringFromMASKeyCode(NSEndFunctionKey);
+        case kVK_PageUp: return NSStringFromMASKeyCode(NSPageUpFunctionKey);
+        case kVK_PageDown: return NSStringFromMASKeyCode(NSPageDownFunctionKey);
+        case kVK_Tab: return NSStringFromMASKeyCode(kMASShortcutTabFunctionKey);
+        case kVK_Return: return NSStringFromMASKeyCode(kMASShortcutReturnFunctionKey);
     }
+
+    return keyCodeString.lowercaseString;
 }
 
 - (NSString *)keyCodeString
@@ -110,7 +121,9 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
         case kVK_RightArrow: return NSStringFromMASKeyCode(kMASShortcutGlyphRightArrow);
         case kVK_UpArrow: return NSStringFromMASKeyCode(kMASShortcutGlyphUpArrow);
         case kVK_DownArrow: return NSStringFromMASKeyCode(kMASShortcutGlyphDownArrow);
-        case kVK_Help: return NSStringFromMASKeyCode(kMASShortcutGlyphHelp);
+        case kVK_Help: return NSStringFromMASKeyCode(kMASShortcutGlyphHelp); // Insert
+        case kVK_Home: return NSStringFromMASKeyCode(kMASShortcutGlyphNorthwestArrow);
+        case kVK_End: return NSStringFromMASKeyCode(kMASShortcutGlyphSoutheastArrow);
         case kVK_PageUp: return NSStringFromMASKeyCode(kMASShortcutGlyphPageUp);
         case kVK_PageDown: return NSStringFromMASKeyCode(kMASShortcutGlyphPageDown);
         case kVK_Tab: return NSStringFromMASKeyCode(kMASShortcutGlyphTabRight);
@@ -135,10 +148,6 @@ static NSString *const MASShortcutModifierFlags = @"ModifierFlags";
         case kVK_ANSI_KeypadEnter: return NSStringFromMASKeyCode(kMASShortcutGlyphReturn);
         case kVK_ANSI_KeypadMinus: return @"-";
         case kVK_ANSI_KeypadEquals: return @"=";
-            
-        // Hardcode
-        case 119: return NSStringFromMASKeyCode(kMASShortcutGlyphSoutheastArrow);
-        case 115: return NSStringFromMASKeyCode(kMASShortcutGlyphNorthwestArrow);
     }
     
     // Everything else should be printable so look it up in the current ASCII capable keyboard layout
