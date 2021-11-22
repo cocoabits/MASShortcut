@@ -55,7 +55,7 @@ static const CGFloat MASButtonFontSize = 11;
 - (void)commonInit
 {
     _shortcutCell = [[[self.class shortcutCellClass] alloc] init];
-    _shortcutCell.buttonType = NSPushOnPushOffButton;
+    _shortcutCell.buttonType = NSButtonTypePushOnPushOff;
     _shortcutCell.font = [[NSFontManager sharedFontManager] convertFont:_shortcutCell.font toSize:MASButtonFontSize];
     _shortcutValidator = [MASShortcutValidator sharedValidator];
     _enabled = YES;
@@ -95,15 +95,15 @@ static const CGFloat MASButtonFontSize = 11;
 {
     switch (_style) {
         case MASShortcutViewStyleDefault: {
-            _shortcutCell.bezelStyle = NSRoundRectBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleRoundRect;
             break;
         }
         case MASShortcutViewStyleTexturedRect: {
-            _shortcutCell.bezelStyle = NSTexturedRoundedBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleTexturedRounded;
             break;
         }
         case MASShortcutViewStyleRounded: {
-            _shortcutCell.bezelStyle = NSRoundedBezelStyle;
+            _shortcutCell.bezelStyle = NSBezelStyleRounded;
             break;
         }
         case MASShortcutViewStyleFlat: {
@@ -219,7 +219,7 @@ static const CGFloat MASButtonFontSize = 11;
             buttonTitle = NSStringFromMASKeyCode(kMASShortcutGlyphClear);
         }
         if (buttonTitle != nil) {
-            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSTextAlignmentRight state:NSOffState];
+            [self drawInRect:self.bounds withTitle:buttonTitle alignment:NSTextAlignmentRight state:NSControlStateValueOff];
         }
         CGRect shortcutRect;
         [self getShortcutRect:&shortcutRect hintRect:NULL];
@@ -230,12 +230,12 @@ static const CGFloat MASButtonFontSize = 11;
                                  ? self.shortcutPlaceholder
                                  : MASLocalizedString(@"Type New Shortcut", @"Non-empty shortcut button in recording state")))
                            : _shortcutValue ? _shortcutValue.description : @"");
-        [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:self.isRecording ? NSOnState : NSOffState];
+        [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:self.isRecording ? NSControlStateValueOn : NSControlStateValueOff];
     }
     else {
         if (self.recording)
         {
-            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSTextAlignmentRight state:NSOffState];
+            [self drawInRect:self.bounds withTitle:NSStringFromMASKeyCode(kMASShortcutGlyphEscape) alignment:NSTextAlignmentRight state:NSControlStateValueOff];
             
             CGRect shortcutRect;
             [self getShortcutRect:&shortcutRect hintRect:NULL];
@@ -244,12 +244,12 @@ static const CGFloat MASButtonFontSize = 11;
                                : (self.shortcutPlaceholder.length > 0
                                   ? self.shortcutPlaceholder
                                   : MASLocalizedString(@"Type Shortcut", @"Empty shortcut button in recording state")));
-            [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:NSOnState];
+            [self drawInRect:shortcutRect withTitle:title alignment:NSTextAlignmentCenter state:NSControlStateValueOn];
         }
         else
         {
             [self drawInRect:self.bounds withTitle:MASLocalizedString(@"Record Shortcut", @"Empty shortcut button in normal state")
-                   alignment:NSTextAlignmentCenter state:NSOffState];
+                   alignment:NSTextAlignmentCenter state:NSControlStateValueOff];
         }
     }
 }
