@@ -1,4 +1,4 @@
-#import "MASShortcut.h"
+#import <MASShortcut/MASShortcut.h>
 
 /**
  Executes action when a shortcut is pressed.
