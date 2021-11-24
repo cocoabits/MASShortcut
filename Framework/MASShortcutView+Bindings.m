@@ -1,5 +1,6 @@
 #import "MASShortcutView+Bindings.h"
 #import "MASSettings.h"
+#import "MASSecureDataTransformer.h"
 
 @implementation MASShortcutView (Bindings)
 
@@ -45,7 +46,9 @@
 
 - (void) setAssociatedUserDefaultsKey: (NSString*) newKey
 {
-    [self setAssociatedUserDefaultsKey:newKey withTransformerName:NSSecureUnarchiveFromDataTransformerName];
+    [MASSecureDataTransformer registerIfNeeded];
+    
+    [self setAssociatedUserDefaultsKey:newKey withTransformerName:MASSecureDataTransformerName];
 }
 
 @end
