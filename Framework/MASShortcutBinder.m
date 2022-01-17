@@ -1,6 +1,7 @@
 #import "MASShortcutBinder.h"
 #import "MASShortcut.h"
 #import "MASSettings.h"
+#import "MASSecureDataTransformer.h"
 
 @interface MASShortcutBinder ()
 @property(strong) NSMutableDictionary *actions;
@@ -17,7 +18,10 @@
     [self setActions:[NSMutableDictionary dictionary]];
     [self setShortcuts:[NSMutableDictionary dictionary]];
     [self setShortcutMonitor:[MASShortcutMonitor sharedMonitor]];
-    [self setBindingOptions:@{NSValueTransformerNameBindingOption: NSSecureUnarchiveFromDataTransformerName}];
+    [self setBindingOptions:@{NSValueTransformerNameBindingOption: MASSecureDataTransformerName}];
+
+    [MASSecureDataTransformer registerIfNeeded];
+
     return self;
 }
 

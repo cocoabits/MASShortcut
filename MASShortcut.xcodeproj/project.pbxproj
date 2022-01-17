@@ -46,6 +46,8 @@
 		0DC2F19919938EFA003A0131 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F19719938EFA003A0131 /* MASShortcutView+Bindings.m */; };
 		13B2DA7F1E7BE7EC00D438D2 /* MASSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B2DA7D1E7BE7EC00D438D2 /* MASSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B2DA801E7BE7EC00D438D2 /* MASSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B2DA7E1E7BE7EC00D438D2 /* MASSettings.m */; };
+		68AE16AD274E5C3900CAD32E /* MASSecureDataTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 68AE16AB274E5C3900CAD32E /* MASSecureDataTransformer.h */; };
+		68AE16AE274E5C3900CAD32E /* MASSecureDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AE16AC274E5C3900CAD32E /* MASSecureDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,8 @@
 		33788751224CC9C600FACF1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		57B25C2D1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		57B25C2E1E78E06D0061A9EC /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		68AE16AB274E5C3900CAD32E /* MASSecureDataTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MASSecureDataTransformer.h; path = Framework/MASSecureDataTransformer.h; sourceTree = "<group>"; };
+		68AE16AC274E5C3900CAD32E /* MASSecureDataTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MASSecureDataTransformer.m; path = Framework/MASSecureDataTransformer.m; sourceTree = "<group>"; };
 		6EA6034E1CBF822000A3ED9C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA6034F1CBF822800A3ED9C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EA603501CBF822D00A3ED9C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 			children = (
 				0DC2F18B1993708A003A0131 /* MASDictionaryTransformer.h */,
 				0DC2F18C1993708A003A0131 /* MASDictionaryTransformer.m */,
+				68AE16AB274E5C3900CAD32E /* MASSecureDataTransformer.h */,
+				68AE16AC274E5C3900CAD32E /* MASSecureDataTransformer.m */,
 				0DC2F18F199372B4003A0131 /* MASDictionaryTransformerTests.m */,
 				0D827DAB199132840010B8EF /* MASShortcutBinder.h */,
 				0D827DAC199132840010B8EF /* MASShortcutBinder.m */,
@@ -320,6 +326,7 @@
 				0D827D9E19911A190010B8EF /* MASShortcutValidator.h in Headers */,
 				0DC2F18D1993708A003A0131 /* MASDictionaryTransformer.h in Headers */,
 				0D827DA519912D240010B8EF /* MASShortcutMonitor.h in Headers */,
+				68AE16AD274E5C3900CAD32E /* MASSecureDataTransformer.h in Headers */,
 				0D827DAD199132840010B8EF /* MASShortcutBinder.h in Headers */,
 				0D2CAB191B8339F4005431FC /* MASLocalization.h in Headers */,
 				0DC2F17619922798003A0131 /* MASHotKey.h in Headers */,
@@ -472,6 +479,7 @@
 				0DC2F17719922798003A0131 /* MASHotKey.m in Sources */,
 				0D827D9F19911A190010B8EF /* MASShortcutValidator.m in Sources */,
 				0DC2F17C199232EA003A0131 /* MASShortcutMonitor.m in Sources */,
+				68AE16AE274E5C3900CAD32E /* MASSecureDataTransformer.m in Sources */,
 				0D827D2C1990D55E0010B8EF /* MASShortcutView.m in Sources */,
 				0D827D261990D55E0010B8EF /* MASShortcut.m in Sources */,
 				0DC2F18E1993708A003A0131 /* MASDictionaryTransformer.m in Sources */,

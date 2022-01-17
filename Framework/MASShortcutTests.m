@@ -5,10 +5,10 @@
 
 - (void) testEquality
 {
-    MASShortcut *keyA = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSControlKeyMask];
-    MASShortcut *keyB = [MASShortcut shortcutWithKeyCode:2 modifierFlags:NSControlKeyMask];
-    MASShortcut *keyC = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSAlternateKeyMask];
-    MASShortcut *keyD = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSControlKeyMask];
+    MASShortcut *keyA = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSEventModifierFlagControl];
+    MASShortcut *keyB = [MASShortcut shortcutWithKeyCode:2 modifierFlags:NSEventModifierFlagControl];
+    MASShortcut *keyC = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSEventModifierFlagOption];
+    MASShortcut *keyD = [MASShortcut shortcutWithKeyCode:1 modifierFlags:NSEventModifierFlagControl];
     XCTAssertTrue([keyA isEqual:keyA], @"Shortcut is equal to itself.");
     XCTAssertTrue([keyA isEqual:[keyA copy]], @"Shortcut is equal to its copy.");
     XCTAssertFalse([keyA isEqual:keyB], @"Shortcuts not equal when key codes differ.");
