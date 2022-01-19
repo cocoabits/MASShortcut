@@ -33,10 +33,40 @@
         @{NSValueTransformerBindingOption:transformer} :
         nil;
 
-    [self bind:MASShortcutBinding
-        toObject:[MASSettings userDefaultsController]
-        withKeyPath:[@"values." stringByAppendingString:newKey]
-        options:options];
+    NSUserDefaultsController *userDefaultsController = [MASSettings userDefaultsController];
+
+    @try
+    {
+        [self bind:MASShortcutBinding
+          toObject:userDefaultsController
+       withKeyPath:[@"values." stringByAppendingString:newKey]
+           options:options];
+    }
+    @catch (NSException *exception)
+    {
+        @try
+        {
+            // Attempt to use previous transformer to decode the value.
+            NSData *oldData = [userDefaultsController.values valueForKey:newKey];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            NSValueTransformer *oldTransformer = [NSValueTransformer valueTransformerForName:NSKeyedUnarchiveFromDataTransformerName];
+#pragma clang diagnostic pop
+            MASShortcut *oldValue = [oldTransformer transformedValue:oldData];
+            NSData *newData = [transformer reverseTransformedValue:oldValue];
+            [userDefaultsController.values setValue:newData forKey:newKey];
+        }
+        @catch (NSException *exception)
+        {
+            // Things got really bad - remove old value.
+            [userDefaultsController.values setValue:nil forKey:newKey];
+        }
+
+        [self bind:MASShortcutBinding
+          toObject:userDefaultsController
+       withKeyPath:[@"values." stringByAppendingString:newKey]
+           options:options];
+    }
 }
 
 - (void) setAssociatedUserDefaultsKey: (NSString*) newKey withTransformerName: (NSString*) transformerName
