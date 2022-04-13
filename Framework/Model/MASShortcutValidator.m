@@ -52,6 +52,10 @@
 
 - (BOOL) isShortcut: (MASShortcut*) shortcut alreadyTakenInMenu: (NSMenu*) menu explanation: (NSString**) explanation
 {
+    if (self.allowOverridingServicesShortcut && menu == [NSApp servicesMenu]) {
+        return NO;
+    }
+
     NSString *keyEquivalent = [shortcut keyCodeStringForKeyEquivalent];
     NSEventModifierFlags flags = [shortcut modifierFlags];
 
