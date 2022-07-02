@@ -1,4 +1,4 @@
-#import "MASShortcutMonitor.h"
+#import <MASShortcut/MASShortcutMonitor.h>
 
 /**
  Binds actions to user defaults keys.
