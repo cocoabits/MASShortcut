@@ -1,4 +1,4 @@
-#import <MASShortcut/MASShortcut.h>
+#import "MASShortcut.h"
 
 extern FourCharCode const MASHotKeySignature;
 

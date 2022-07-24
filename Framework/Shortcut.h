@@ -1,9 +1,9 @@
 #import <AppKit/AppKit.h>
-#import <MASShortcut/MASShortcut.h>
-#import <MASShortcut/MASShortcutValidator.h>
-#import <MASShortcut/MASShortcutMonitor.h>
-#import <MASShortcut/MASShortcutBinder.h>
-#import <MASShortcut/MASDictionaryTransformer.h>
-#import <MASShortcut/MASShortcutView.h>
-#import <MASShortcut/MASShortcutView+Bindings.h>
-#import <MASShortcut/MASShortcutViewButtonCell.h>
+#import "MASShortcut.h"
+#import "MASShortcutValidator.h"
+#import "MASShortcutMonitor.h"
+#import "MASShortcutBinder.h"
+#import "MASDictionaryTransformer.h"
+#import "MASShortcutView.h"
+#import "MASShortcutView+Bindings.h"
+#import "MASShortcutViewButtonCell.h"

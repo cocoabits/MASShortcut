@@ -1,4 +1,4 @@
-#import <MASShortcut/MASKeyCodes.h>
+#import "MASKeyCodes.h"
 
 /**
  A model class to hold a key combination.

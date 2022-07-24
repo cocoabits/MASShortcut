@@ -1,4 +1,4 @@
-#import <MASShortcut/MASShortcut.h>
+#import "MASShortcut.h"
 
 /**
  This class is used by the recording control to tell which shortcuts are acceptable.
