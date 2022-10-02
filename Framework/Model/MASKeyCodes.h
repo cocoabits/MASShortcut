@@ -39,7 +39,7 @@ NS_INLINE NSString* NSStringFromMASKeyCode(unsigned short ch)
 
 NS_INLINE NSUInteger MASPickCocoaModifiers(NSUInteger flags)
 {
-    return (flags & (NSEventModifierFlagControl | NSEventModifierFlagShift | NSEventModifierFlagOption | NSEventModifierFlagCommand));
+    return (flags & (NSEventModifierFlagControl | NSEventModifierFlagShift | NSEventModifierFlagOption | NSEventModifierFlagCommand | NSEventModifierFlagFunction));
 }
 
 NS_INLINE UInt32 MASCarbonModifiersFromCocoaModifiers(NSUInteger cocoaFlags)
