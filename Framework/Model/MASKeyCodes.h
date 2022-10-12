@@ -42,7 +42,9 @@ NS_INLINE NSUInteger MASPickCocoaModifiers(NSUInteger flags)
     return (flags & (NSEventModifierFlagControl | NSEventModifierFlagShift | NSEventModifierFlagOption | NSEventModifierFlagCommand));
 }
 
-NS_INLINE NSUInteger MASPickAllCocoaModifiers(NSUInteger flags)
+// Used in `-[MASShortcutValidator isShortcut:alreadyTakenInMenu:explanation:]`.
+// This prevents incorrectly detecting an overlap with any shortcuts using the `fn` key.
+NS_INLINE NSUInteger MASPickModifiersIncludingFn(NSUInteger flags)
 {
     return (flags & (NSEventModifierFlagControl | NSEventModifierFlagShift | NSEventModifierFlagOption | NSEventModifierFlagCommand | NSEventModifierFlagFunction));
 }
